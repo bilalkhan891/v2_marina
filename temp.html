@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <script src="https://pi-test.sagepay.com/api/v1/js/sagepay-dropin.js"></script>
+    <style>
+      body * {
+          font-family: sans-serif;
+      }
+      h1 {
+
+      }
+      input {
+          font-size:12pt;
+      }
+      #main {
+          width: 550px;
+          margin: 0 auto;
+      }
+      #submit-container {
+          padding-top:10px;
+          float:right;
+      }
+      input[type=submit] {
+          border:none;
+          background:indigo;
+          padding:10px;
+          color:white;
+          border-radius:5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <h1>My Test Shop</h1>
+      <form>
+        <h2>Payment Details</h2>
+        <div id="sp-container"></div>
+        <div id="submit-container">
+         <input type="submit"/>
+        </div>
+      </form>
+    </div>
+    <script>
+      sagepayCheckout({ merchantSessionKey: 'F42164DA-4A10-4060-AD04-F6101821EFC3' }).form();
+    </script>
+  </body>
