@@ -582,7 +582,7 @@ class Api extends REST_Controller {
             ], REST_Controller::HTTP_FORBIDDEN); // NOT_FOUND (404) being the HTTP 
         }
         $response['requestedLength'] = $data['length'];
-        $response['bType'] = $data['bType'];
+        $response['berthingType'] = $data['bType'];
         $response['days'] = (isset($data['days'])) ? $data['days'] : ''; 
         $response['lengthUnit'] = $data['lengthUnit'];
         $response['currency'] = "£";
