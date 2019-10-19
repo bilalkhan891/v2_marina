@@ -27,7 +27,7 @@ class Api extends REST_Controller {
     {
         // Construct the parent class
         parent::__construct();
-
+        error_reporting(0);
         $this->load->model('Mainmodel', 'mm');
         // Configure limits on our controller methods
         // Ensure you have created the 'limits' table and enabled 'limits' within application/config/rest.php
@@ -575,14 +575,14 @@ class Api extends REST_Controller {
         $Pontoon_Temple_Back  = 141.55;
         $Winter_Berth     = 141.35;
         $Pontoon_Hanover_Quay     = 221.00;
-        if ($data == null || !isset($data['length']) || !isset($data['multiHull']) || !isset($data['bType']) || !isset($data['days'])) {
+        if ($data == null || !isset($data['length']) || !isset($data['multiHull']) || !isset($data['berthingType']) || !isset($data['days'])) {
             $this->response([
                 'status' => false,
                 'message' => 'Forbidden'
             ], REST_Controller::HTTP_FORBIDDEN); // NOT_FOUND (404) being the HTTP 
         }
         $response['requestedLength'] = $data['length'];
-        $response['berthingType'] = $data['bType'];
+        $response['berthingType'] = $data['berthingType'];
         $response['days'] = (isset($data['days'])) ? $data['days'] : ''; 
         $response['lengthUnit'] = $data['lengthUnit'];
         $response['currency'] = "£";
@@ -592,7 +592,7 @@ class Api extends REST_Controller {
         }
         $response['boatLength'] = number_format($data['length'], 2, '.', '') . "m";
         $data['length'] = round($data['length'] * 2) / 2;
-        if ($data['bType'] == 'Visiting') {
+        if ($data['berthingType'] == 'Visiting') {
             $ek     = 1.95; 
             $do     = 1.65; 
             $teen   = 1.26;
@@ -617,7 +617,7 @@ class Api extends REST_Controller {
                 $res['Payment'] = 'Days more then 21';
             }
 
-        } elseif($data['bType'] == 'Annual') {
+        } elseif($data['berthingType'] == 'Annual') {
 
             $response["multiHull"] = "No"; 
             $res['Class A Berthing']        = number_format($Class_A_Berthing*$data['length'], 2, '.', '');
