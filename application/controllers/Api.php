@@ -583,7 +583,7 @@ class Api extends REST_Controller {
         }
         $response['requestedLength'] = $data['length'];
         $response['berthingType'] = $data['bType'];
-        $response['days'] = (isset($data['days'])) ? $data['days'] : ''; 
+        $response['day'] = (isset($data['days'])) ? $data['days'] : ''; 
         $response['lengthUnit'] = $data['lengthUnit'];
         $response['currency'] = "£";
 
