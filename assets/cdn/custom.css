@@ -1,0 +1,502 @@
+
+
+/*Global Change font style to Montserrat */
+@import url(//fonts.googleapis.com/css?family=Montserrat);
+
+body { background: #f9fbfd;
+    font-family: 'Montserrat', sans-serif;
+ }
+
+ 
+/*============================Heading Styles=======================================*/
+
+
+h1,h2,h5{
+	font-weight: 700;
+	font-size: 30px;
+	 font-family: 'Montserrat', sans-serif;
+ }
+
+h4,h6{
+	font-size: 20px;
+	 font-weight: 400;
+	 font-family: 'Montserrat', sans-serif;
+}
+
+
+/* ================GETTING STARTING CATEGORY=====================*/
+
+
+/* Inital Setup */
+
+#category-196 h3:before {
+	/*Here change the icon initial setup*/ 
+    background: url('https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/settings-circle-blue-512.png');
+    background-size: 100px; 
+    background-repeat: no-repeat;
+    background-position: center;
+  
+}
+
+/*============= Changing Setup ===========*/
+
+#category-197 h3:before {
+    background: url('https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/settings-circle-blue-512.png');
+    background-size: 100px; 
+    background-repeat: no-repeat;
+    background-position: center;
+   }
+
+/* ==================FAQ================ */
+
+#category-198 h3:before {
+  background: url('https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/settings-circle-blue-512.png');
+    background-size: 100px; 
+    background-repeat: no-repeat;
+    background-position: center;
+  
+}
+
+/*=======================END GETTING STARTING CATEGORY============================================*/
+
+
+/*=============================Using Source APP===================================================*/
+
+/*=============== Using Evernote================ */
+#category-202 h3:before {
+   background: url('https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/settings-circle-blue-512.png');
+    background-size: 100px;
+    /*background-position: 50% 50%;*/
+    background-repeat: no-repeat;
+    background-position: center;
+     background-color: #3c78d8c7;
+}
+
+/*======================== Using OneNote============================================================ */
+#category-203 h3:before {
+   /* background: url('https://png2.cleanpng.com/sh/ff952d76b856efd419a99b7bcbf8059d/L0KzQYm3VMI5N51sj5H0aYP2gLBuTfdwd5hxfZ9tb3P2PbT2jgB2fJZ3Rdtsb372Pbi0kCVqfJYyiAJ7ZXHng7nshgQub5D0RadqZUTpdYOAVMU2Opc2RqIENUW7SISCUcUzPGo6Tqk6MUK7RHB3jvc=/kisspng-google-docs-computer-icons-g-suite-spreadsheet-goo-5ae4fe274552f1.095588391524956711284.png');*/
+    /*background-size: 146px;*/
+    background: url('https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/settings-circle-blue-512.png');
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #fcac53;
+}
+
+/* ============================Google Docs============================================================ */
+#category-204 h3:before {
+   /* background: url('https://cdn.dribbble.com/users/124355/screenshots/6147546/evernote.png');*/
+    /*background-size: 265px;*/
+     background: url('https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/settings-circle-blue-512.png');
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #63b5ff;
+}
+
+/*================================END Source APP===================================================*/
+
+/* ==============================STart Destination App Integrations=================================*/
+
+/*===============================Evernote Integations ================================================*/
+#category-208 h3:before {
+     background: url('https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/settings-circle-blue-512.png');
+    background-size: 100px;
+    background-position: center;
+    background-repeat: no-repeat;
+     background-color: #63b5ff;
+}
+
+/* ====================================OneNote Integrations============================================= */
+#category-209 h3:before {
+	 background: url('https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/settings-circle-blue-512.png');
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+     background-color: #fcac53;
+}
+
+/* ====================================Googledocs Integrations============================================= */
+#category-210 h3:before {
+   /* background: url('https://storage.googleapis.com/kb-assets.small-improvements.com/img/topic-video.png');*/
+    background: url('https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/settings-circle-blue-512.png');
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+     background-color: #2dccc0;
+}
+/* =========================================Start Task Cam=================================================== */
+
+/* =======================================TaskCam Basics======================================================*/
+#category-214 h3:before {
+     background: url('https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/settings-circle-blue-512.png');
+    background-size: 100px;
+     background-repeat: no-repeat;
+    background-position: center;
+     background-color: #fcac53;
+}
+
+/* ========================================TaskCam Advanced==================================================== */
+#category-215 h3:before {
+    /*background: url('https://storage.googleapis.com/kb-assets.small-improvements.com/img/topic-users.png');*/
+     background: url('https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/settings-circle-blue-512.png');
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+     background-color:#ffd633;
+}
+
+/* =========================================TaskCam FAQs======================================================== */
+#category-216 h3:before {
+   /* background: url('https://storage.googleapis.com/kb-assets.small-improvements.com/img/topic-notifications.png');*/
+    background: url('https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/settings-circle-blue-512.png');
+    background-size: 100px;
+    background-repeat: no-repeat;
+   background-position: center;
+     background-color: #2dccc0;
+}
+
+/*=========================================END Task CAM==========================================================*/
+
+/* =======================================Start Adminstration=================================================== */
+
+
+/* ========================================My Account============================================================ */
+#category-220 h3:before {
+	background: url('https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/settings-circle-blue-512.png');
+    background-size: 100px;
+   background-repeat: no-repeat;
+   background-position: center;
+     background-color:#3f51b5;
+}
+
+/*========================================= Team================================================================== */
+#category-221 h3:before {
+	background: url('https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/settings-circle-blue-512.png');
+    background-size: 100px;
+    background-repeat: no-repeat;
+   background-position: center;
+     background-color: #e91e63;
+}
+
+/*========================================= troubleshooting=========================================================== */
+#category-222 h3:before {
+	background: url('https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/settings-circle-blue-512.png');
+    background-size: 100px;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-color: #3c78d8c7;
+}
+
+/*########################################## END Administration########################################################*/
+
+
+
+/*==========================================All Hyper Link Bold========================================================*/
+
+.category-list .category .article-count, .category-list .category:hover .article-count {
+    color: #3C78D8;
+}
+
+
+/*=============================================End Hyper Link===========================================================*/
+
+/* ########## HOME (WITH CATEGORIES) ########## */
+
+.collection-category .category-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+}
+
+.category-list .category {
+    flex: 0 0 32%;
+    margin: 0 0 20px;
+    padding: 0 0 15px;
+    width: unset;
+    border: 1px solid #EDEDED;
+    border-radius: 3px;
+    box-shadow: none;
+    background: #fff;
+}
+
+@media screen and (max-width: 500px) {
+    .category-list .category {
+        flex: 1 1 100%;
+    }
+}
+
+ 
+.collection-category h2 {
+    text-align: center;
+    font-weight: 500;
+    font-size: 30px;
+    padding: 0;
+    margin: 0 0 30px;
+}
+
+.category-list .category h3 {
+    color: #161B1E;
+    margin: 0 0 10px;
+}
+
+
+.category-list .category .article-count {
+    margin-top: 0;
+}
+
+/* ########## ARTICLE PAGE ########## */
+
+#main-content {
+    background: none;
+}
+
+.contentWrapper {
+    border: 0;
+    padding: 40px;
+}
+
+#sidebar {
+    position: sticky;
+    top: 32px;
+}
+
+#sidebar form .search-query {
+    border: 1px solid #D0D0D0;
+    color: #161B1E;
+}
+
+#serp-dd.sb {
+    top: 42px;
+    border-radius: 3px;
+}
+
+#sidebar h3 {
+    font-size: 18px;
+    font-weight: bolder;
+    line-height: 24px;
+    color: #a3a3a3; 
+    margin-bottom: 18px;
+}
+
+#sidebar .nav-list a {
+    display: inline-block;
+    color: #73777A;
+    font-size: 15px; 
+    line-height: 1.3em;
+    margin-left: 0;
+}
+
+#sidebar .nav-list .active a,
+#sidebar .nav-list .active a:hover,
+#sidebar .nav-list .active a:focus {
+    font-weight: 900;
+    color: #3c78d8c7;
+    background: none;
+    text-shadow: none;
+}
+
+#sidebar .nav-list .active a .icon-arrow,
+#sidebar .nav-list .active a:hover .icon-arrow,
+#sidebar .nav-list .active a:focus .icon-arrow {
+    display: none;
+}
+ 
+
+#fullArticle h4 {
+    margin-top: 20px;
+}
+
+#fullArticle p,
+#fullArticle ul,
+#fullArticle ol,
+#fullArticle li,
+#fullArticle div,
+#fullArticle blockquote,
+#fullArticle dd,
+#fullArticle table {
+    font-size: 18px;
+    line-height: 28px;
+    color: #161B1E;
+}
+
+#fullArticle p:last-child {
+    margin-bottom: 0;
+}
+
+#fullArticle strong {
+    color: #161B1E;
+}
+
+#fullArticle .title {
+    margin: 0 40px 40px 0;
+}
+
+#fullArticle .printArticle {
+    right: 30px;
+    top: 50px;
+}
+#fullArticle img {
+    margin: 20px 0;
+    padding: 0;
+    border-radius: 0px;
+    box-shadow: 0 5px 13px 2px rgba(33, 150, 243, 0.19);
+    border: 1px solid #EDEDED;
+}
+.articleFoot p,
+.articleFoot time {
+    color: #9EA1A3;
+    display: inline-block;
+    font-family: 'Avenir Next', 'AvenirNext', 'Avenir';
+    font-style: normal;
+}
+
+#sbContact {
+    color: #9EA1A3;
+    border-bottom: 1px solid #9EA1A3;
+}
+
+#sbContact:hover {
+    color: #9EA1A3;
+    text-decoration: none;
+    border-bottom-color: #9EA1A3;
+}
+
+/* ########## ARTICLES LIST / CATEGORY ########## */
+
+#categoryHead h1 {
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+
+.articleList {
+    font-size: 18px;
+    list-style-type: none;
+}
+
+.articleList li {
+    margin: 18px 0;
+    padding-left: 0;
+    line-height: 24px;
+}
+
+.articleList a {
+    margin-left: 0;
+}
+
+/* ########## ZENDESK LEGACY ########## */
+
+/*Styles that in from Zendesk import and are added here for legacy and compatibility of old docs */
+
+.note-box,
+.boxGentleWarning {
+    background: #fff5cc;
+    border-radius: 3px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.category-list .category:hover {
+    background-color: #fff;
+    box-shadow: 0 5px 13px 2px rgba(33, 150, 243, 0.19);
+    transition: all .3s ease-in;  
+}
+ 
+.category-list .category h3:before {
+    content: " ";
+    display: block;
+    height: 180px;
+    margin: 0 0 20px;
+    background: #EDEDED;
+    border-radius: 3px 3px 0 0;
+}
+
+  /*
+  * 
+  * Ba CSS
+  *
+  * 
+  */
+
+/* Home page Fixed background */
+section#docsSearch { 
+    /* Home page header Iamge URL BELOW */
+    background: url(https://res.cloudinary.com/taskclone/image/upload/v1456090048/support-search-background_shm19d.jpg) center left no-repeat;
+    background-attachment: fixed; background-size: cover;
+    padding-top: 220px; margin-top: -100px; z-index: 0; padding-bottom: 100px; margin-bottom: 8em;
+}
+#docsSearch h1 { color: #fff; }
+/* Navbar */
+header#mainNav .brand img { max-width: 60%; }
+.navbar .navbar-inner { background: #fff; z-index: 99; position: relative;}
+.navbar-inner .container-fluid { max-width: 90%; }
+.navbar .nav li a, .navbar .icon-private-w {color: #000;font-weight: 600;background: repeating-linear-gradient(0deg, #ffffff4f, transparent 60px);font-size: 1.2em;letter-spacing: 1px;}
+.navbar .nav li a:hover, .navbar .nav .active a:hover { color: #5d5d5d; background: repeating-linear-gradient(0deg, #ffffff, transparent 60px);}
+.navbar .nav li.active a {color: #5d5d5d;background: repeating-linear-gradient(0deg, #ffffff, transparent 60px);}
+
+ 
+/* Categories page Sidebar CSS */
+aside#sidebar ul.nav.nav-list li a:after { content: '';  width: 0px;  display: block; height: .06431em; background: #000; transition: width .3s ease-in-out; }
+aside#sidebar ul.nav.nav-list li a:hover::after { width: 100%; transition: width .3s ease-in-out; }
+aside#sidebar ul.nav.nav-list li.active a:after { width: 100%; height: 2px; background: #3c78d8c7;}
+.icon-article-doc:before { content: "\25BA"; color: #3c78d8c7;}
+.row-fluid { padding-top: 40px; }
+#categoryHead h1 { margin-bottom: 15px; }
+#categoryHead { margin-bottom: 40px; }
+
+
+    /* Articles Style */
+section#main-content .contentWrapper {
+    font: 400 16px Montserrat, serif;
+    box-shadow: 0 5px 13px 2px rgba(33, 150, 243, 0.19);
+}
+section#main-content .contentWrapper h1 {
+    font: 700 30px Montserrat, serif;
+}
+
+section#main-content .contentWrapper h2 {
+    font: 700 25px Montserrat, serif;
+}
+
+section#main-content .contentWrapper h3 {
+    font: 700 20px Montserrat, serif;
+}
+
+section#main-content .contentWrapper h4 {
+    font: 700 20px Montserrat, serif;
+    color: #3C78D8;
+}
+
+section#main-content .contentWrapper h5 {
+    font: 700 20px Montserrat, serif;
+    color: #224870;
+}
+
+section#main-content .contentWrapper h6 {
+    font: 700 20px Montserrat, serif;
+    color: #44CFCB;
+}
+#fullArticle hr {
+    border-top: 2px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee; 
+}
+
+hgroup#categoryHead:after {
+    content: ' ';
+    height: 3px;
+    background: #000;
+    width: 100px;
+    position: absolute;
+    bottom: -11px;
+}
+
+
+
+/*==================================HIde Last Update Date and Time=========================================================*/
+
+.articleFoot time.lu {
+    display: none;
+}
+
+

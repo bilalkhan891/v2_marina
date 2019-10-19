@@ -1,0 +1,1535 @@
+Minute	Hour	Day	Month	Weekday	Command	Actions
+0,40	*	*	*	*	php /home/peoplesspot/public_html/crons/fakeprofiles-cron.php >/dev/null 2>&1	    
+10	*/1	*/1	*	*	php /home/peoplesspot/public_html/crons/acceptfrrequests-cron.php >/dev/null 2>&1	    
+0	*	*	*	*	php /home/peoplesspot/public_html/crons/viphandler-cron.php >/dev/null 2>&1	    
+*	*	*	*	*	php /home/peoplesspot/public_html/mods/pets/buypets_cron.php >/dev/null 2>&1	    
+1	0	1	1	*	php /home/peoplesspot/public_html/mods/pets/buypets_cron_random.php >/dev/null 2>&1	    
+*/1	*	*	*	*	php /home/peoplesspot/public_html/mods/pets/buypets_cron_latest.php >/dev/null 2>&1	    
+*/1	0	1	1	*	php /home/peoplesspot/public_html/mods/pets/buypets_cron_activepets.php >/dev/null 2>&1	    
+0	0	1	1	*	php /home/peoplesspot/public_html/mods/pets/buypets_cron_newpets.php >/dev/null 2>&1	    
+*	*	*	*	*	php /home/peoplesspot/public_html/crons/updatecountrycount.php >/dev/null 2>&1	    
+1	*	*	*	*	php /home/peoplesspot/public_html/crons/pets-ranking.php >/dev/null 2>&1	    
+
+
+<div class="section">
+                <h2 id="hdrCurrentCronJobs">
+                    Current Cron Jobs
+                </h2>
+                <div id="current_cron_jobs">
+<table class="table table-striped responsive-table" id="cron_jobs_table">
+    <thead>
+        <tr>
+            <th>Minute</th>
+            <th>Hour</th>
+            <th>Day</th>
+            <th>Month</th>
+            <th>Weekday</th>
+            <th>Command</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+        <tbody><tr id="info_row_1">
+        <td data-title="Minute"><span id="minute_info_1">0,40</span></td>
+        <td data-title="Hour"><span id="hour_info_1">*</span></td>
+        <td data-title="Day"><span id="day_info_1">*</span></td>
+        <td data-title="Month"><span id="month_info_1">*</span></td>
+        <td data-title="Weekday"><span id="weekday_info_1">*</span></td>
+        <td data-title="Command" class="command-cell">
+            <code id="command_htmlsafe_1">php /home/peoplesspot/public_html/crons/fakeprofiles-cron.php &gt;/dev/null 2&gt;&amp;1</code>
+            <input type="hidden" id="command_info_1" value="php /home/peoplesspot/public_html/crons/fakeprofiles-cron.php >/dev/null 2>&amp;1">
+            <input type="hidden" id="linekey_1" value="3915093562">
+        </td>
+        <td data-title="Actions">
+            <span class="btn btn-link" id="lnkEdit_1" onclick="toggle_module('edit_module_1')">
+                <span class="glyphicon glyphicon-pencil"></span> Edit
+            </span>&nbsp;&nbsp;&nbsp;
+            <span class="btn btn-link" id="lnkDelete_1" onclick="toggle_module('delete_module_1')">
+                <span class="glyphicon glyphicon-trash"></span> Delete
+            </span>
+        </td>
+    </tr>
+    <tr id="module_row_1" class="dt_module_row">
+        <td colspan="7">
+            <div class="dt_module" id="edit_module_1" style="display: none">
+    <div class="form-group">
+                    <label>Minute</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="minute_1" type="text" class="form-control" size="4">
+                </div>
+                <div id="minute_1_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Hour</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="hour_1" type="text" class="form-control" size="4">
+                </div>
+                <div id="hour_1_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Day</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="day_1" type="text" class="form-control" size="4">
+                </div>
+                <div id="day_1_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Month</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="month_1" type="text" class="form-control" size="4">
+                </div>
+                <div id="month_1_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Weekday</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="weekday_1" type="text" class="form-control" size="4">
+                </div>
+                <div id="weekday_1_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+        
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <select id="common_options_1" onchange="select_common_option('1')" class="form-control">
+                <option value="--">-- Common Settings --</option>
+                
+                    <option value="* * * * *">
+                        Every Minute
+                        (* * * * *)
+                    </option>
+                
+                    <option value="*/5 * * * *">
+                        Every 5 Minutes
+                        (*/5 * * * *)
+                    </option>
+                
+                    <option value="0,30 * * * *">
+                        Twice an Hour
+                        (0,30 * * * *)
+                    </option>
+                
+                    <option value="0 * * * *">
+                        Once an Hour
+                        (0 * * * *)
+                    </option>
+                
+                    <option value="0 0,12 * * *">
+                        Twice a Day
+                        (0 0,12 * * *)
+                    </option>
+                
+                    <option value="0 0 * * *">
+                        Once a Day
+                        (0 0 * * *)
+                    </option>
+                
+                    <option value="0 0 * * 0">
+                        Once a Week
+                        (0 0 * * 0)
+                    </option>
+                
+                    <option value="0 0 1,15 * *">
+                        1st and 15th
+                        (0 0 1,15 * *)
+                    </option>
+                
+                    <option value="0 0 1 * *">
+                        Once a Month
+                        (0 0 1 * *)
+                    </option>
+                
+                    <option value="0 0 1 1 *">
+                        Once a Year
+                        (0 0 1 1 *)
+                    </option>
+                
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-12 col-md-8">
+            <label>Command</label>
+            <input id="command_1" type="text" class="form-control" size="45">
+            <div id="command_1_error"></div>
+        </div>
+    </div>
+    <div class="form-group" id="edit_input_1">
+        <input id="edit_line_1" type="button" class="btn btn-primary" value="Edit Line">
+        <button class="btn btn-link" onclick="toggle_module('edit_module_1')">
+            Cancel
+        </button>
+    </div>
+    <div id="edit_status_1"></div>
+</div>
+
+            <div class="dt_module" id="delete_module_1" style="display: none">
+                <div class="form-group">
+                    <p>Delete this cron job?</p>
+                </div>
+                <div class="form-group" id="delete_input_1">
+                    <input type="button" class="btn btn-primary" id="delete_line_1" value="Delete" onclick="delete_line('1')">
+                    <button class="btn btn-link" id="cancel_delete_{{ index }}" onclick="toggle_module('delete_module_1')">
+                        Cancel
+                    </button>
+                </div>
+                <div id="delete_status_1"></div>
+            </div>
+            <div class="cjt_status_bar" id="status_bar_1"></div>
+        </td>
+    </tr>
+        <tr id="info_row_2">
+        <td data-title="Minute"><span id="minute_info_2">10</span></td>
+        <td data-title="Hour"><span id="hour_info_2">*/1</span></td>
+        <td data-title="Day"><span id="day_info_2">*/1</span></td>
+        <td data-title="Month"><span id="month_info_2">*</span></td>
+        <td data-title="Weekday"><span id="weekday_info_2">*</span></td>
+        <td data-title="Command" class="command-cell">
+            <code id="command_htmlsafe_2">php /home/peoplesspot/public_html/crons/acceptfrrequests-cron.php &gt;/dev/null 2&gt;&amp;1</code>
+            <input type="hidden" id="command_info_2" value="php /home/peoplesspot/public_html/crons/acceptfrrequests-cron.php >/dev/null 2>&amp;1">
+            <input type="hidden" id="linekey_2" value="3655674004">
+        </td>
+        <td data-title="Actions">
+            <span class="btn btn-link" id="lnkEdit_2" onclick="toggle_module('edit_module_2')">
+                <span class="glyphicon glyphicon-pencil"></span> Edit
+            </span>&nbsp;&nbsp;&nbsp;
+            <span class="btn btn-link" id="lnkDelete_2" onclick="toggle_module('delete_module_2')">
+                <span class="glyphicon glyphicon-trash"></span> Delete
+            </span>
+        </td>
+    </tr>
+    <tr id="module_row_2" class="dt_module_row">
+        <td colspan="7">
+            <div class="dt_module" id="edit_module_2" style="display: none">
+    <div class="form-group">
+                    <label>Minute</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="minute_2" type="text" class="form-control" size="4">
+                </div>
+                <div id="minute_2_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Hour</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="hour_2" type="text" class="form-control" size="4">
+                </div>
+                <div id="hour_2_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Day</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="day_2" type="text" class="form-control" size="4">
+                </div>
+                <div id="day_2_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Month</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="month_2" type="text" class="form-control" size="4">
+                </div>
+                <div id="month_2_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Weekday</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="weekday_2" type="text" class="form-control" size="4">
+                </div>
+                <div id="weekday_2_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+        
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <select id="common_options_2" onchange="select_common_option('2')" class="form-control">
+                <option value="--">-- Common Settings --</option>
+                
+                    <option value="* * * * *">
+                        Every Minute
+                        (* * * * *)
+                    </option>
+                
+                    <option value="*/5 * * * *">
+                        Every 5 Minutes
+                        (*/5 * * * *)
+                    </option>
+                
+                    <option value="0,30 * * * *">
+                        Twice an Hour
+                        (0,30 * * * *)
+                    </option>
+                
+                    <option value="0 * * * *">
+                        Once an Hour
+                        (0 * * * *)
+                    </option>
+                
+                    <option value="0 0,12 * * *">
+                        Twice a Day
+                        (0 0,12 * * *)
+                    </option>
+                
+                    <option value="0 0 * * *">
+                        Once a Day
+                        (0 0 * * *)
+                    </option>
+                
+                    <option value="0 0 * * 0">
+                        Once a Week
+                        (0 0 * * 0)
+                    </option>
+                
+                    <option value="0 0 1,15 * *">
+                        1st and 15th
+                        (0 0 1,15 * *)
+                    </option>
+                
+                    <option value="0 0 1 * *">
+                        Once a Month
+                        (0 0 1 * *)
+                    </option>
+                
+                    <option value="0 0 1 1 *">
+                        Once a Year
+                        (0 0 1 1 *)
+                    </option>
+                
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-12 col-md-8">
+            <label>Command</label>
+            <input id="command_2" type="text" class="form-control" size="45">
+            <div id="command_2_error"></div>
+        </div>
+    </div>
+    <div class="form-group" id="edit_input_2">
+        <input id="edit_line_2" type="button" class="btn btn-primary" value="Edit Line">
+        <button class="btn btn-link" onclick="toggle_module('edit_module_2')">
+            Cancel
+        </button>
+    </div>
+    <div id="edit_status_2"></div>
+</div>
+
+            <div class="dt_module" id="delete_module_2" style="display: none">
+                <div class="form-group">
+                    <p>Delete this cron job?</p>
+                </div>
+                <div class="form-group" id="delete_input_2">
+                    <input type="button" class="btn btn-primary" id="delete_line_2" value="Delete" onclick="delete_line('2')">
+                    <button class="btn btn-link" id="cancel_delete_{{ index }}" onclick="toggle_module('delete_module_2')">
+                        Cancel
+                    </button>
+                </div>
+                <div id="delete_status_2"></div>
+            </div>
+            <div class="cjt_status_bar" id="status_bar_2"></div>
+        </td>
+    </tr>
+        <tr id="info_row_3">
+        <td data-title="Minute"><span id="minute_info_3">0</span></td>
+        <td data-title="Hour"><span id="hour_info_3">*</span></td>
+        <td data-title="Day"><span id="day_info_3">*</span></td>
+        <td data-title="Month"><span id="month_info_3">*</span></td>
+        <td data-title="Weekday"><span id="weekday_info_3">*</span></td>
+        <td data-title="Command" class="command-cell">
+            <code id="command_htmlsafe_3">php /home/peoplesspot/public_html/crons/viphandler-cron.php &gt;/dev/null 2&gt;&amp;1</code>
+            <input type="hidden" id="command_info_3" value="php /home/peoplesspot/public_html/crons/viphandler-cron.php >/dev/null 2>&amp;1">
+            <input type="hidden" id="linekey_3" value="1839937678">
+        </td>
+        <td data-title="Actions">
+            <span class="btn btn-link" id="lnkEdit_3" onclick="toggle_module('edit_module_3')">
+                <span class="glyphicon glyphicon-pencil"></span> Edit
+            </span>&nbsp;&nbsp;&nbsp;
+            <span class="btn btn-link" id="lnkDelete_3" onclick="toggle_module('delete_module_3')">
+                <span class="glyphicon glyphicon-trash"></span> Delete
+            </span>
+        </td>
+    </tr>
+    <tr id="module_row_3" class="dt_module_row">
+        <td colspan="7">
+            <div class="dt_module" id="edit_module_3" style="display: none">
+    <div class="form-group">
+                    <label>Minute</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="minute_3" type="text" class="form-control" size="4">
+                </div>
+                <div id="minute_3_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Hour</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="hour_3" type="text" class="form-control" size="4">
+                </div>
+                <div id="hour_3_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Day</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="day_3" type="text" class="form-control" size="4">
+                </div>
+                <div id="day_3_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Month</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="month_3" type="text" class="form-control" size="4">
+                </div>
+                <div id="month_3_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Weekday</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="weekday_3" type="text" class="form-control" size="4">
+                </div>
+                <div id="weekday_3_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+        
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <select id="common_options_3" onchange="select_common_option('3')" class="form-control">
+                <option value="--">-- Common Settings --</option>
+                
+                    <option value="* * * * *">
+                        Every Minute
+                        (* * * * *)
+                    </option>
+                
+                    <option value="*/5 * * * *">
+                        Every 5 Minutes
+                        (*/5 * * * *)
+                    </option>
+                
+                    <option value="0,30 * * * *">
+                        Twice an Hour
+                        (0,30 * * * *)
+                    </option>
+                
+                    <option value="0 * * * *">
+                        Once an Hour
+                        (0 * * * *)
+                    </option>
+                
+                    <option value="0 0,12 * * *">
+                        Twice a Day
+                        (0 0,12 * * *)
+                    </option>
+                
+                    <option value="0 0 * * *">
+                        Once a Day
+                        (0 0 * * *)
+                    </option>
+                
+                    <option value="0 0 * * 0">
+                        Once a Week
+                        (0 0 * * 0)
+                    </option>
+                
+                    <option value="0 0 1,15 * *">
+                        1st and 15th
+                        (0 0 1,15 * *)
+                    </option>
+                
+                    <option value="0 0 1 * *">
+                        Once a Month
+                        (0 0 1 * *)
+                    </option>
+                
+                    <option value="0 0 1 1 *">
+                        Once a Year
+                        (0 0 1 1 *)
+                    </option>
+                
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-12 col-md-8">
+            <label>Command</label>
+            <input id="command_3" type="text" class="form-control" size="45">
+            <div id="command_3_error"></div>
+        </div>
+    </div>
+    <div class="form-group" id="edit_input_3">
+        <input id="edit_line_3" type="button" class="btn btn-primary" value="Edit Line">
+        <button class="btn btn-link" onclick="toggle_module('edit_module_3')">
+            Cancel
+        </button>
+    </div>
+    <div id="edit_status_3"></div>
+</div>
+
+            <div class="dt_module" id="delete_module_3" style="display: none">
+                <div class="form-group">
+                    <p>Delete this cron job?</p>
+                </div>
+                <div class="form-group" id="delete_input_3">
+                    <input type="button" class="btn btn-primary" id="delete_line_3" value="Delete" onclick="delete_line('3')">
+                    <button class="btn btn-link" id="cancel_delete_{{ index }}" onclick="toggle_module('delete_module_3')">
+                        Cancel
+                    </button>
+                </div>
+                <div id="delete_status_3"></div>
+            </div>
+            <div class="cjt_status_bar" id="status_bar_3"></div>
+        </td>
+    </tr>
+        <tr id="info_row_4">
+        <td data-title="Minute"><span id="minute_info_4">*</span></td>
+        <td data-title="Hour"><span id="hour_info_4">*</span></td>
+        <td data-title="Day"><span id="day_info_4">*</span></td>
+        <td data-title="Month"><span id="month_info_4">*</span></td>
+        <td data-title="Weekday"><span id="weekday_info_4">*</span></td>
+        <td data-title="Command" class="command-cell">
+            <code id="command_htmlsafe_4">php /home/peoplesspot/public_html/mods/pets/buypets_cron.php &gt;/dev/null 2&gt;&amp;1</code>
+            <input type="hidden" id="command_info_4" value="php /home/peoplesspot/public_html/mods/pets/buypets_cron.php >/dev/null 2>&amp;1">
+            <input type="hidden" id="linekey_4" value="61361058">
+        </td>
+        <td data-title="Actions">
+            <span class="btn btn-link" id="lnkEdit_4" onclick="toggle_module('edit_module_4')">
+                <span class="glyphicon glyphicon-pencil"></span> Edit
+            </span>&nbsp;&nbsp;&nbsp;
+            <span class="btn btn-link" id="lnkDelete_4" onclick="toggle_module('delete_module_4')">
+                <span class="glyphicon glyphicon-trash"></span> Delete
+            </span>
+        </td>
+    </tr>
+    <tr id="module_row_4" class="dt_module_row">
+        <td colspan="7">
+            <div class="dt_module" id="edit_module_4" style="display: none">
+    <div class="form-group">
+                    <label>Minute</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="minute_4" type="text" class="form-control" size="4">
+                </div>
+                <div id="minute_4_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Hour</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="hour_4" type="text" class="form-control" size="4">
+                </div>
+                <div id="hour_4_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Day</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="day_4" type="text" class="form-control" size="4">
+                </div>
+                <div id="day_4_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Month</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="month_4" type="text" class="form-control" size="4">
+                </div>
+                <div id="month_4_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Weekday</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="weekday_4" type="text" class="form-control" size="4">
+                </div>
+                <div id="weekday_4_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+        
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <select id="common_options_4" onchange="select_common_option('4')" class="form-control">
+                <option value="--">-- Common Settings --</option>
+                
+                    <option value="* * * * *">
+                        Every Minute
+                        (* * * * *)
+                    </option>
+                
+                    <option value="*/5 * * * *">
+                        Every 5 Minutes
+                        (*/5 * * * *)
+                    </option>
+                
+                    <option value="0,30 * * * *">
+                        Twice an Hour
+                        (0,30 * * * *)
+                    </option>
+                
+                    <option value="0 * * * *">
+                        Once an Hour
+                        (0 * * * *)
+                    </option>
+                
+                    <option value="0 0,12 * * *">
+                        Twice a Day
+                        (0 0,12 * * *)
+                    </option>
+                
+                    <option value="0 0 * * *">
+                        Once a Day
+                        (0 0 * * *)
+                    </option>
+                
+                    <option value="0 0 * * 0">
+                        Once a Week
+                        (0 0 * * 0)
+                    </option>
+                
+                    <option value="0 0 1,15 * *">
+                        1st and 15th
+                        (0 0 1,15 * *)
+                    </option>
+                
+                    <option value="0 0 1 * *">
+                        Once a Month
+                        (0 0 1 * *)
+                    </option>
+                
+                    <option value="0 0 1 1 *">
+                        Once a Year
+                        (0 0 1 1 *)
+                    </option>
+                
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-12 col-md-8">
+            <label>Command</label>
+            <input id="command_4" type="text" class="form-control" size="45">
+            <div id="command_4_error"></div>
+        </div>
+    </div>
+    <div class="form-group" id="edit_input_4">
+        <input id="edit_line_4" type="button" class="btn btn-primary" value="Edit Line">
+        <button class="btn btn-link" onclick="toggle_module('edit_module_4')">
+            Cancel
+        </button>
+    </div>
+    <div id="edit_status_4"></div>
+</div>
+
+            <div class="dt_module" id="delete_module_4" style="display: none">
+                <div class="form-group">
+                    <p>Delete this cron job?</p>
+                </div>
+                <div class="form-group" id="delete_input_4">
+                    <input type="button" class="btn btn-primary" id="delete_line_4" value="Delete" onclick="delete_line('4')">
+                    <button class="btn btn-link" id="cancel_delete_{{ index }}" onclick="toggle_module('delete_module_4')">
+                        Cancel
+                    </button>
+                </div>
+                <div id="delete_status_4"></div>
+            </div>
+            <div class="cjt_status_bar" id="status_bar_4"></div>
+        </td>
+    </tr>
+        <tr id="info_row_5">
+        <td data-title="Minute"><span id="minute_info_5">1</span></td>
+        <td data-title="Hour"><span id="hour_info_5">0</span></td>
+        <td data-title="Day"><span id="day_info_5">1</span></td>
+        <td data-title="Month"><span id="month_info_5">1</span></td>
+        <td data-title="Weekday"><span id="weekday_info_5">*</span></td>
+        <td data-title="Command" class="command-cell">
+            <code id="command_htmlsafe_5">php /home/peoplesspot/public_html/mods/pets/buypets_cron_random.php &gt;/dev/null 2&gt;&amp;1</code>
+            <input type="hidden" id="command_info_5" value="php /home/peoplesspot/public_html/mods/pets/buypets_cron_random.php >/dev/null 2>&amp;1">
+            <input type="hidden" id="linekey_5" value="2235053889">
+        </td>
+        <td data-title="Actions">
+            <span class="btn btn-link" id="lnkEdit_5" onclick="toggle_module('edit_module_5')">
+                <span class="glyphicon glyphicon-pencil"></span> Edit
+            </span>&nbsp;&nbsp;&nbsp;
+            <span class="btn btn-link" id="lnkDelete_5" onclick="toggle_module('delete_module_5')">
+                <span class="glyphicon glyphicon-trash"></span> Delete
+            </span>
+        </td>
+    </tr>
+    <tr id="module_row_5" class="dt_module_row">
+        <td colspan="7">
+            <div class="dt_module" id="edit_module_5" style="display: none">
+    <div class="form-group">
+                    <label>Minute</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="minute_5" type="text" class="form-control" size="4">
+                </div>
+                <div id="minute_5_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Hour</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="hour_5" type="text" class="form-control" size="4">
+                </div>
+                <div id="hour_5_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Day</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="day_5" type="text" class="form-control" size="4">
+                </div>
+                <div id="day_5_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Month</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="month_5" type="text" class="form-control" size="4">
+                </div>
+                <div id="month_5_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Weekday</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="weekday_5" type="text" class="form-control" size="4">
+                </div>
+                <div id="weekday_5_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+        
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <select id="common_options_5" onchange="select_common_option('5')" class="form-control">
+                <option value="--">-- Common Settings --</option>
+                
+                    <option value="* * * * *">
+                        Every Minute
+                        (* * * * *)
+                    </option>
+                
+                    <option value="*/5 * * * *">
+                        Every 5 Minutes
+                        (*/5 * * * *)
+                    </option>
+                
+                    <option value="0,30 * * * *">
+                        Twice an Hour
+                        (0,30 * * * *)
+                    </option>
+                
+                    <option value="0 * * * *">
+                        Once an Hour
+                        (0 * * * *)
+                    </option>
+                
+                    <option value="0 0,12 * * *">
+                        Twice a Day
+                        (0 0,12 * * *)
+                    </option>
+                
+                    <option value="0 0 * * *">
+                        Once a Day
+                        (0 0 * * *)
+                    </option>
+                
+                    <option value="0 0 * * 0">
+                        Once a Week
+                        (0 0 * * 0)
+                    </option>
+                
+                    <option value="0 0 1,15 * *">
+                        1st and 15th
+                        (0 0 1,15 * *)
+                    </option>
+                
+                    <option value="0 0 1 * *">
+                        Once a Month
+                        (0 0 1 * *)
+                    </option>
+                
+                    <option value="0 0 1 1 *">
+                        Once a Year
+                        (0 0 1 1 *)
+                    </option>
+                
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-12 col-md-8">
+            <label>Command</label>
+            <input id="command_5" type="text" class="form-control" size="45">
+            <div id="command_5_error"></div>
+        </div>
+    </div>
+    <div class="form-group" id="edit_input_5">
+        <input id="edit_line_5" type="button" class="btn btn-primary" value="Edit Line">
+        <button class="btn btn-link" onclick="toggle_module('edit_module_5')">
+            Cancel
+        </button>
+    </div>
+    <div id="edit_status_5"></div>
+</div>
+
+            <div class="dt_module" id="delete_module_5" style="display: none">
+                <div class="form-group">
+                    <p>Delete this cron job?</p>
+                </div>
+                <div class="form-group" id="delete_input_5">
+                    <input type="button" class="btn btn-primary" id="delete_line_5" value="Delete" onclick="delete_line('5')">
+                    <button class="btn btn-link" id="cancel_delete_{{ index }}" onclick="toggle_module('delete_module_5')">
+                        Cancel
+                    </button>
+                </div>
+                <div id="delete_status_5"></div>
+            </div>
+            <div class="cjt_status_bar" id="status_bar_5"></div>
+        </td>
+    </tr>
+        <tr id="info_row_6">
+        <td data-title="Minute"><span id="minute_info_6">*/1</span></td>
+        <td data-title="Hour"><span id="hour_info_6">*</span></td>
+        <td data-title="Day"><span id="day_info_6">*</span></td>
+        <td data-title="Month"><span id="month_info_6">*</span></td>
+        <td data-title="Weekday"><span id="weekday_info_6">*</span></td>
+        <td data-title="Command" class="command-cell">
+            <code id="command_htmlsafe_6">php /home/peoplesspot/public_html/mods/pets/buypets_cron_latest.php &gt;/dev/null 2&gt;&amp;1</code>
+            <input type="hidden" id="command_info_6" value="php /home/peoplesspot/public_html/mods/pets/buypets_cron_latest.php >/dev/null 2>&amp;1">
+            <input type="hidden" id="linekey_6" value="3533828446">
+        </td>
+        <td data-title="Actions">
+            <span class="btn btn-link" id="lnkEdit_6" onclick="toggle_module('edit_module_6')">
+                <span class="glyphicon glyphicon-pencil"></span> Edit
+            </span>&nbsp;&nbsp;&nbsp;
+            <span class="btn btn-link" id="lnkDelete_6" onclick="toggle_module('delete_module_6')">
+                <span class="glyphicon glyphicon-trash"></span> Delete
+            </span>
+        </td>
+    </tr>
+    <tr id="module_row_6" class="dt_module_row">
+        <td colspan="7">
+            <div class="dt_module" id="edit_module_6" style="display: none">
+    <div class="form-group">
+                    <label>Minute</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="minute_6" type="text" class="form-control" size="4">
+                </div>
+                <div id="minute_6_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Hour</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="hour_6" type="text" class="form-control" size="4">
+                </div>
+                <div id="hour_6_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Day</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="day_6" type="text" class="form-control" size="4">
+                </div>
+                <div id="day_6_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Month</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="month_6" type="text" class="form-control" size="4">
+                </div>
+                <div id="month_6_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Weekday</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="weekday_6" type="text" class="form-control" size="4">
+                </div>
+                <div id="weekday_6_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+        
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <select id="common_options_6" onchange="select_common_option('6')" class="form-control">
+                <option value="--">-- Common Settings --</option>
+                
+                    <option value="* * * * *">
+                        Every Minute
+                        (* * * * *)
+                    </option>
+                
+                    <option value="*/5 * * * *">
+                        Every 5 Minutes
+                        (*/5 * * * *)
+                    </option>
+                
+                    <option value="0,30 * * * *">
+                        Twice an Hour
+                        (0,30 * * * *)
+                    </option>
+                
+                    <option value="0 * * * *">
+                        Once an Hour
+                        (0 * * * *)
+                    </option>
+                
+                    <option value="0 0,12 * * *">
+                        Twice a Day
+                        (0 0,12 * * *)
+                    </option>
+                
+                    <option value="0 0 * * *">
+                        Once a Day
+                        (0 0 * * *)
+                    </option>
+                
+                    <option value="0 0 * * 0">
+                        Once a Week
+                        (0 0 * * 0)
+                    </option>
+                
+                    <option value="0 0 1,15 * *">
+                        1st and 15th
+                        (0 0 1,15 * *)
+                    </option>
+                
+                    <option value="0 0 1 * *">
+                        Once a Month
+                        (0 0 1 * *)
+                    </option>
+                
+                    <option value="0 0 1 1 *">
+                        Once a Year
+                        (0 0 1 1 *)
+                    </option>
+                
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-12 col-md-8">
+            <label>Command</label>
+            <input id="command_6" type="text" class="form-control" size="45">
+            <div id="command_6_error"></div>
+        </div>
+    </div>
+    <div class="form-group" id="edit_input_6">
+        <input id="edit_line_6" type="button" class="btn btn-primary" value="Edit Line">
+        <button class="btn btn-link" onclick="toggle_module('edit_module_6')">
+            Cancel
+        </button>
+    </div>
+    <div id="edit_status_6"></div>
+</div>
+
+            <div class="dt_module" id="delete_module_6" style="display: none">
+                <div class="form-group">
+                    <p>Delete this cron job?</p>
+                </div>
+                <div class="form-group" id="delete_input_6">
+                    <input type="button" class="btn btn-primary" id="delete_line_6" value="Delete" onclick="delete_line('6')">
+                    <button class="btn btn-link" id="cancel_delete_{{ index }}" onclick="toggle_module('delete_module_6')">
+                        Cancel
+                    </button>
+                </div>
+                <div id="delete_status_6"></div>
+            </div>
+            <div class="cjt_status_bar" id="status_bar_6"></div>
+        </td>
+    </tr>
+        <tr id="info_row_7">
+        <td data-title="Minute"><span id="minute_info_7">*/1</span></td>
+        <td data-title="Hour"><span id="hour_info_7">0</span></td>
+        <td data-title="Day"><span id="day_info_7">1</span></td>
+        <td data-title="Month"><span id="month_info_7">1</span></td>
+        <td data-title="Weekday"><span id="weekday_info_7">*</span></td>
+        <td data-title="Command" class="command-cell">
+            <code id="command_htmlsafe_7">php /home/peoplesspot/public_html/mods/pets/buypets_cron_activepets.php &gt;/dev/null 2&gt;&amp;1</code>
+            <input type="hidden" id="command_info_7" value="php /home/peoplesspot/public_html/mods/pets/buypets_cron_activepets.php >/dev/null 2>&amp;1">
+            <input type="hidden" id="linekey_7" value="652472167">
+        </td>
+        <td data-title="Actions">
+            <span class="btn btn-link" id="lnkEdit_7" onclick="toggle_module('edit_module_7')">
+                <span class="glyphicon glyphicon-pencil"></span> Edit
+            </span>&nbsp;&nbsp;&nbsp;
+            <span class="btn btn-link" id="lnkDelete_7" onclick="toggle_module('delete_module_7')">
+                <span class="glyphicon glyphicon-trash"></span> Delete
+            </span>
+        </td>
+    </tr>
+    <tr id="module_row_7" class="dt_module_row">
+        <td colspan="7">
+            <div class="dt_module" id="edit_module_7" style="display: none">
+    <div class="form-group">
+                    <label>Minute</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="minute_7" type="text" class="form-control" size="4">
+                </div>
+                <div id="minute_7_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Hour</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="hour_7" type="text" class="form-control" size="4">
+                </div>
+                <div id="hour_7_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Day</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="day_7" type="text" class="form-control" size="4">
+                </div>
+                <div id="day_7_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Month</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="month_7" type="text" class="form-control" size="4">
+                </div>
+                <div id="month_7_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Weekday</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="weekday_7" type="text" class="form-control" size="4">
+                </div>
+                <div id="weekday_7_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+        
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <select id="common_options_7" onchange="select_common_option('7')" class="form-control">
+                <option value="--">-- Common Settings --</option>
+                
+                    <option value="* * * * *">
+                        Every Minute
+                        (* * * * *)
+                    </option>
+                
+                    <option value="*/5 * * * *">
+                        Every 5 Minutes
+                        (*/5 * * * *)
+                    </option>
+                
+                    <option value="0,30 * * * *">
+                        Twice an Hour
+                        (0,30 * * * *)
+                    </option>
+                
+                    <option value="0 * * * *">
+                        Once an Hour
+                        (0 * * * *)
+                    </option>
+                
+                    <option value="0 0,12 * * *">
+                        Twice a Day
+                        (0 0,12 * * *)
+                    </option>
+                
+                    <option value="0 0 * * *">
+                        Once a Day
+                        (0 0 * * *)
+                    </option>
+                
+                    <option value="0 0 * * 0">
+                        Once a Week
+                        (0 0 * * 0)
+                    </option>
+                
+                    <option value="0 0 1,15 * *">
+                        1st and 15th
+                        (0 0 1,15 * *)
+                    </option>
+                
+                    <option value="0 0 1 * *">
+                        Once a Month
+                        (0 0 1 * *)
+                    </option>
+                
+                    <option value="0 0 1 1 *">
+                        Once a Year
+                        (0 0 1 1 *)
+                    </option>
+                
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-12 col-md-8">
+            <label>Command</label>
+            <input id="command_7" type="text" class="form-control" size="45">
+            <div id="command_7_error"></div>
+        </div>
+    </div>
+    <div class="form-group" id="edit_input_7">
+        <input id="edit_line_7" type="button" class="btn btn-primary" value="Edit Line">
+        <button class="btn btn-link" onclick="toggle_module('edit_module_7')">
+            Cancel
+        </button>
+    </div>
+    <div id="edit_status_7"></div>
+</div>
+
+            <div class="dt_module" id="delete_module_7" style="display: none">
+                <div class="form-group">
+                    <p>Delete this cron job?</p>
+                </div>
+                <div class="form-group" id="delete_input_7">
+                    <input type="button" class="btn btn-primary" id="delete_line_7" value="Delete" onclick="delete_line('7')">
+                    <button class="btn btn-link" id="cancel_delete_{{ index }}" onclick="toggle_module('delete_module_7')">
+                        Cancel
+                    </button>
+                </div>
+                <div id="delete_status_7"></div>
+            </div>
+            <div class="cjt_status_bar" id="status_bar_7"></div>
+        </td>
+    </tr>
+        <tr id="info_row_8">
+        <td data-title="Minute"><span id="minute_info_8">0</span></td>
+        <td data-title="Hour"><span id="hour_info_8">0</span></td>
+        <td data-title="Day"><span id="day_info_8">1</span></td>
+        <td data-title="Month"><span id="month_info_8">1</span></td>
+        <td data-title="Weekday"><span id="weekday_info_8">*</span></td>
+        <td data-title="Command" class="command-cell">
+            <code id="command_htmlsafe_8">php /home/peoplesspot/public_html/mods/pets/buypets_cron_newpets.php &gt;/dev/null 2&gt;&amp;1</code>
+            <input type="hidden" id="command_info_8" value="php /home/peoplesspot/public_html/mods/pets/buypets_cron_newpets.php >/dev/null 2>&amp;1">
+            <input type="hidden" id="linekey_8" value="258838365">
+        </td>
+        <td data-title="Actions">
+            <span class="btn btn-link" id="lnkEdit_8" onclick="toggle_module('edit_module_8')">
+                <span class="glyphicon glyphicon-pencil"></span> Edit
+            </span>&nbsp;&nbsp;&nbsp;
+            <span class="btn btn-link" id="lnkDelete_8" onclick="toggle_module('delete_module_8')">
+                <span class="glyphicon glyphicon-trash"></span> Delete
+            </span>
+        </td>
+    </tr>
+    <tr id="module_row_8" class="dt_module_row">
+        <td colspan="7">
+            <div class="dt_module" id="edit_module_8" style="display: none">
+    <div class="form-group">
+                    <label>Minute</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="minute_8" type="text" class="form-control" size="4">
+                </div>
+                <div id="minute_8_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Hour</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="hour_8" type="text" class="form-control" size="4">
+                </div>
+                <div id="hour_8_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Day</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="day_8" type="text" class="form-control" size="4">
+                </div>
+                <div id="day_8_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Month</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="month_8" type="text" class="form-control" size="4">
+                </div>
+                <div id="month_8_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Weekday</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="weekday_8" type="text" class="form-control" size="4">
+                </div>
+                <div id="weekday_8_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+        
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <select id="common_options_8" onchange="select_common_option('8')" class="form-control">
+                <option value="--">-- Common Settings --</option>
+                
+                    <option value="* * * * *">
+                        Every Minute
+                        (* * * * *)
+                    </option>
+                
+                    <option value="*/5 * * * *">
+                        Every 5 Minutes
+                        (*/5 * * * *)
+                    </option>
+                
+                    <option value="0,30 * * * *">
+                        Twice an Hour
+                        (0,30 * * * *)
+                    </option>
+                
+                    <option value="0 * * * *">
+                        Once an Hour
+                        (0 * * * *)
+                    </option>
+                
+                    <option value="0 0,12 * * *">
+                        Twice a Day
+                        (0 0,12 * * *)
+                    </option>
+                
+                    <option value="0 0 * * *">
+                        Once a Day
+                        (0 0 * * *)
+                    </option>
+                
+                    <option value="0 0 * * 0">
+                        Once a Week
+                        (0 0 * * 0)
+                    </option>
+                
+                    <option value="0 0 1,15 * *">
+                        1st and 15th
+                        (0 0 1,15 * *)
+                    </option>
+                
+                    <option value="0 0 1 * *">
+                        Once a Month
+                        (0 0 1 * *)
+                    </option>
+                
+                    <option value="0 0 1 1 *">
+                        Once a Year
+                        (0 0 1 1 *)
+                    </option>
+                
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-12 col-md-8">
+            <label>Command</label>
+            <input id="command_8" type="text" class="form-control" size="45">
+            <div id="command_8_error"></div>
+        </div>
+    </div>
+    <div class="form-group" id="edit_input_8">
+        <input id="edit_line_8" type="button" class="btn btn-primary" value="Edit Line">
+        <button class="btn btn-link" onclick="toggle_module('edit_module_8')">
+            Cancel
+        </button>
+    </div>
+    <div id="edit_status_8"></div>
+</div>
+
+            <div class="dt_module" id="delete_module_8" style="display: none">
+                <div class="form-group">
+                    <p>Delete this cron job?</p>
+                </div>
+                <div class="form-group" id="delete_input_8">
+                    <input type="button" class="btn btn-primary" id="delete_line_8" value="Delete" onclick="delete_line('8')">
+                    <button class="btn btn-link" id="cancel_delete_{{ index }}" onclick="toggle_module('delete_module_8')">
+                        Cancel
+                    </button>
+                </div>
+                <div id="delete_status_8"></div>
+            </div>
+            <div class="cjt_status_bar" id="status_bar_8"></div>
+        </td>
+    </tr>
+        <tr id="info_row_9">
+        <td data-title="Minute"><span id="minute_info_9">*</span></td>
+        <td data-title="Hour"><span id="hour_info_9">*</span></td>
+        <td data-title="Day"><span id="day_info_9">*</span></td>
+        <td data-title="Month"><span id="month_info_9">*</span></td>
+        <td data-title="Weekday"><span id="weekday_info_9">*</span></td>
+        <td data-title="Command" class="command-cell">
+            <code id="command_htmlsafe_9">php /home/peoplesspot/public_html/crons/updatecountrycount.php &gt;/dev/null 2&gt;&amp;1</code>
+            <input type="hidden" id="command_info_9" value="php /home/peoplesspot/public_html/crons/updatecountrycount.php >/dev/null 2>&amp;1">
+            <input type="hidden" id="linekey_9" value="3596909826">
+        </td>
+        <td data-title="Actions">
+            <span class="btn btn-link" id="lnkEdit_9" onclick="toggle_module('edit_module_9')">
+                <span class="glyphicon glyphicon-pencil"></span> Edit
+            </span>&nbsp;&nbsp;&nbsp;
+            <span class="btn btn-link" id="lnkDelete_9" onclick="toggle_module('delete_module_9')">
+                <span class="glyphicon glyphicon-trash"></span> Delete
+            </span>
+        </td>
+    </tr>
+    <tr id="module_row_9" class="dt_module_row">
+        <td colspan="7">
+            <div class="dt_module" id="edit_module_9" style="display: none">
+    <div class="form-group">
+                    <label>Minute</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="minute_9" type="text" class="form-control" size="4">
+                </div>
+                <div id="minute_9_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Hour</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="hour_9" type="text" class="form-control" size="4">
+                </div>
+                <div id="hour_9_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Day</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="day_9" type="text" class="form-control" size="4">
+                </div>
+                <div id="day_9_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Month</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="month_9" type="text" class="form-control" size="4">
+                </div>
+                <div id="month_9_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Weekday</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="weekday_9" type="text" class="form-control" size="4">
+                </div>
+                <div id="weekday_9_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+        
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <select id="common_options_9" onchange="select_common_option('9')" class="form-control">
+                <option value="--">-- Common Settings --</option>
+                
+                    <option value="* * * * *">
+                        Every Minute
+                        (* * * * *)
+                    </option>
+                
+                    <option value="*/5 * * * *">
+                        Every 5 Minutes
+                        (*/5 * * * *)
+                    </option>
+                
+                    <option value="0,30 * * * *">
+                        Twice an Hour
+                        (0,30 * * * *)
+                    </option>
+                
+                    <option value="0 * * * *">
+                        Once an Hour
+                        (0 * * * *)
+                    </option>
+                
+                    <option value="0 0,12 * * *">
+                        Twice a Day
+                        (0 0,12 * * *)
+                    </option>
+                
+                    <option value="0 0 * * *">
+                        Once a Day
+                        (0 0 * * *)
+                    </option>
+                
+                    <option value="0 0 * * 0">
+                        Once a Week
+                        (0 0 * * 0)
+                    </option>
+                
+                    <option value="0 0 1,15 * *">
+                        1st and 15th
+                        (0 0 1,15 * *)
+                    </option>
+                
+                    <option value="0 0 1 * *">
+                        Once a Month
+                        (0 0 1 * *)
+                    </option>
+                
+                    <option value="0 0 1 1 *">
+                        Once a Year
+                        (0 0 1 1 *)
+                    </option>
+                
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-12 col-md-8">
+            <label>Command</label>
+            <input id="command_9" type="text" class="form-control" size="45">
+            <div id="command_9_error"></div>
+        </div>
+    </div>
+    <div class="form-group" id="edit_input_9">
+        <input id="edit_line_9" type="button" class="btn btn-primary" value="Edit Line">
+        <button class="btn btn-link" onclick="toggle_module('edit_module_9')">
+            Cancel
+        </button>
+    </div>
+    <div id="edit_status_9"></div>
+</div>
+
+            <div class="dt_module" id="delete_module_9" style="display: none">
+                <div class="form-group">
+                    <p>Delete this cron job?</p>
+                </div>
+                <div class="form-group" id="delete_input_9">
+                    <input type="button" class="btn btn-primary" id="delete_line_9" value="Delete" onclick="delete_line('9')">
+                    <button class="btn btn-link" id="cancel_delete_{{ index }}" onclick="toggle_module('delete_module_9')">
+                        Cancel
+                    </button>
+                </div>
+                <div id="delete_status_9"></div>
+            </div>
+            <div class="cjt_status_bar" id="status_bar_9"></div>
+        </td>
+    </tr>
+        <tr id="info_row_10">
+        <td data-title="Minute"><span id="minute_info_10">1</span></td>
+        <td data-title="Hour"><span id="hour_info_10">*</span></td>
+        <td data-title="Day"><span id="day_info_10">*</span></td>
+        <td data-title="Month"><span id="month_info_10">*</span></td>
+        <td data-title="Weekday"><span id="weekday_info_10">*</span></td>
+        <td data-title="Command" class="command-cell">
+            <code id="command_htmlsafe_10">php /home/peoplesspot/public_html/crons/pets-ranking.php &gt;/dev/null 2&gt;&amp;1</code>
+            <input type="hidden" id="command_info_10" value="php /home/peoplesspot/public_html/crons/pets-ranking.php >/dev/null 2>&amp;1">
+            <input type="hidden" id="linekey_10" value="1642306096">
+        </td>
+        <td data-title="Actions">
+            <span class="btn btn-link" id="lnkEdit_10" onclick="toggle_module('edit_module_10')">
+                <span class="glyphicon glyphicon-pencil"></span> Edit
+            </span>&nbsp;&nbsp;&nbsp;
+            <span class="btn btn-link" id="lnkDelete_10" onclick="toggle_module('delete_module_10')">
+                <span class="glyphicon glyphicon-trash"></span> Delete
+            </span>
+        </td>
+    </tr>
+    <tr id="module_row_10" class="dt_module_row">
+        <td colspan="7">
+            <div class="dt_module" id="edit_module_10" style="display: none">
+    <div class="form-group">
+                    <label>Minute</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="minute_10" type="text" class="form-control" size="4">
+                </div>
+                <div id="minute_10_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Hour</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="hour_10" type="text" class="form-control" size="4">
+                </div>
+                <div id="hour_10_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Day</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="day_10" type="text" class="form-control" size="4">
+                </div>
+                <div id="day_10_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Month</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="month_10" type="text" class="form-control" size="4">
+                </div>
+                <div id="month_10_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+                    <label>Weekday</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input id="weekday_10" type="text" class="form-control" size="4">
+                </div>
+                <div id="weekday_10_error" class="col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+        
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <select id="common_options_10" onchange="select_common_option('10')" class="form-control">
+                <option value="--">-- Common Settings --</option>
+                
+                    <option value="* * * * *">
+                        Every Minute
+                        (* * * * *)
+                    </option>
+                
+                    <option value="*/5 * * * *">
+                        Every 5 Minutes
+                        (*/5 * * * *)
+                    </option>
+                
+                    <option value="0,30 * * * *">
+                        Twice an Hour
+                        (0,30 * * * *)
+                    </option>
+                
+                    <option value="0 * * * *">
+                        Once an Hour
+                        (0 * * * *)
+                    </option>
+                
+                    <option value="0 0,12 * * *">
+                        Twice a Day
+                        (0 0,12 * * *)
+                    </option>
+                
+                    <option value="0 0 * * *">
+                        Once a Day
+                        (0 0 * * *)
+                    </option>
+                
+                    <option value="0 0 * * 0">
+                        Once a Week
+                        (0 0 * * 0)
+                    </option>
+                
+                    <option value="0 0 1,15 * *">
+                        1st and 15th
+                        (0 0 1,15 * *)
+                    </option>
+                
+                    <option value="0 0 1 * *">
+                        Once a Month
+                        (0 0 1 * *)
+                    </option>
+                
+                    <option value="0 0 1 1 *">
+                        Once a Year
+                        (0 0 1 1 *)
+                    </option>
+                
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-12 col-md-8">
+            <label>Command</label>
+            <input id="command_10" type="text" class="form-control" size="45">
+            <div id="command_10_error"></div>
+        </div>
+    </div>
+    <div class="form-group" id="edit_input_10">
+        <input id="edit_line_10" type="button" class="btn btn-primary" value="Edit Line">
+        <button class="btn btn-link" onclick="toggle_module('edit_module_10')">
+            Cancel
+        </button>
+    </div>
+    <div id="edit_status_10"></div>
+</div>
+
+            <div class="dt_module" id="delete_module_10" style="display: none">
+                <div class="form-group">
+                    <p>Delete this cron job?</p>
+                </div>
+                <div class="form-group" id="delete_input_10">
+                    <input type="button" class="btn btn-primary" id="delete_line_10" value="Delete" onclick="delete_line('10')">
+                    <button class="btn btn-link" id="cancel_delete_{{ index }}" onclick="toggle_module('delete_module_10')">
+                        Cancel
+                    </button>
+                </div>
+                <div id="delete_status_10"></div>
+            </div>
+            <div class="cjt_status_bar" id="status_bar_10"></div>
+        </td>
+    </tr>
+    
+</tbody></table>
+</div>
+            </div>
