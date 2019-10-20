@@ -272,7 +272,7 @@ class Api extends REST_Controller {
         $order['by'] = 'date';
         $order['order'] = 'ASC';
         $data = $this->mm->fetchArr('lockclosures', ['date', 'day', 'close', 'reopen'], ['date >=' => $start, 'date <=' => Date('Y-m-d', strtotime($start." +".$days." days")), 'marinaid' => $marinaId], NULL, $order);
-// print_r($data); echo Date('Y-m-d', strtotime($start." +".$days." days")); die;
+        // print_r($data); echo Date('Y-m-d', strtotime($start." +".$days." days")); die;
         $count = 0;
         $count1 = -1;
         $c1 = 0;
@@ -384,9 +384,7 @@ class Api extends REST_Controller {
 
         $this->response($data, REST_Controller::HTTP_OK);
     }
-
-     
-
+  
     public function singleBusiness_get($marinaId = null, $id = null){
         // $marina = $this->get('marina');  
         $order['by'] = 'date';
