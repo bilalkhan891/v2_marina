@@ -79,8 +79,9 @@
 
 		<label for="appicon">Upload App Icon</label>
 
-		<input type="file" name="appicon" value="<?php echo $data['appicon']; ?>" class="form-control" id="appicon" placeholder="User Name for Marina" >
-
+		<input type="file" name="appicon" value="<?php echo $data['appicon']; ?>" class="form-control" id="appicon" placeholder="User Name for Marina" ><br>
+		<input type="hidden"  id="old"  name="old"  value="<?=$data['appicon'];?>">
+        <div class="img-show">  <img src="<?= base_url($data['appicon'])?>" alt="" ></div>
 		<div class="invalid-feedback">
 
 			Please fill this field.
@@ -93,7 +94,9 @@
 
 		<label for="marinaicons">Upload Marina Icons</label>
 
-		<input type="file" name="marinaicons" value="<?php echo $data['marinaicons']; ?>" class="form-control" id="marinaicons" placeholder="User Name for Marina" >
+		<input type="file" name="marinaicons" value="<?php echo $data['marinaicons']; ?>" class="form-control" id="marinaicons" placeholder="User Name for Marina" ><br>
+        <input type="hidden"  id="old"  name="old_marina"  value="<?=$data['marinaicons'];?>">
+		<div class="img-show">  <img src="<?= base_url($data['marinaicons'])?>" alt="" ></div>
 
 		<div class="invalid-feedback">
 

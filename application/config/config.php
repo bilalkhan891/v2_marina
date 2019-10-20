@@ -1,4 +1,4 @@
-<?php
+`<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
@@ -24,7 +24,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$config['base_url'] = 'http://localhost/v2marina/';
+$url = "http://".$_SERVER['HTTP_HOST'];
+$url .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
+$config['base_url']    = "$url";
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +38,7 @@ $config['base_url'] = 'http://localhost/v2marina/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------

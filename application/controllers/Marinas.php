@@ -267,13 +267,15 @@ class Marinas extends CI_Controller {
       $data['security']    = ($this->input->post('security')) ? $this->input->post('security') : '';
       $data['channel']     = ($this->input->post('channel')) ? $this->input->post('channel') : '';
       $data['position']    = ($this->input->post('position')) ? $this->input->post('position') : '';
-    print_r($data);
+   
     $appicon = '';
     $marinaicons = '';
     $csvgenerator = '';
-  
+    if($_FILES['appicon']['name']!=""){
+      
     $config['upload_path'] = './uploads/icons';
     $config['allowed_types'] = 'jpg|png|csv';
+     $config['encrypt_name'] = TRUE;
     $this->load->library('upload', $config);
     // Upload Appicon
    if (!$this->upload->do_upload('appicon')) {
@@ -281,24 +283,46 @@ class Marinas extends CI_Controller {
     } else {
       $fileData = $this->upload->data();
       
-      $appicon ='uploads/icons/'.time().'-'.$fileData['file_name']; 
+      $appicon ='uploads/icons/'.$fileData['file_name']; 
     }
+      
+  }
+  else{
+      $appicon=$this->input->post('old');
+  }
     // upload marinaicons
 
+
+  
+    if($_FILES['marinaicons']['name']!=""){
+       $config['upload_path'] = './uploads/icons';
+       $config['allowed_types'] = 'jpg|png|csv';
+       $config['encrypt_name'] = TRUE;
+    $this->load->library('upload', $config);
     if (!$this->upload->do_upload('marinaicons')) {
       $error = array('error' => $this->upload->display_errors()); 
     } else {
       $fileData = $this->upload->data();
-      $marinaicons= 'uploads/icons/'.time().'-'.$fileData['file_name'];;
+      $marinaicons= 'uploads/icons/'.$fileData['file_name'];;
     }
 
+  }
+   else{
+    $marinaicons=$this->input->post('old_marina');
+   }
+    
   // Upload csv and xsls file
+    $config['upload_path'] = './uploads/icons';
+       $config['allowed_types'] = 'jpg|png|csv';
+    $this->load->library('upload', $config);
      if (!$this->upload->do_upload('csvgenerator')) {
+
       $error = array('error' => $this->upload->display_errors()); 
     } else {
       $fileData = $this->upload->data();
-      $csvgenerator = 'uploads/csvgenerator/'.time().'-'.$fileData['file_name'];
+      $csvgenerator = 'uploads/csvgenerator/'.$fileData['file_name'];
     }
+
 
 
     $dbdata = array( 
