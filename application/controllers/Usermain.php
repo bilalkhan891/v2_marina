@@ -26,13 +26,21 @@ class Usermain extends CI_Controller {
 	}
 
 	public function downloadCSV($d = ''){
-
-		if ($d == 'download') {
+         error_reporting(0);
+		if ($d == 'download' ) {
 			$this->load->helper('download'); 
-
-			force_download('assets/fordownload/Tide & Closures For CSV.xlsm', NULL);
+            if($this->marinausername=='sailbristol'){
+            force_download('assets/fordownload/Tide & Closures For CSV.xlsm', NULL);
 			$this->session->set_flashdata('msg', '<span class="alert alert-info">File downloaded.</span>');
 			redirect('usermain/downloadcsv');
+
+            }
+            else if($this->marinausername=='sawanseamarina'){
+            	 force_download('assets/fordownload/Tidess & Closures For CSV.xlsm', NULL);
+			$this->session->set_flashdata('msg', '<span class="alert alert-info">File downloaded.</span>');
+			redirect('usermain/downloadcsv');
+            }
+			
 		}
 
 		$order['by'] = 'date';

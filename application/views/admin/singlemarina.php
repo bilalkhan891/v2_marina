@@ -72,7 +72,7 @@
           <?php if($data[0]['appicon']=='') {?>
             <img src="<?= base_url() ?>assets/images/swansea.png" alt="" style="width: 60px;height: 60px;">
           <?php } else{?>
-             <img src="<?= base_url($data[0]['appicon'])?>" alt="" style="width: 60px;height: 60px;">
+             <img src="<?= base_url($data[0]['appicon'])?>" alt="" >
           <?php  } ?> 
         </td>
     </tr>
@@ -80,9 +80,9 @@
       <th scope="row">Marinaicon.</th> 
       <td>
         <?php if($data[0]['appicon']=='') {?>
-          <img src="<?= base_url() ?>assets/images/swansea.png" alt="" style="width: 60px;height: 60px;">
+          <img src="<?= base_url() ?>assets/images/swansea.png" alt="">
         <?php } else{?>
-           <img src="<?= base_url($data[0]['marinaicons'])?>" alt="" style="width: 60px;height: 60px;">
+           <img src="<?= base_url($data[0]['marinaicons'])?>" alt="" >
         <?php  } ?> 
       </td>
     </tr>

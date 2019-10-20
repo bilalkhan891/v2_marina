@@ -10,7 +10,7 @@
 			        	<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 			          	Last Lock Date in Data Base 
 			        	</button>
-			          	<span class="badge badge-primary badge-pill float-right"><?php print_r($locks[0]['date']); ?></span>
+			          	<span class="badge badge-primary badge-pill float-right"><?php $locks[0]['date']; ?></span>
 		      		</h5>
 		    	</div>
 		    	<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
