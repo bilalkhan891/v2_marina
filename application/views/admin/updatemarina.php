@@ -81,7 +81,7 @@
 
 		<input type="file" name="appicon" value="<?php echo $data['appicon']; ?>" class="form-control" id="appicon" placeholder="User Name for Marina" ><br>
 		<input type="hidden"  id="old"  name="old"  value="<?=$data['appicon'];?>">
-        <div class="img-show">  <img src="<?= base_url($data['appicon'])?>" alt="" ></div>
+        <div class="img-show">  <img src="<?= base_url($data['appicon'])?>" alt=""  style="max-width: 60px;"></div>
 		<div class="invalid-feedback">
 
 			Please fill this field.
@@ -96,21 +96,7 @@
 
 		<input type="file" name="marinaicons" value="<?php echo $data['marinaicons']; ?>" class="form-control" id="marinaicons" placeholder="User Name for Marina" ><br>
         <input type="hidden"  id="old"  name="old_marina"  value="<?=$data['marinaicons'];?>">
-		<div class="img-show">  <img src="<?= base_url($data['marinaicons'])?>" alt="" ></div>
-
-		<div class="invalid-feedback">
-
-			Please fill this field.
-
-		</div>
-
-	  </div>
-
-	  <div class="form-group"> 
-
-		<label for="csvgenerator">Upload Tides and Locks CSV Generator</label>
-
-		<input type="file" name="csvgenerator" value="<?php echo $data['csvgenerator']; ?>" class="form-control" id="csvgenerator" placeholder="User Name for Marina" >
+		<div class="img-show">  <img src="<?= base_url($data['marinaicons'])?>" alt=""  style="max-width: 60px;"></div>
 
 		<div class="invalid-feedback">
 

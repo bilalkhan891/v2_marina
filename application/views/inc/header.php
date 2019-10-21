@@ -18,16 +18,8 @@
 	 
 
 	<script src="<?php echo(base_url().'assets/js/jQuery.js'); ?>"></script>
-
-
-
-
-
+ 
 </head>
 
 <body class="">
-
-	
-
-
-
+ 

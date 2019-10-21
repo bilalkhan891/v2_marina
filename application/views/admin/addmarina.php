@@ -100,22 +100,7 @@
 
 		</div>
 
-	  </div>
-
-	  <div class="form-group"> 
-
-		<label for="csvgenerator">Upload Tides and Locks CSV Generator</label>
-
-		<input type="file" name="csvgenerator" class="form-control" id="csvgenerator" placeholder="User Name for Marina" >
-
-		<div class="invalid-feedback">
-
-			Please fill this field.
-
-		</div>
-
-	  </div>
-
+	  </div> 
 	  <div class="form-group"> 
 
 		<label for="username">User Name</label>

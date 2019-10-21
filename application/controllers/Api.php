@@ -483,16 +483,13 @@ class Api extends REST_Controller {
         }
         if ($this->mm->fetchArr('marinas', ['username'], ['username' => $marina])[0]['username']) {
             $marinauser = $this->mm->fetchArr('marinas', ['username'], ['username' => $marina])[0]['username'];
-        } else {
-
-            $marinauser = null;
-        }
-        if ($marinauser == null) {
+        } else { 
             $this->response([
                 'status' => false,
                 'message' => 'Wrong Marina username!'
             ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
         }
+         
 
         $order['by'] = 'date';
         $order['order'] = 'ASC';
@@ -699,4 +696,23 @@ class Api extends REST_Controller {
 		    }
 		}
     } 
+
+    public function getIcons_get($marina = '', $iconType = ''){
+
+        if ($marina === null || $iconType === null) {
+            // Set the response and exit
+            $this->response([
+                'status' => false,
+                'message' => 'Something went wrong with parameters'
+            ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
+        }
+        if ($this->mm->fetchArr('marinas', ['username'], ['username' => $marina])[0]['username']) {
+            $marinauser = $this->mm->fetchArr('marinas', ['username'], ['username' => $marina])[0]['username'];
+        } else { 
+            $this->response([
+                'status' => false,
+                'message' => 'Wrong Marina username!'
+            ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
+        } 
+    }
 }

@@ -1,5 +1,3 @@
-
-
  <div id="mySidenav" class="sidenav" style="width:250px">
  	<?php $class = $this->router->fetch_class(); $method = $this->router->fetch_method(); ?>
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
