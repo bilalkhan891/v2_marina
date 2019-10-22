@@ -90,9 +90,7 @@ class Marinas extends CI_Controller {
         echo 'Success <br>';
       }
       $this->image_lib->clear();
-    }
-
-
+    } 
   } 
   // .Icons Scale
   public function submitMarina(){

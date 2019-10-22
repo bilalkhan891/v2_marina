@@ -135,6 +135,7 @@
         	    <input type="text" class="form-control  form-control-sm capitalize" id="marinauser" style="display: none;" name="marinauser" value="<?php echo $data['marinauser']; ?>" >
         	    <input type="text" class="form-control  form-control-sm capitalize" id="marinaid" style="display: none;" name="marinaid" value="<?php echo $data['marinaid']; ?>" >
         	    <input type="text" class="form-control  form-control-sm capitalize" id="id" style="display: none;" name="id" value="<?php echo $data['id']; ?>" >
+        	    <input type="text" class="form-control  form-control-sm capitalize" id="id" style="display: none;" name="oldIcon" value="<?php echo $data['icon']; ?>" >
         	    <input type="text" class="form-control  form-control-sm capitalize" id="action" style="display: none;" name="action" value="update" >
         	    <div class="form-group">
         	      <label for="icon">Icon</label>
@@ -207,7 +208,7 @@
         	   
         	   <div class="form-group">
         	     <label for="icon">Icon</label>
-        	     <select class="form-control form-control-sm" name="typeId">
+        	     <select class="form-control form-control-sm" name="typeId" required>
         	       <option value="">Select Position</option>
         	       <option value="1">Left</option>
         	       <option value="2">Right</option>

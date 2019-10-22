@@ -121,22 +121,30 @@ class Admin extends CI_Controller {
         $this->load->view('admin/main', $data);
     }
     public function submitSponsor() {
+        $marinausername = $this->session->userdata('marinauser'); 
+        $icon = ''; 
+        if(!is_dir('./uploads/icons/'.$marinausername."/".$this->input->post('typeId'))){
+          mkdir('./uploads/icons/'.$marinausername."/".$this->input->post('typeId'));
+        }
 
-        $icon = '';
-
-        $config['upload_path'] = './uploads/icons';
+        $config['upload_path'] = './uploads/icons/'.$marinausername."/".$this->input->post('typeId');
         $config['allowed_types'] = 'jpg|png|csv';
         $config['encrypt_name'] = TRUE;
         $this->load->library('upload', $config);
          // Upload icon
-        if (!$this->upload->do_upload('icon')) {
-           $error = array('error' => $this->upload->display_errors()); 
-           print_r( $error );
-         } else {
-           $fileData = $this->upload->data();
-           
-           $icon ='uploads/icons/'.$fileData['file_name']; 
-         }  
+        if ($this->input->post('action') == 'update' && $_FILES['icon']['name'] != '') { 
+            if (!$this->upload->do_upload('icon')) {
+               $error = array('error' => $this->upload->display_errors()); 
+               print_r( $error );
+            } else {
+               $fileData = $this->upload->data();
+               $icon = '/uploads/icons/'.$marinausername."/".$this->input->post('typeId')."/".$fileData['file_name']; 
+               $this->scaleIcon($fileData['full_path'], $fileData['file_path'], $fileData['file_name']);
+            } 
+        } else { 
+            $icon = $this->input->post('oldIcon');
+        }
+         
         $data['formdata'] = Array
                     (
                         'marinaid'      => $this->input->post('marinaid'),
@@ -173,6 +181,35 @@ class Admin extends CI_Controller {
         } 
         redirect('admin/sponsors/'.$this->input->post('marinaid')."/".$this->input->post('marinauser'));
     }
+    public function scaleIcon($imgSrc = "", $target_path = '', $fileName) { 
+          // echo $imgSrc; die;
+      $exImgSrc = explode('.', $fileName);
+      $scaleArr = array(
+        'scale' => array('@1x', '@2x', '@3x', '@hdpi', '@mdpi', '@unknown', '@xhdpi', '@xxhdpi', '@xxxhdpi'),
+        'height' => array('64', '128', '192', '96', '64', '265', '128', '192', '265')
+      );
+      $this->load->library('image_lib');
+      for ($i = 0; $i <= 8; $i++) {
+        $config_manip = array(
+          'image_library' => 'gd2',
+          'source_image' => $imgSrc,
+          'new_image' => $target_path,
+          'maintain_ratio' => TRUE,
+          'create_thumb' => TRUE,
+          'thumb_marker' => $scaleArr['scale'][$i], 
+          'height' => $scaleArr['height'][$i]
+        ); 
+        $this->image_lib->initialize($config_manip);
+
+        if (!$this->image_lib->resize()) {
+          $result = $this->image_lib->display_errors();
+        } else {
+          $result = 'success';
+        }
+        $this->image_lib->clear();
+      } 
+        return $result;
+    } 
     public function deleteSponsor($id){ 
         $this->mm->deleteRow('sponsor', ['id' => $id]);
         $this->session->set_flashdata('msg', '<spna class="alert alert-info">Deleted Successfully</span>');

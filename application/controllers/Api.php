@@ -697,7 +697,7 @@ class Api extends REST_Controller {
 		}
     } 
 
-    public function getIcons_get($marina = '', $iconType = ''){
+    public function getIcons_get($marina = '', $iconType = '', $sponsorType = ''){
 
         if ($marina === null || $iconType === null) {
             // Set the response and exit
@@ -707,12 +707,33 @@ class Api extends REST_Controller {
             ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
         }
         if ($this->mm->fetchArr('marinas', ['username'], ['username' => $marina])[0]['username']) {
-            $marinauser = $this->mm->fetchArr('marinas', ['username'], ['username' => $marina])[0]['username'];
+            $marinaId = $this->mm->fetchArr('marinas', ['id'], ['username' => $marina])[0]['id'];
         } else { 
             $this->response([
                 'status' => false,
                 'message' => 'Wrong Marina username!'
             ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
-        } 
+        }
+
+        if ($iconType == "marinaicons") {
+            $url = $this->mm->fetchArr('marinas', ['appicon', 'marinaicons'], ['id' => $marinaId]); 
+            $this->response($url, REST_Controller::HTTP_OK);
+        } elseif ($iconType == "sponsoricon") {
+            $url = $this->mm->fetchArr('sponsor', ['icon', 'typeId'], ['marinaid' => $marinaId]);
+            $i = 0;
+            foreach ($url as $key => $value) {
+                $data[$i] = array(
+                    'url' => $value['icon'], 
+                    'sponsorType' => ($value['typeId'] == 1) ? 'Left' : 'Right', 
+                );
+                $i++;
+            }
+            $this->response($data, REST_Controller::HTTP_OK);
+        } else {
+            $this->response([
+                'status' => false,
+                'message' => 'Wrong Icon Type'
+            ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
+        }
     }
 }
