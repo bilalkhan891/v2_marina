@@ -204,7 +204,7 @@ class Api extends REST_Controller {
             array (
               'latitude'  => (float)$data[0]['lat'],
               'longitude' => (float)$data[0]['lon'],
-            ),
+            ) 
         );
         $this->response($api_data, REST_Controller::HTTP_OK);
     }
@@ -505,7 +505,8 @@ class Api extends REST_Controller {
         $api_data = array (
             '_id' => (int)$data['id'],
             'name' => $data['businessname'],
-            'logo' => base_url('upload/icons').$data['icon'],
+            'icon' => $data['icon'],
+            'navIcon' => $data['navIcon'],
             'introduction' =>$data['msg'],
             'phone' =>
             array (
@@ -718,13 +719,18 @@ class Api extends REST_Controller {
         if ($iconType == "marinaicons") {
             $url = $this->mm->fetchArr('marinas', ['appicon', 'marinaicons'], ['id' => $marinaId]); 
             $this->response($url, REST_Controller::HTTP_OK);
-        } elseif ($iconType == "sponsoricon") {
-            $url = $this->mm->fetchArr('sponsor', ['icon', 'typeId'], ['marinaid' => $marinaId]);
+        } elseif ($iconType == "sponsoricons") {
+            if ($sponsorType == '') {
+                $url = $this->mm->fetchArr('sponsor', ['icon', 'typeId'], ['marinaid' => $marinaId]);
+            } else {
+                $url = $this->mm->fetchArr('sponsor', ['icon', 'typeId'], ['marinaid' => $marinaId, 'typeId' => $sponsorType]);
+            }
             $i = 0;
             foreach ($url as $key => $value) {
                 $data[$i] = array(
                     'url' => $value['icon'], 
                     'sponsorType' => ($value['typeId'] == 1) ? 'Left' : 'Right', 
+                    'sponsorTypeID' => $value['typeId'], 
                 );
                 $i++;
             }

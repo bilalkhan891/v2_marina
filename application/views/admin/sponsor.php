@@ -48,7 +48,35 @@
 		      </tr>
 		      <tr>
 		        <th scope="row">icon</th>
-		        <td><img src="<?php  echo base_url().$data['icon']; ?>" width="200px"></td> 
+		        <td>
+
+		        	<?php
+		        		$icon = explode('.', $data['icon']);
+				        echo '<img src="'.base_url().$icon[0].'@1x.'.$icon[1].'">';
+		        	// $scaleArr = array(
+		        	//   'scale' => array('@1x', '@2x', '@3x', '@hdpi', '@mdpi', '@unknown', '@xhdpi', '@xxhdpi', '@xxxhdpi'),
+		        	//   'height' => array('64', '128', '192', '96', '64', '265', '128', '192', '265')
+		        	// );
+		        	// for ($i=0; $i < 9; $i++) { 
+		        		 
+		        	// 	$img = explode('.', $data["icon"]);
+		        	// 	echo '<img src="'. base_url() . $img[0] . $scaleArr["scale"][$i] .".".  $img[1] .'">'; 
+		        	// }
+
+		        	?>
+		        </td> 
+		      </tr> 
+		      <tr>
+		        <th scope="row">Navigation Icon</th>
+		        <td><?php  
+		        	if ($data['navIcon'] == "" || $data["icon"] == null) {
+		        		echo '<a class="btn btn-primary" href="'.base_url().'admin/generateNavIcons/'.$data["id"].'/'.$data['typeId'].' ">Generate Nav Icons</a>';
+		        	} else {
+		        		$icon = explode('.', $data['navIcon']);
+				        echo '<img src="'.base_url().$icon[0].'@1x.'.$icon[1].'">'; 
+		        	}
+		        ?>	
+		        </td> 
 		      </tr> 
 		      <tr>
 		        <th scope="row">Name</th>

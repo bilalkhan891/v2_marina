@@ -125,14 +125,14 @@ class Admin extends CI_Controller {
         $icon = ''; 
         if(!is_dir('./uploads/icons/'.$marinausername."/".$this->input->post('typeId'))){
           mkdir('./uploads/icons/'.$marinausername."/".$this->input->post('typeId'));
-        }
-
+        } 
         $config['upload_path'] = './uploads/icons/'.$marinausername."/".$this->input->post('typeId');
         $config['allowed_types'] = 'jpg|png|csv';
         $config['encrypt_name'] = TRUE;
         $this->load->library('upload', $config);
          // Upload icon
-        if ($this->input->post('action') == 'update' && $_FILES['icon']['name'] != '') { 
+        if ($this->input->post('action') == 'update' && $_FILES['icon']['name'] != '') {
+            $this->mm->updateRow('sponsor', ['navIcon' => ''], ['id' => $this->input->post('id')]);
             if (!$this->upload->do_upload('icon')) {
                $error = array('error' => $this->upload->display_errors()); 
                print_r( $error );
@@ -209,7 +209,53 @@ class Admin extends CI_Controller {
         $this->image_lib->clear();
       } 
         return $result;
-    } 
+    }
+    public function generateNavIcons($id = '', $typeId = '' ) { 
+        // echo $imgSrc; die;
+        $data = $this->mm->fetchArr('sponsor', ['icon'], ['id' => $id]); 
+        if (!isset($data[0])) {
+            $this->session->set_flashdata('msg', '<span class="alert alert-danger">Upload Icon First!</span>');
+            redirect(base_url('admin/sponsor/'.$id));
+        }
+        $icon = explode("/", $data[0]['icon']); 
+        $marinausername = $this->session->userdata('marinauser');  
+        if(!is_dir('./uploads/icons/'.$marinausername."/".$typeId."/navIcon")){
+          mkdir('./uploads/icons/'.$marinausername."/".$typeId."/navIcon");
+        } 
+        $exImgSrc = explode('.', $data[0]['icon']);
+        $scaleArr = array(
+            'scale' => array('@1x', '@2x', '@3x', '@hdpi', '@mdpi', '@unknown', '@xhdpi', '@xxhdpi', '@xxxhdpi'),
+            'height' => array('32', '64', '96', '48', '32', '128', '64', '96', '128')
+        );
+        $this->load->library('image_lib');
+        for ($i = 0; $i <= 8; $i++) {
+            $config_manip = array(
+            'image_library' => 'gd2',
+            'source_image' => ".".$data[0]['icon'],
+            'new_image' => './uploads/icons/'.$marinausername."/".$typeId."/navIcon",
+            'maintain_ratio' => TRUE,
+            'create_thumb' => TRUE,
+            'thumb_marker' => $scaleArr['scale'][$i], 
+            'height' => $scaleArr['height'][$i]
+            );
+            $this->image_lib->initialize($config_manip);
+
+            if (!$this->image_lib->resize()) {
+            $result = $this->image_lib->display_errors();
+            } else {
+            $result = 'success';
+            }
+            $this->image_lib->clear();
+        } 
+        if ($result == 'success') { 
+            $this->mm->updateRow('sponsor', ['navIcon' => '/uploads/icons/'.$marinausername.'/'.$typeId.'/navIcon/'.$icon[5]], ['id' => $id]);
+            $this->session->set_flashdata('msg', '<span class="alert alert-success">Icons Generated Successfully</span>');
+            redirect(base_url('admin/sponsor/'.$id));
+        } else {
+            $this->session->set_flashdata('msg', '<span class="alert alert-danger">Something wne t wrong.</span>');
+            redirect(base_url('admin/sponsor/'.$id));
+        }
+    }
     public function deleteSponsor($id){ 
         $this->mm->deleteRow('sponsor', ['id' => $id]);
         $this->session->set_flashdata('msg', '<spna class="alert alert-info">Deleted Successfully</span>');
