@@ -4,7 +4,7 @@
 
 <head> 
 	<title>Marina | Admin</title> 
-
+	<link rel="icon" href="<?php echo base_url('assets/icons/favicon.png'); ?>" type="image/gif" sizes="16x16">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/bt/css/custom-bt.css?var='.rand(); ?>">
 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/bt/css/grid.min.css?var='.rand(); ?>">

@@ -743,3 +743,7 @@ class Api extends REST_Controller {
         }
     }
 }
+
+
+ "icon": "/uploads/icons/sailbristol/1/74f223905c9ccd16480d8e49eede740e <scale> .png",
+ "navIcon": "/uploads/icons/sailbristol/1/navIcon/74f223905c9ccd16480d8e49eede740e <scale> .png",
