@@ -120,22 +120,59 @@ class Admin extends CI_Controller {
         $data['view'] = $this->load->view('admin/sponsor', $data, TRUE);
         $this->load->view('admin/main', $data);
     }
-    public function submitSponsor() {
+    public function submitSponsor() { 
+        $fileExt = pathinfo($_FILES["icon"]["name"], PATHINFO_EXTENSION);
+        $action = ($this->input->post('action')) ? $this->input->post('action') : "" ;
+        $sponsorId = ($this->input->post('id')) ? $this->input->post('id') : "" ;
         $marinausername = $this->session->userdata('marinauser'); 
-        $icon = ''; 
-        if(!is_dir('./uploads/icons/'.$marinausername."/".$this->input->post('typeId'))){
-          mkdir('./uploads/icons/'.$marinausername."/".$this->input->post('typeId'));
+        $icon = '';
+        $sponsorType = $this->input->post('typeId');
+        $filePath = './uploads/icons/'.$marinausername."/".$sponsorType;
+
+        if ($fileExt != 'png') {
+            $this->session->set_flashdata('msg','<span class="alert alert-danger">Only .png files are allowed.</span>');
+            if ($action == 'update') {
+                redirect('admin/sponsor/'.$sponsorId);
+            }
+            redirect('admin/sponsors/'.$this->input->post('marinaid')."/".$marinausername);
+        }
+        removeDirectory($filePath); 
+        if(!is_dir($filePath)){
+          mkdir($filePath);
         } 
-        $config['upload_path'] = './uploads/icons/'.$marinausername."/".$this->input->post('typeId');
-        $config['allowed_types'] = 'jpg|png|csv';
-        $config['encrypt_name'] = TRUE;
+        $config['upload_path'] = './uploads/icons/'.$marinausername."/".$sponsorType;
+        $config['allowed_types'] = 'png';
+        $config['file_name'] = 'sponsor_icon';
         $this->load->library('upload', $config);
          // Upload icon
+        
         if ($this->input->post('action') == 'update' && $_FILES['icon']['name'] != '') {
             $this->mm->updateRow('sponsor', ['navIcon' => ''], ['id' => $this->input->post('id')]);
+            $scaleArr = array(
+              'scale' => array('@1x', '@2x', '@3x', '@hdpi', '@mdpi', '@unknown', '@xhdpi', '@xxhdpi', '@xxxhdpi'),
+              'height' => array('64', '128', '192', '96', '64', '265', '128', '192', '265')
+            ); 
+
+            // Delete all previous icons
+            
+            // if (is_readable($filePath."/sponsor_icon.png")) {
+            //    unlink($filePath."/sponsor_icon.png");
+            // } 
+            // if (is_dir($filePath."/navIcon")) {
+            //    rmdir($filePath."/navIcon");
+            //     echo 'deleted';die;
+            // } else {
+            //     echo 'not deleted';die;
+            // }
+            // for ($i=0; $i < 9; $i++) { 
+            //     if (is_readable($filePath."/sponsor_icon".$scaleArr['scale'][$i].".png")) {
+            //         unlink($filePath."/sponsor_icon".$scaleArr['scale'][$i].".png");
+            //     }
+            // }
+
             if (!$this->upload->do_upload('icon')) {
                $error = array('error' => $this->upload->display_errors()); 
-               print_r( $error );
+               $this->session->set_flashdata('msg', '<span class="alert alert-danger">'.$error.'</span>');
             } else {
                $fileData = $this->upload->data();
                $icon = '/uploads/icons/'.$marinausername."/".$this->input->post('typeId')."/".$fileData['file_name']; 
@@ -148,7 +185,7 @@ class Admin extends CI_Controller {
         $data['formdata'] = Array
                     (
                         'marinaid'      => $this->input->post('marinaid'),
-                        'marinauser'    => $this->input->post('marinauser'),
+                        'marinauser'    => $marinausername,
                         'businessname'  => $this->input->post('businessname'),
                         'contacttitle'  => $this->input->post('contacttitle'),
                         'fstname'       => $this->input->post('fstname'),
@@ -174,12 +211,12 @@ class Admin extends CI_Controller {
 
         if ($this->input->post('action') == "update") { 
             $this->mm->updateRow('sponsor', $data['formdata'], ['id' => $this->input->post('id')]);
-            $data['msg'] = $this->session->set_flashdata('<span class"alert alert-success>Sponsor Updated</span>"'); 
+            $this->session->set_flashdata('<span class"alert alert-success>Sponsor Updated</span>"'); 
         } else { 
             $this->mm->insertRow('sponsor', $data['formdata']);
-            $data['msg'] = $this->session->set_flashdata('<span class"alert alert-success>Sponsor Added</span>"');
+            $this->session->set_flashdata('<span class"alert alert-success>Sponsor Added</span>"');
         } 
-        redirect('admin/sponsors/'.$this->input->post('marinaid')."/".$this->input->post('marinauser'));
+        redirect('admin/sponsors/'.$this->input->post('marinaid')."/".$marinausername);
     }
     public function scaleIcon($imgSrc = "", $target_path = '', $fileName) { 
           // echo $imgSrc; die;
@@ -213,15 +250,24 @@ class Admin extends CI_Controller {
     public function generateNavIcons($id = '', $typeId = '' ) { 
         // echo $imgSrc; die;
         $data = $this->mm->fetchArr('sponsor', ['icon'], ['id' => $id]); 
-        if (!isset($data[0])) {
+        
+        if (!isset($data[0]['icon']) || $data[0]['icon'] == '') {
             $this->session->set_flashdata('msg', '<span class="alert alert-danger">Upload Icon First!</span>');
             redirect(base_url('admin/sponsor/'.$id));
         }
         $icon = explode("/", $data[0]['icon']); 
-        $marinausername = $this->session->userdata('marinauser');  
-        if(!is_dir('./uploads/icons/'.$marinausername."/".$typeId."/navIcon")){
-          mkdir('./uploads/icons/'.$marinausername."/".$typeId."/navIcon");
-        } 
+        $marinausername = $this->session->userdata('marinauser');
+        if (!is_dir('./uploads/icons/'.$marinausername.'/'.$typeId)) {
+            mkdir('./uploads/icons/'.$marinausername.'/'.$typeId);
+            if(!is_dir('./uploads/icons/'.$marinausername.'/'.$typeId.'/navIcon')){
+              mkdir('./uploads/icons/'.$marinausername.'/'.$typeId.'/navIcon');
+            }
+        } else {
+            if(!is_dir('./uploads/icons/'.$marinausername.'/'.$typeId.'/navIcon')){
+              mkdir('./uploads/icons/'.$marinausername.'/'.$typeId.'/navIcon');
+            }
+        }
+        
         $exImgSrc = explode('.', $data[0]['icon']);
         $scaleArr = array(
             'scale' => array('@1x', '@2x', '@3x', '@hdpi', '@mdpi', '@unknown', '@xhdpi', '@xxhdpi', '@xxxhdpi'),
@@ -252,7 +298,7 @@ class Admin extends CI_Controller {
             $this->session->set_flashdata('msg', '<span class="alert alert-success">Icons Generated Successfully</span>');
             redirect(base_url('admin/sponsor/'.$id));
         } else {
-            $this->session->set_flashdata('msg', '<span class="alert alert-danger">Something wne t wrong.</span>');
+            $this->session->set_flashdata('msg', '<span class="alert alert-danger">Something went wrong.</span>');
             redirect(base_url('admin/sponsor/'.$id));
         }
     }

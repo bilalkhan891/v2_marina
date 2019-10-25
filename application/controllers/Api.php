@@ -742,8 +742,4 @@ class Api extends REST_Controller {
             ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
         }
     }
-}
-
-
- "icon": "/uploads/icons/sailbristol/1/74f223905c9ccd16480d8e49eede740e <scale> .png",
- "navIcon": "/uploads/icons/sailbristol/1/navIcon/74f223905c9ccd16480d8e49eede740e <scale> .png",
+} 

@@ -287,34 +287,47 @@ class Marinas extends CI_Controller {
 
     $appicon = '';
     $marinaicons = ''; 
+
     if ($_FILES['appicon']['name'] != "" || $_FILES['marinaicons']['name'] != "") { 
       $marinausername = $this->session->userdata('marinausername'); 
       if(!is_dir('./uploads/icons/'.$marinausername)){
         mkdir('./uploads/icons/'.$marinausername);
-      }  
-       $config['upload_path'] = './uploads/icons/'.$marinausername;
-       $config['allowed_types'] = 'jpg|png';
-       $config['encrypt_name'] = TRUE;
-       $this->load->library('upload', $config);
+      }
+      $config['upload_path'] = './uploads/icons/'.$marinausername;
+      $config['allowed_types'] = 'jpg|png'; 
+      $this->load->library('upload', $config);
     }
-    
-    if($_FILES['appicon']['name']!=""){
- 
+
       // Upload Appicon
+    if($_FILES['appicon']['name']!=""){
+      
+      $config['file_name'] = 'appicon';
+      $fileToDelete = './uploads/icons/'.$marinausername.'appicon.png';
+      
+      if (is_readable($fileToDelete) && unlink($fileToDelete)) {
+          echo "The file has been deleted";
+      }
+      $this->upload->initialize($config);
       if (!$this->upload->do_upload('appicon')) {
         $error = array('error' => $this->upload->display_errors()); 
       } else {
         $fileData = $this->upload->data(); 
         $appicon = '/uploads/icons/'.$marinausername . '/' . $fileData['file_name'];
         $this->scaleIcon($fileData['full_path'], $fileData['file_path'], $fileData['file_name']); 
-      }
-      
+      } 
     } else{
       $appicon=$this->input->post('old');
     }
-    // upload marinaicons 
-    if($_FILES['marinaicons']['name']!=""){
 
+    // upload marinaicons 
+    if($_FILES['marinaicons']['name']!=""){ 
+      $config['file_name'] = 'appicon';
+      $fileToDelete = './uploads/icons/'.$marinausername.'marinaicons.png';
+      
+      if (is_readable($fileToDelete) && unlink($fileToDelete)) {
+          echo "The file has been deleted";
+      }
+      $this->upload->initialize($config);
       if (!$this->upload->do_upload('marinaicons')) {
         $error = array('error' => $this->upload->display_errors()); 
       } else {

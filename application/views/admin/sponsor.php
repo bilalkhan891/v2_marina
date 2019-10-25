@@ -6,9 +6,9 @@
 
 </div>
 <a href="<?php echo base_url('admin/sponsors/'.$this->session->userdata('marinaid').'/'.$this->session->userdata('marinauser')); ?>">
-	<i class="fas fa-arrow-left"></i> Bact
+	<i class="fas fa-arrow-left"></i> Back
 </a>
-<!-- <a href="javascript:;" onclick="GoBackWithRefresh()"><i class="fas fa-arrow-left"></i> Bact</a> -->
+<!-- <a href="javascript:;" onclick="GoBackWithRefresh()"><i class="fas fa-arrow-left"></i> Back</a> -->
 <div class="row">
 	<div class="col-sm-12">
 		<div class="float-right">
@@ -52,7 +52,9 @@
 
 		        	<?php
 		        		$icon = explode('.', $data['icon']);
-				        echo '<img src="'.base_url().$icon[0].'@1x.'.$icon[1].'">';
+		        		if (isset($icon[1])) { 
+					        echo '<img src="'.base_url().$icon[0].'@1x.'.$icon[1].'">';
+					    }
 		        	// $scaleArr = array(
 		        	//   'scale' => array('@1x', '@2x', '@3x', '@hdpi', '@mdpi', '@unknown', '@xhdpi', '@xxhdpi', '@xxxhdpi'),
 		        	//   'height' => array('64', '128', '192', '96', '64', '265', '128', '192', '265')
