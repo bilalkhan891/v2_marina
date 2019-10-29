@@ -505,8 +505,8 @@ class Api extends REST_Controller {
         $api_data = array (
             '_id' => (int)$data['id'],
             'name' => $data['businessname'],
-            'icon' => $data['icon'],
-            'navIcon' => $data['navIcon'],
+            'logo' => $data['icon'],
+            'navLogo' => $data['navIcon'],
             'introduction' =>$data['msg'],
             'phone' =>
             array (
@@ -741,5 +741,40 @@ class Api extends REST_Controller {
                 'message' => 'Wrong Icon Type'
             ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
         }
+    }
+    public function message_post($token = null, $marina = null){
+        $data = $this->mm->fetchArr('marinas', ['username'], ['username' => $marina]);
+        if ($marina === null || !$data[0]['username']) {
+            // Set the response and exit
+            $this->response([
+                'status' => false,
+                'message' => 'Marina username missing'
+            ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
+        } else {
+            $marinauser = $data[0]['username'];
+        }
+        $data = $this->post();
+
+        if (isset($data['os']) && $data['os'] == 'iOS') {
+            if ($this->mm->updateRow('marinas', ['iOSToken' => $data['id']], ['username' => $marinauser])) {
+                $this->response($data, REST_Controller::HTTP_OK); 
+            } else {
+                // Set the response and exit
+                $this->response([
+                    'status' => false,
+                    'message' => 'Something Went Wrong'
+                ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
+            }
+        } elseif (isset($data['os']) && $data['os'] == 'android') {
+            if ($this->mm->updateRow('marinas', ['androidToken' => $data['id']], ['username' => $marinauser])) {
+                $this->response($data, REST_Controller::HTTP_OK); 
+            } else {
+                // Set the response and exit
+                $this->response([
+                    'status' => false,
+                    'message' => 'Something Went Wrong'
+                ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
+            }
+        }  
     }
 } 

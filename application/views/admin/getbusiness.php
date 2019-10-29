@@ -3,7 +3,7 @@
 <div class="row">
 	 
 </div>
-<a href="<?php echo base_url('admin/businesses/'.$this->session->userdata('typeId').'/'.$this->session->userdata('typeName').'/'.$this->session->userdata('apitypeId')); ?>"><i class="fas fa-arrow-left"></i> Bact</a>
+<a href="<?php echo base_url('admin/businesses/'.$this->session->userdata('typeId').'/'.$this->session->userdata('typeName').'/'.$this->session->userdata('apitypeId')); ?>"><i class="fas fa-arrow-left"></i> Back</a>
 <!-- <a href="javascript:;" onclick="GoBackWithRefresh()"><i class="fas fa-arrow-left"></i> Bact</a> -->
 <div class="row">
 	<div class="col-sm-12">
@@ -30,16 +30,7 @@
 		  </thead>
 		  <tbody> 
 		  	<?php if (!empty($data)) {  $_id = $data['_id']; ?>
-		  		
-		  	
-		      <tr>
-		        <th scope="row">apitypeId</th>
-		        <td><?php  echo $data['apitypeId']; ?></td> 
-		      </tr> 
-		      <tr>
-		        <th scope="row">_id</th>
-		        <td><?php  echo $data['_id']; ?></td> 
-		      </tr> 
+		  	 
 		      <tr>
 		        <th scope="row">Name</th>
 		        <td><?php  echo $data['name']; ?></td> 

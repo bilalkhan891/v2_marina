@@ -7,31 +7,9 @@
 <div class="row"><?php echo $msg; ?></div>
 <br>
 <div class="row">
+    <!-- <input type="text"  class="form-control" name="title" id="title" style="display: none;" />  -->
 	<div class="col-md-6"> 
 		<form method="post" id="pushNoti" class="row"> 
-	        <!-- <div class="col-sm-6">
-	            <div class="form-group">
-	                	<label for="timepicker">Select Time</label>
-	                <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
-	                    <input type="text" name="time" class="form-control datetimepicker-input" id="timepicker" data-target="#datetimepicker3"/>
-	                    <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
-	                        <div class="input-group-text"><i class="fas fa-clock"></i></div>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	        <div class="col-sm-6">
-	            <div class="form-group">
-	            	<label for="timepicker">Select Date</label>
-	                <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-	                    <input type="text" name="date" class="form-control datetimepicker-input" data-target="#datetimepicker4"/>
-	                    <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
-	                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>  -->
-
 	        <div class="col-sm-12">
 	            <div class="form-group">
 	            	<label for="timepicker">Enter Title, Max 60 Characters</label>
@@ -156,8 +134,8 @@ function updateRecord() {
 	        	function(data,status){ 
 		            if (status == 'success'){
 
-		              // $('#msg').html(data);
-		              $('#msg').html('<br><span class="alert alert-success">Successfully Sent</span><br>');
+		              $('#msg').html(data);
+		              // $('#msg').html('<br><span class="alert alert-success">Successfully Sent</span><br>');
 		              $(':input[type=text]','#pushNoti').val('');
 		              $('#message').val('');
 		              $('#count_title').html('60');

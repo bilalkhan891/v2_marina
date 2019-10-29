@@ -1,4 +1,5 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Usermain extends CI_Controller {
@@ -14,7 +15,7 @@ class Usermain extends CI_Controller {
 			redirect(base_url() . 'userlogin');
 		}
 	}
-
+ 
 	public function index() {
 
 		if ($this->session->userdata('is_user_logged_in') == 0) {
@@ -1024,7 +1025,17 @@ class Usermain extends CI_Controller {
 		$data['view'] = $this->load->view('users/notifications', $data, TRUE);
 		$data['view'] = $this->load->view('users/usermain', $data);
 	}
-
+	public function sendNoti(){
+		$title = $this->input->post('title');
+		$message = $this->input->post('message');
+		$deviceToken = $this->mm->fetchArr('marinas', 'notiToken', ['username' => $this->marinausername])[0]['notiToken'];
+		
+		$msg_payload = array (
+			'mtitle' => $title,
+			'mdesc' => $message,
+		);
+		return iOS($msg_payload, $deviceToken); 
+	}
  
 	public function check(){
 		echo json_encode($this->session->all_userdata(), JSON_PRETTY_PRINT);
