@@ -145,7 +145,7 @@ class Usermain extends CI_Controller {
 		$username = ($this->input->post('username')) ? $this->input->post('username') : '';
 		$email = ($this->input->post('email')) ? $this->input->post('email') : '';
 		$phone = ($this->input->post('phone')) ? $this->input->post('phone') : '';
-		$password = ($this->input->post('password')) ? $this->input->post('password') : '';
+		$password = sha1(($this->input->post('password')) ? $this->input->post('password') : '');
 
 		$data['usernameexists'] = $this->mm->fetchArr('userlogin', '', ['username' => $username]);
 		$data['emailnameexists'] = $this->mm->fetchArr('userlogin', '', ['email' => $email]);
