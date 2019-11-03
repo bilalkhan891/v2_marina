@@ -595,21 +595,21 @@ class Api extends REST_Controller {
             $teen   = 1.26;
             $char   = 0.93; 
             if ($data['days'] == 1 &&  $data['multiHull']=="No")   { 
-                $res['Payment'] = number_format($data['length']*$ek, 2, '.', '');
+                $res['Visiting Cost For '.$data['days'].' Days:'] = number_format($data['length']*$ek, 2, '.', '');
             } elseif ($data['days'] == 1 &&  $data['multiHull']=="Yes")  { 
-                $res['Payment'] = number_format($data['length']*$ek*1.5, 2, '.', '');
+                $res['Visiting Cost For '.$data['days'].' Days:'] = number_format($data['length']*$ek*1.5, 2, '.', '');
             } elseif ($data['days'] < 8 &&  $data['multiHull']=="No")    { 
-                $res['Payment'] = number_format($data['length']*$do*$data['days'], 2, '.', '');
+                $res['Visiting Cost For '.$data['days'].' Days:'] = number_format($data['length']*$do*$data['days'], 2, '.', '');
             } elseif ($data['days'] < 8 &&  $data['multiHull']=="Yes")   { 
-                $res['Payment'] = number_format($data['length']*$do*1.5*$data['days'], 2, '.', '');
+                $res['Visiting Cost For '.$data['days'].' Days:'] = number_format($data['length']*$do*1.5*$data['days'], 2, '.', '');
             } elseif ($data['days'] < 15 &&  $data['multiHull']=="No")   { 
-                $res['Payment'] = number_format($data['length']*$teen*$data['days'], 2, '.', '');
+                $res['Visiting Cost For '.$data['days'].' Days:'] = number_format($data['length']*$teen*$data['days'], 2, '.', '');
             } elseif ($data['days'] < 15 &&  $data['multiHull']=="Yes")  { 
-                $res['Payment'] = number_format($data['length']*$teen*1.5*$data['days'], 2, '.', '');
+                $res['Visiting Cost For '.$data['days'].' Days:'] = number_format($data['length']*$teen*1.5*$data['days'], 2, '.', '');
             } elseif ($data['days'] < 22 &&  $data['multiHull']=="No")   { 
-                $res['Payment'] = number_format($data['length']*$char*$data['days'], 2, '.', '');
+                $res['Visiting Cost For '.$data['days'].' Days:'] = number_format($data['length']*$char*$data['days'], 2, '.', '');
             } elseif ($data['days'] < 22 &&  $data['multiHull']=="Yes")  { 
-                $res['Payment'] = number_format($data['length']*$char*1.5*$data['days'], 2, '.', '');
+                $res['Visiting Cost For '.$data['days'].' Days:'] = number_format($data['length']*$char*1.5*$data['days'], 2, '.', '');
             } else {
                 $res['Payment'] = 'Days more then 21';
             }

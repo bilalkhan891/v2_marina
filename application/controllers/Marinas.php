@@ -209,7 +209,7 @@ class Marinas extends CI_Controller {
       'date'       => date('Y-m-d'), 
       'email'      => $data['email'], 
       'phone'      => $data['phone'], 
-      'password'   => 'admin@123', 
+      'password'   => sha1('admin@123'), 
       'status'     => 'Approved',
       'ids_id'     => '',
       'marinaid'   => $ids['marinas'],
