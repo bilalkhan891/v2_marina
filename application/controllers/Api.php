@@ -186,7 +186,7 @@ class Api extends REST_Controller {
             array (
               0 => 
               array (
-                'day' => 'Monday - Friday',
+                'day' => 'Weekdays',
                 'time' =>$data[0]['mon-fri'],
               ),
               1 => 
@@ -585,9 +585,10 @@ class Api extends REST_Controller {
 
         if ($data['lengthUnit'] == 'Feet') {
             $data['length'] = $data['length'] * 0.3048;
-        }
-        $response['boatLength'] = number_format($data['length'], 2, '.', '') . "m";
+        } 
         $data['length'] = round($data['length'] * 2) / 2;
+        $response['boatLength'] = number_format($data['length'], 2, '.', '') . "m";
+         
         if ($data['berthingType'] == 'Visiting') {
             $ek     = 1.95; 
             $do     = 1.65; 
