@@ -27,8 +27,9 @@ class Login extends CI_Controller {
     	if($this->form_validation->run()) { 
 
 			$data['user'] = $this->input->post('username');  
-			$data['pwd'] = $this->input->post('password');
+			$data['pwd'] = sha1($this->input->post('password'));
             $userdata = $this->Mainmodel->can_login($data['user'], $data['pwd'], 'admin');
+         
 
 			if ($userdata['status'] != FALSE) {
 

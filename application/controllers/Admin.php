@@ -38,7 +38,7 @@ class Admin extends CI_Controller {
         $username = ($this->input->post('username')) ? $this->input->post('username') : '';
         $email = ($this->input->post('email')) ? $this->input->post('email') : '';
         $phone = ($this->input->post('phone')) ? $this->input->post('phone') : '';
-        $password = ($this->input->post('password')) ? $this->input->post('password') : '1234';
+        $password = sha1(($this->input->post('password')) ? $this->input->post('password') : '1234');
         $data = $this->db->query("SELECT * FROM `admin` WHERE `username`= '" . $username . "'");
         // print_r($data->result()); die;
         if (!empty($data->result())) {
