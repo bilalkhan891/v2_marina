@@ -1028,13 +1028,15 @@ class Usermain extends CI_Controller {
 	public function sendNoti(){
 		$title = $this->input->post('title');
 		$message = $this->input->post('message');
-		$deviceToken = $this->mm->fetchArr('marinas', 'notiToken', ['username' => $this->marinausername])[0]['notiToken'];
+		$deviceTokens = $this->mm->fetchArr('marinas', ['iOSToken', 'androidToken', 'firebaseToken'], ['username' => $this->marinausername])[0];
 		
+		// print_r($deviceTokens); die;
 		$msg_payload = array (
-			'mtitle' => $title,
-			'mdesc' => $message,
+			'title' => $title,
+			'message' => $message,
 		);
-		return iOS($msg_payload, $deviceToken); 
+
+		return myPushNoti($msg_payload, $deviceTokens);
 	}
  
 	public function check(){

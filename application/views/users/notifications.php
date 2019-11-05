@@ -136,18 +136,18 @@ function updateRecord() {
 
 		              $('#msg').html(data);
 		              // $('#msg').html('<br><span class="alert alert-success">Successfully Sent</span><br>');
-		              $(':input[type=text]','#pushNoti').val('');
-		              $('#message').val('');
-		              $('#count_title').html('60');
-		              $('#count_message').html('200');
+		              // $(':input[type=text]','#pushNoti').val('');
+		              // $('#message').val('');
+		              // $('#count_title').html('60');
+		              // $('#count_message').html('200');
 		              // setTimeout(function(){
 		              //   location.reload();
 		              // }, 500 );
 		            } else {
-		              $(':input[type=text]','#pushNoti').val('');
-		              $('#count_title').html('60');
-		              $('#message').val('');
-		              $('#count_message').html('200');
+		              // $(':input[type=text]','#pushNoti').val('');
+		              // $('#count_title').html('60');
+		              // $('#message').val('');
+		              // $('#count_message').html('200');
 		              $('#msg').html(data+status);
 		            }
 		    });

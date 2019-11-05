@@ -204,6 +204,7 @@ class Marinas extends CI_Controller {
   // User Insert //
   /////////////////
 
+
     $values = array(
       'username'   => $data['username'], 
       'date'       => date('Y-m-d'), 
