@@ -1,10 +1,10 @@
 <!-- Button trigger modal -->
 <div class="float-right"> 
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#boatlenghtModal">Calculate</button>
-  <!-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalLong">Update Values</button>  -->
+  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalLong">Update Values</button> 
 </div>
 <!-- Button trigger modal -->
- 
+ <?php echo $msg;  ?><br>
 <!-- Modal -->
 <div class="modal fade" id="boatlenghtModal" tabindex="-1" role="dialog" aria-labelledby="boatlenghtModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -151,20 +151,21 @@
       </div>
       <div class="modal-body"> 
 
-        <?php 
+         <?php 
           $attributes = array('class' => 'needs-validation', 'novalidate' => '');
-          echo form_open('usermain/updaterates', $attributes);
-        ?> 
-        <form action="usermain/updatebristolrates" class="needs-validation" novalidate>
+          echo form_open('usermain/updatebristolrates', $attributes);
+         ?>  
  
           <div class="form-row">
-            <div class="col-md-12">
-              <label for="ccSurcharge">CC SURCHARGE</label>
-              <input type="text" name="ccSurcharge" value="<?php echo $creditcardsurcharge[0]['ccSurcharge'] ?>" class="form-control form-control-sm" id="ccSurcharge" required>
-              <div class="invalid-feedback">
-                Fill this field.
-              </div>
-            </div> 
+            <?php foreach ($dbValues as $key => $value) { ?>
+              <div class="col-md-12">
+                <label for="<?php echo $key ?>"><?php echo str_replace('_', ' ', $key) ?></label>
+                <input type="text" name="<?php echo $key ?>" value="<?php echo $value ?>" class="form-control form-control-sm" id="<?php echo $key ?>" required>
+                <div class="invalid-feedback">
+                  Fill this field.
+                </div>
+              </div> 
+            <?php } ?>
           </div>    
           
           <div class="modal-footer">

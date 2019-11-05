@@ -207,23 +207,28 @@ class Usermain extends CI_Controller {
 	}
  
 	public function bristolRates(){
-		$data = '';
+		$data = array();
+		$dbValues = $this->mm->fetchArr('bristolRates', '')[0];
+		unset($dbValues['id']);
+		
 		if ($this->input->post( )) {
 			
 			$data = $this->input->post(); 
 			if ($this->input->post('mBoatLength') == 'feet') {
 				$data['length'] = $this->input->post('length') * 0.3048; 
 			}
-
-			$viewdata['Class_A_Berthing']       = 116.80;
-			$viewdata['Class_B_Berthing_Pontoon_Berth']   = 104.90;
-			$viewdata['Pontoon_Per_Metre']    = 168.25;
-			$viewdata['Club_Pontoon']     = 139.70;
-			$viewdata['Temple_Quay_Without_Services']   = 125.00;
-			$viewdata['Temple_Quay_With_Services']      = 132.70;
-			$viewdata['Pontoon_Temple_Back']  = 141.55;
-			$viewdata['Winter_Berth']     = 141.35;
-			$viewdata['Pontoon_Hanover_Quay']     = 221.00; 
+			//  dynamic value
+			$viewdata['Class_A_Berthing']       = $dbValues['Class_A_Berthing'];
+			$viewdata['Class_B_Berthing_Pontoon_Berth']   = $dbValues['Class_B_Berthing_Pontoon_Berth'];
+			$viewdata['Pontoon_Per_Metre']    = $dbValues['Pontoon_Per_Metre'];
+			$viewdata['Club_Pontoon']     = $dbValues['Club_Pontoon'];
+			$viewdata['Temple_Quay_Without_Services']   = $dbValues['Temple_Quay_Without_Services'];
+			$viewdata['Temple_Quay_With_Services']      = $dbValues['Temple_Quay_With_Services'];
+			$viewdata['Pontoon_Temple_Back']  = $dbValues['Pontoon_Temple_Back'];
+			$viewdata['Winter_Berth']     = $dbValues['Winter_Berth'];
+			$viewdata['Pontoon_Hanover_Quay']     = $dbValues['Pontoon_Hanover_Quay'];
+			// .dynamic values
+			
 			$data['length'] = round($data['length'] * 2) / 2;
 			if ($data['btype'] == 'Visiting') {
 			    $ek     = 1.95; 
@@ -280,17 +285,30 @@ class Usermain extends CI_Controller {
 			        $res['Winter Berth'] = "£".number_format($res['Winter Berth']*1.5, 2, '.', '');
 			        $res['Pontoon Hanover Quay'] = "£".number_format($res['Pontoon Hanover Quay']*1.5, 2, '.', '');
 			    }
-			}  
+			}
+			$data['dbValues'] = $dbValues;
 			$data['res'] = $res;
+			$data['msg'] = $this->session->flashdata('msg');
 			$view['view'] = $this->load->view('users/bristolrates', $data, TRUE);
 			$this->load->view('users/usermain', $view);
 			return;
 		}
-		 
-
+		$data['dbValues'] = $dbValues;
+		$data['msg'] = $this->session->flashdata('msg');
 		$view['view'] = $this->load->view('users/bristolrates', $data, TRUE);
 		$this->load->view('users/usermain', $view);
 
+	}
+
+	public function updatebristolrates(){
+		
+		$postValues = $this->input->post();  
+		if ($this->mm->updateRow('bristolRates', $postValues, ['id' => 1])) {
+			$this->session->set_flashdata('msg', '<span class="alert alert-success">Values updated successfully.</span>');
+		} else {
+			$this->session->set_flashdata('msg', '<span class="alert alert-danger">Something went wrong.</span>');
+		}
+		redirect('usermain/mRates','refresh');
 	}
 
 	public function mRates() {

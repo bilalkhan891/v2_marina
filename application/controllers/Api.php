@@ -571,6 +571,7 @@ class Api extends REST_Controller {
         $Pontoon_Temple_Back  = 141.55;
         $Winter_Berth     = 141.35;
         $Pontoon_Hanover_Quay     = 221.00;
+        
         if ($data == null || !isset($data['length']) || !isset($data['multiHull']) || !isset($data['berthingType']) || !isset($data['days'])) {
             $this->response([
                 'status' => false,
