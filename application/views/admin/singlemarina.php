@@ -153,6 +153,15 @@
       <th scope="row">Long</th>
       <td><?php echo $data[0]['lon']; ?></td>
     </tr>
+     <tr>
+      <th scope="row">Role</th>
+      <td><?php $role = $this->db->where('role_id',$data[0]['role_id'])->get('user_role')->row();
+                if(!empty($role))
+                {
+                    echo $role->role_name;
+                }
+        ?></td>
+    </tr>
   </tbody>
 </table>
 <script type="text/javascript">

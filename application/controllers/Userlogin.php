@@ -56,6 +56,7 @@ class Userlogin extends CI_Controller {
 					'visitorid' => $userdata['idsdata'][0]['visitorid'],
 					'winterid' => $userdata['idsdata'][0]['winterid'],
 					'marinaid' => $marinausername['id'],
+					'role' => $marinausername['role_id'],
 				);
 
 				$this->session->set_userdata($sessions);
@@ -95,7 +96,7 @@ class Userlogin extends CI_Controller {
 		$userId = $this->session->userdata('userid');
 		$marinaid = $this->session->userdata('marinaid');
 
-		$this->mm->updateRow('userlogin', ['password' => $data['password1']], ['id' => $userId, 'marinaid' => $marinaid]);
+		$this->mm->updateRow('userlogin', ['password' => sha1($data['password1'])], ['id' => $userId, 'marinaid' => $marinaid]);
 
 		$data['data'] = $this->mm->fetchArr('userlogin', '', ['id' => $userId, 'marinaid' => $marinaid])[0];
  
@@ -149,6 +150,7 @@ class Userlogin extends CI_Controller {
 	}
 
 	public function resetforgotpwd($code = ""){
+		
 		$this->session->set_userdata('code', $code);
 		// echo $this->session->userdata('code'); 
 		if ($code == '') {
@@ -164,6 +166,8 @@ class Userlogin extends CI_Controller {
 			$data['data'] = $data['data'][0];
 			$this->session->set_userdata(['userId' => $data['data']['id']]); 
 		}
+		
+		//var_dump($this->session->user_data());die();
 		
 		$data['msg'] = $this->session->flashdata('msg');
 		$this->load->view('users/insertnewpwd', $data);
@@ -181,7 +185,7 @@ class Userlogin extends CI_Controller {
 
 			$userId = $this->session->userdata('userId'); 
 
-			$this->mm->updateRow('userlogin', ['password' => $data['password1']], ['id' => $userId]);
+			$this->mm->updateRow('userlogin', ['password' => sha1($data['password1'])], ['id' => $userId]);
 
 			$data['data'] = $this->mm->fetchArr('userlogin', '', ['id' => $userId])[0];
 	 		
