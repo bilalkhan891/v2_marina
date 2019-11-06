@@ -30,16 +30,16 @@ class Usermain extends CI_Controller {
          error_reporting(0);
 		if ($d == 'download' ) {
 			$this->load->helper('download'); 
-            if($this->marinausername=='sailbristol'){
-            force_download('assets/fordownload/Tide & Closures For CSV.xlsm', NULL);
-			$this->session->set_flashdata('msg', '<span class="alert alert-info">File downloaded.</span>');
-			redirect('usermain/downloadcsv');
 
-            }
-            else if($this->marinausername=='sawanseamarina'){
-            	 force_download('assets/fordownload/Tidess & Closures For CSV.xlsm', NULL);
-			$this->session->set_flashdata('msg', '<span class="alert alert-info">File downloaded.</span>');
-			redirect('usermain/downloadcsv');
+            if($this->marinausername=='sailbristol'){
+	            force_download('./assets/fordownload/sailbristol_Convertor.xlsm', NULL);
+				$this->session->set_flashdata('msg', '<span class="alert alert-info">File downloading.</span>'); 
+				redirect('usermain/downloadcsv');
+
+            } else {
+            	 force_download('assets/fordownload/Default_Convertor.xlsm', NULL);
+				$this->session->set_flashdata('msg', '<span class="alert alert-info">File downloading.</span>');
+				redirect('usermain/downloadcsv');
             }
 			
 		}
