@@ -84,8 +84,8 @@ class Userlogin extends CI_Controller {
 
 	public function resetpwd(){
 
-		$data['password1'] = $this->input->post('password1');
-		$data['password2'] = $this->input->post('password2');
+		$data['password1'] = sha1($this->input->post('password1'));
+		$data['password2'] = sha1($this->input->post('password2'));
  
 		if ($data['password1'] != $data['password2']) {
 			echo 'Password didn\'t match';
