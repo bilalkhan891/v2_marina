@@ -56,7 +56,7 @@ class Userlogin extends CI_Controller {
 					'visitorid' => $userdata['idsdata'][0]['visitorid'],
 					'winterid' => $userdata['idsdata'][0]['winterid'],
 					'marinaid' => $marinausername['id'],
-					'role' => $marinausername['role_id'],
+					'role' => (string) $userdata[0]['role'],
 				);
 
 				$this->session->set_userdata($sessions);

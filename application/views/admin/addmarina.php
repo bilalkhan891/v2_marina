@@ -399,23 +399,7 @@
 
 	  </div>
 	  
-	  	  <div class="form-group"> 
-
-		<label for="channel">Role</label>
-
-		<select name="role_id" class="form-control" id="role" >
-		  <?php foreach($role as $r){ ?>
-		  <option value="<?php echo  $r['role_id'] ?>"><?php echo  $r['role_name'] ?></option>
-		  <?php } ?>
-		</select>
-
-		<div class="invalid-feedback">
-
-			Please fill this field.
-
-		</div>
-
-	  </div>
+	  
 
 	  <button class="btn btn-primary" type="submit">Add Marina</button>
 

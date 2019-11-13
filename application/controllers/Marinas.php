@@ -48,8 +48,7 @@ class Marinas extends CI_Controller {
 
   public function addMarina(){
 
-    $data['data'] = $this->mm->fetchArr('marinas'); 
-    $data['role'] = $this->mm->fetchArr('user_role'); 
+    $data['data'] = $this->mm->fetchArr('marinas');  
     
     $data['msg'] = $this->session->flashdata('msg');
     $data['title'] = 'Add Marinas';
@@ -58,8 +57,7 @@ class Marinas extends CI_Controller {
   }
   public function editMarina($id = ''){
 
-    $data['data'] = $this->mm->fetchArr('marinas', '', ['id' => $id])[0]; 
-    $data['role'] = $this->mm->fetchArr('user_role'); 
+    $data['data'] = $this->mm->fetchArr('marinas', '', ['id' => $id])[0];  
     $data['msg'] = $this->session->flashdata('msg');
     $data['title'] = 'Edit Marinas';
     $data['view'] = $this->load->view('admin/updatemarina', $data, TRUE);
@@ -121,8 +119,7 @@ class Marinas extends CI_Controller {
     $data['lon']         = ($this->input->post('lon')) ? $this->input->post('lon') : '';
     $data['security']    = ($this->input->post('security')) ? $this->input->post('security') : '';
     $data['channel']     = ($this->input->post('channel')) ? $this->input->post('channel') : '';
-    $data['position']    = ($this->input->post('position')) ? $this->input->post('position') : '';
-    $data['role_id']    = ($this->input->post('role_id')) ? $this->input->post('role_id') : '';
+    $data['position']    = ($this->input->post('position')) ? $this->input->post('position') : ''; 
 
     if ($data['username'] == '') {
       $this->session->flashdata('msg', '<span class="alert alert-warning">Username Required</span>');
@@ -193,8 +190,7 @@ class Marinas extends CI_Controller {
      'lon'   => $data['lon'], 
      'security'   => $data['security'], 
      'channel'   => $data['channel'], 
-     'position'   => $data['position'], 
-     'role_id'   => $data['role_id'], 
+     'position'   => $data['position'],  
      'date'   => date('Y-m-d'),
      'status'   => 'approved'
    );
@@ -289,8 +285,7 @@ class Marinas extends CI_Controller {
     $data['lon']         = ($this->input->post('lon')) ? $this->input->post('lon') : '';
     $data['security']    = ($this->input->post('security')) ? $this->input->post('security') : '';
     $data['channel']     = ($this->input->post('channel')) ? $this->input->post('channel') : '';
-    $data['position']    = ($this->input->post('position')) ? $this->input->post('position') : '';
-    $data['role_id']    = ($this->input->post('role_id')) ? $this->input->post('role_id') : '';
+    $data['position']    = ($this->input->post('position')) ? $this->input->post('position') : ''; 
 
     $appicon = '';
     $marinaicons = ''; 
@@ -375,8 +370,7 @@ class Marinas extends CI_Controller {
     'lon'   => $data['lon'], 
     'security'   => $data['security'], 
     'channel'   => $data['channel'], 
-    'position'   => $data['position'],
-    'role_id'   => $data['role_id'],
+    'position'   => $data['position'], 
     'date'   => date('Y-m-d'),
     'status'   => 'approved'
   );
