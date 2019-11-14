@@ -160,7 +160,10 @@ class Usermain extends CI_Controller {
 			$this->session->set_flashdata('msg', '<span class="alert-danger alert float-left">Email already exists, try another one.</span>');
 		} else {
 
-			$data = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name,  'role' => $role, 'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $this->session->userdata('marinaid'));
+		/*	$data = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name,  'role' => $role, 'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $this->session->userdata('marinaid'));
+*/
+
+		$data = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name, 'role' => $role, 'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $marinaId);T
 
 			if ($this->mm->insertRow('userlogin', $data)) {
 
