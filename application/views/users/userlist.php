@@ -26,11 +26,12 @@
         <td><?php echo $row['name']; ?></td>
         <td><?php echo $row['email']; ?></td>
         <td><?php echo $row['phone']; ?></td>
+        <td><?php echo $row['role']; ?></td>
         <td><?php echo $row['date']; ?></td>
         <td class="<?php if($row['status'] == 'Approved') {echo 'approved';} else {echo 'unapproved';} ?>"><?php echo $row['status']; ?></td>
         <td class="row">
         	<?php if($i != 1) { ?>
-	        	<a class="col-md-5 bg-info" href="#!" onclick="editRecord( '<?php echo $row['id']?>', '<?php echo $row['username']?>', '<?php echo $row['email']?>', '<?php echo $row['phone']?>', '<?php echo $row['status']; ?>', '<?php echo $row['name']; ?>' )" title="Edit" data-toggle="modal" data-target=".update"><i class="fas fa-edit center text-white" type="javascript:;"></i></a>
+	        	<a class="col-md-5 bg-info" href="#!" onclick="editRecord( '<?php echo $row['id']?>', '<?php echo $row['username']?>', '<?php echo $row['email']?>', '<?php echo $row['phone']?>', '<?php echo $row['status']; ?>', '<?php echo $row['name']; ?>',  '<?php echo $row['role']?>' )" title="Edit" data-toggle="modal" data-target=".update"><i class="fas fa-edit center text-white" type="javascript:;"></i></a>
 	        	<a class="col-md-5 bg-danger" href="<?php echo base_url('usermain/deleteuser/'.$row['id']); ?>" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash center text-white"></i></a>
 	        <?php } ?>
         </td>
@@ -45,12 +46,26 @@
     return data.toLowerCase();
   }
 
-  function editRecord(id, username, email, phone, status, name){
+  function editRecord(id, username, email, phone, status, name, role){
     $('.update #id').val(id); 
     $('.update #name').val(name); 
     $('.update #username').val(username); 
     $('.update #email').val(email); 
-    $('.update #phone').val(phone);  
+    $('.update #phone').val(phone); 
+
+
+$('input.role').each(function () {
+
+        var v = $(this).val();
+ //alert()
+        if (v == role) {
+            $(this).attr('checked', 'checked');
+        }
+
+    });
+
+
+    //$('.update #phone').val(phone);  
   }
 </script>
 
@@ -112,6 +127,35 @@
                 </div>
               </div>
             </div>
+
+
+
+
+            <div class="radio">
+              <h5>Assing one of the following roles for marina user.</h5>
+              <label>
+                <input type="radio" name="role" class="role" value="read" checked>
+                Read Role
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="role" class="role"  value="lock">
+                Lock role
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="role" class="role" value="other">
+                Other
+              </label>
+            </div> 
+
+
+
+
+
+
           </div>
           <div class="modal-footer">
             <button class="btn btn-primary" type="submit">Submit form</button>
@@ -177,6 +221,32 @@
                 </div>
               </div>
             </div>
+
+
+
+            <div class="radio">
+              <h5>Assing one of the following roles for marina user.</h5>
+              <label>
+                <input type="radio" name="role" id="optionsRadios1" value="read" checked>
+                Read Role
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="role" id="optionsRadios2" value="lock">
+                Lock role
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="role" id="optionsRadios2" value="other">
+                Other
+              </label>
+            </div> 
+
+
+
+
           </div>
           <div class="modal-footer">
             <button class="btn btn-primary" type="submit">Submit form</button>
