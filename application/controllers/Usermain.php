@@ -140,7 +140,7 @@ class Usermain extends CI_Controller {
 	}
 
 	public function addUser() {
-
+        $marinaId = $this->session->userdata('marinaid');
 		$name = ($this->input->post('name')) ? $this->input->post('name') : '';
 		$username = ($this->input->post('username')) ? $this->input->post('username') : '';
 		$email = ($this->input->post('email')) ? $this->input->post('email') : '';
@@ -163,7 +163,7 @@ class Usermain extends CI_Controller {
 		/*	$data = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name,  'role' => $role, 'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $this->session->userdata('marinaid'));
 */
 
-		$data = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name, 'role' => $role, 'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $marinaId);T
+		$data = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name, 'role' => $role, 'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $marinaId);
 
 			if ($this->mm->insertRow('userlogin', $data)) {
 
