@@ -114,8 +114,8 @@
         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
           <tr>
             <td align="center" valign="top" style="padding: 36px 24px;">
-              <a href="https://admin.myhomeport.info" target="_blank" style="display: inline-block;">
-                <img src="https://admin.myhomeport.info/uploads/logo-011.png" alt="Logo" border="0" width="208" style="display: block; width: 208px; max-width: 208px; min-width: 105px;">
+              <a href="<?php echo base_url(); ?>" target="_blank" style="display: inline-block;">
+                <img src="<?php echo base_url('uploads/logo-011.png'); ?>" alt="Logo" border="0" width="208" style="display: block; width: 208px; max-width: 208px; min-width: 105px;">
               </a>
             </td>
           </tr>
@@ -170,7 +170,7 @@
             <td align="left"  bgcolor="#e9ecef" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, 'raleway'; font-size: 16px; line-height: 24px;">
               <p style="margin: 0; line-height: 1.9em;">Don't worry, it happens to the best of us!</p>
               <p style="margin: 0; line-height: 1.9em;">Let's get you a new one...</p>
-              <p style="margin: 0; line-height: 1.9em;"><a href="https://admin.myhomeport.info/userlogin/resetforgotpwd/<?php echo $code; ?>">Click here</a> or on below button to reset your password</p>
+              <p style="margin: 0; line-height: 1.9em;"><a href="<?php echo base_url(); ?>/userlogin/resetforgotpwd/<?php echo $code; ?>">Click here</a> or on below button to reset your password</p>
               <p style="margin: 0; line-height: 1.9em;">If you didn't request a password reset, just ignore this email.</p>
             </td>
           </tr>
@@ -185,7 +185,7 @@
                     <table border="0" cellpadding="0" cellspacing="0">
                       <tr>
                         <td align="center" bgcolor="#1a82e2" style="border-radius: 6px;">
-                          <a href="https://admin.myhomeport.info/userlogin/resetforgotpwd/<?php echo $code; ?>" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, 'raleway'; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">Reset Password </a>
+                          <a href="<?php echo base_url(); ?>/userlogin/resetforgotpwd/<?php echo $code; ?>" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, 'raleway'; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">Reset Password </a>
                         </td>
                       </tr>
                     </table>
@@ -209,7 +209,7 @@
           <tr>
             <td align="left"  bgcolor="#e9ecef" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, 'raleway'; font-size: 16px; line-height: 24px;">
               <p style="margin: 0;">If the above link doesn't work, copy and paste the following link in your browser:</p>
-              <p style="margin: 0;"><a href="https://admin.myhomeport.info/userlogin/resetforgotpwd/<?php echo $code; ?>" target="_blank">https://admin.myhomeport.info/userlogin/resetforgotpwd/<?php echo $code; ?></a></p>
+              <p style="margin: 0;"><a href="<?php echo base_url(); ?>/userlogin/resetforgotpwd/<?php echo $code; ?>" target="_blank"><?php echo base_url(); ?>/userlogin/resetforgotpwd/<?php echo $code; ?></a></p>
             </td>
           </tr>
           <!-- end copy -->

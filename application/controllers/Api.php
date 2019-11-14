@@ -562,15 +562,18 @@ class Api extends REST_Controller {
 
     public function brsitolRates_post(){ 
         $data =  $this->post();
-        $Class_A_Berthing       = 116.80;
-        $Class_B_Berthing_Pontoon_Berth   = 104.90;
-        $Pontoon_Per_Metre    = 168.25;
-        $Club_Pontoon     = 139.70;
-        $Temple_Quay_Without_Services   = 125.00;
-        $Temple_Quay_With_Services      = 132.70;
-        $Pontoon_Temple_Back  = 141.55;
-        $Winter_Berth     = 141.35;
-        $Pontoon_Hanover_Quay     = 221.00;
+        $dbValues = $this->mm->fetchArr('bristolRates', '')[0];
+        //  dynamic value
+        $Class_A_Berthing       = $dbValues['Class_A_Berthing'];
+        $Class_B_Berthing_Pontoon_Berth   = $dbValues['Class_B_Berthing_Pontoon_Berth'];
+        $Pontoon_Per_Metre    = $dbValues['Pontoon_Per_Metre'];
+        $Club_Pontoon     = $dbValues['Club_Pontoon'];
+        $Temple_Quay_Without_Services   = $dbValues['Temple_Quay_Without_Services'];
+        $Temple_Quay_With_Services      = $dbValues['Temple_Quay_With_Services'];
+        $Pontoon_Temple_Back  = $dbValues['Pontoon_Temple_Back'];
+        $Winter_Berth     = $dbValues['Winter_Berth'];
+        $Pontoon_Hanover_Quay     = $dbValues['Pontoon_Hanover_Quay'];
+        // .dynamic values
         
         if ($data == null || !isset($data['length']) || !isset($data['multiHull']) || !isset($data['berthingType']) || !isset($data['days'])) {
             $this->response([
@@ -588,6 +591,7 @@ class Api extends REST_Controller {
             $data['length'] = $data['length'] * 0.3048;
         } 
         $data['length'] = round($data['length'] * 2) / 2;
+        $data['length'] = ($data['length'] < 4) ? $data['length'] = 4 : $data['length'] = $data['length'];
         $response['boatLength'] = number_format($data['length'], 2, '.', '') . "m";
          
         if ($data['berthingType'] == 'Visiting') {

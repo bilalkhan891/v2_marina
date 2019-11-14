@@ -1,6 +1,6 @@
 <h1><?php echo $title; ?></h1>
 <!--  <pre>
-	<?php print_r($data[0]); ?>
+	<?php //print_r($data); echo "<h2>hello</h2>"; ?>
 </pre> -->
 <div class="row">
   <div id="loading"><?php echo $msg; ?></div>
@@ -8,16 +8,7 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="float-right"> 
-      <?php if ($data[0]['apicheck'] != 'yes'): ?>
-        <a  href="javascript:;" onclick="pushToApp()"  class="btn btn-info text-black ba-btn"  style="padding: 3px 30px;">Send new updates to app 
-          <i class="fas fa-paper-plane text-white"></i>
-        </a>
-      <?php else: ?>
-        <a href="#!" class="btn btn-success text-black ba-btn">App is updated
-          <i class="fas fa-clipboard-check"></i>
-        </a>
-            
-      <?php endif ?>  
+      
       <a class="btn btn-info white-text ba-btn" href="#!" data-toggle="modal" data-target="#updateContact" style="padding: 3px 30px;">Edit <i class="fas fa-edit text-white"></i></a>
        
     </div>  
@@ -120,84 +111,84 @@
           ?>  
             <div class="form-group"> 
               <label for="marinaname">Marina Name</label>
-              <input type="text" value="<?php echo $data[0]['marinaname']; ?>" name="marinaname" style="text-transform: capitalize;" class="form-control" id="marinaname" required>
+              <input type="text" value="<?php echo $data[0]['marinaname']; ?>" name="marinaname" style="text-transform: capitalize;" class="form-control" id="marinaname" >
               <div class="invalid-feedback">
                 Please fill this field.
               </div>
             </div>
             <div class="form-group"> 
               <label for="address">Address Line 1</label>
-              <input type="text" value="<?php echo $data[0]['address']; ?>" name="address" style="text-transform: capitalize;" class="form-control" id="address" required>
+              <input type="text" value="<?php echo $data[0]['address']; ?>" name="address" style="text-transform: capitalize;" class="form-control" id="address" >
               <div class="invalid-feedback">
                 Please fill this field.
               </div>
             </div>
             <div class="form-group"> 
               <label for="address2">Address Line 2</label>
-              <input type="text" value="<?php echo $data[0]['address2']; ?>" name="address2" style="text-transform: capitalize;" class="form-control" id="address2" required>
+              <input type="text" value="<?php echo $data[0]['address2']; ?>" name="address2" style="text-transform: capitalize;" class="form-control" id="address2" >
               <div class="invalid-feedback">
                 Please fill this field.
               </div>
             </div>
             <div class="form-group"> 
               <label for="address3">Address Line 3</label>
-              <input type="text" value="<?php echo $data[0]['address3']; ?>" name="address3" style="text-transform: capitalize;" class="form-control" id="address3" required>
+              <input type="text" value="<?php echo $data[0]['address3']; ?>" name="address3" style="text-transform: capitalize;" class="form-control" id="address3" >
               <div class="invalid-feedback">
                 Please fill this field.
               </div>
             </div>
             <div class="form-group"> 
               <label for="postcode">postcode</label>
-              <input type="text" value="<?php echo $data[0]['postcode']; ?>" name="postcode" style="text-transform: uppercase;" class="form-control" id="postcode" required>
+              <input type="text" value="<?php echo $data[0]['postcode']; ?>" name="postcode" style="text-transform: uppercase;" class="form-control" id="postcode" >
               <div class="invalid-feedback">
                 Please fill this field.
               </div>
             </div>
             <div class="form-group"> 
               <label for="contactname">Contact Name</label>
-              <input type="text" value="<?php echo $data[0]['contactname']; ?>" name="contactname" class="form-control" id="contactname" required>
+              <input type="text" value="<?php echo $data[0]['contactname']; ?>" name="contactname" class="form-control" id="contactname" >
               <div class="invalid-feedback">
                 Please fill this field.
               </div>
             </div>
             <div class="form-group"> 
               <label for="phone">Phone</label>
-              <input type="text" value="<?php echo $data[0]['phone']; ?>" name="phone" style="text-transform: capitalize;" class="form-control" id="phone" required>
+              <input type="text" value="<?php echo $data[0]['phone']; ?>" name="phone" style="text-transform: capitalize;" class="form-control" id="phone" >
               <div class="invalid-feedback">
                 Please fill this field.
               </div>
             </div>
             <div class="form-group"> 
               <label for="email">email</label>
-              <input type="email" value="<?php echo $data[0]['email']; ?>" name="email" class="form-control" id="email" required>
+              <input type="email" value="<?php echo $data[0]['email']; ?>" name="email" class="form-control" id="email">
               <div class="invalid-feedback">
                 Please fill this field.
               </div>
             </div>
             <div class="form-group"> 
               <label for="web">Web Address</label>
-              <input type="text" value="<?php echo $data[0]['web']; ?>" name="web" class="form-control" id="web" required>
+              <input type="text" value="<?php echo $data[0]['web']; ?>" name="web" class="form-control" id="web" >
               <div class="invalid-feedback">
                 Please fill this field.
               </div>
             </div>
             <div class="form-group"> 
               <label for="facebook">Facebook page link</label>
-              <input type="text" value="<?php echo $data[0]['facebook']; ?>" name="facebook" class="form-control" id="facebook" required>
+              <input type="text" value="<?php echo $data[0]['facebook']; ?>" name="facebook" class="form-control" id="facebook" >
               <div class="invalid-feedback">
                 Please fill this field.
               </div>
             </div>
             <div class="form-group"> 
               <label for="flickr">Flickr link</label>
-              <input type="text" value="<?php echo $data[0]['flickr']; ?>" name="flickr" class="form-control" id="flickr" required>
+              <input type="text" value="<?php echo $data[0]['flickr']; ?>" name="flickr" class="form-control" id="flickr" >
               <div class="invalid-feedback">
                 Please fill this field.
               </div>
             </div>
             <div class="form-group"> 
               <label for="twitter">Twitter link</label>
-              <input type="text" value="<?php echo $data[0]['twitter']; ?>" name="twitter" class="form-control" id="twitter" required>
+              <input type="text" value="<?php echo $data[0]['twitter']; ?>" name="twitter" class="form-control" id="twitter" >
               <div class="invalid-feedback">
                 Please fill this field.
               </div>
@@ -206,21 +197,21 @@
               <h4 class="col-sm-12">Opening Hours</h4>
               <div class="col-sm-4">
               <label for="mon-fri">Monday to Friday</label>
-              <input type="text" value="<?php echo $data[0]['mon-fri']; ?>" name="mon-fri" class="form-control" id="mon-fri" required>
+              <input type="text" value="<?php echo $data[0]['mon-fri']; ?>" name="mon-fri" class="form-control" id="mon-fri" >
               <div class="invalid-feedback">
                 Please fill this field.
               </div> 
             </div>
             <div class="col-sm-4">
               <label for="sat">Saturday</label>
-              <input type="text" value="<?php echo $data[0]['sat']; ?>" name="sat" class="form-control" id="sat" required>
+              <input type="text" value="<?php echo $data[0]['sat']; ?>" name="sat" class="form-control" id="sat" >
               <div class="invalid-feedback">
                 Please fill this field.
               </div> 
             </div>
             <div class="col-sm-4">
               <label for="sun">Sunday</label>
-              <input type="text" value="<?php echo $data[0]['sun']; ?>" name="sun" class="form-control" id="sun" required>
+              <input type="text" value="<?php echo $data[0]['sun']; ?>" name="sun" class="form-control" id="sun" >
               <div class="invalid-feedback">
                 Please fill this field.
               </div>
@@ -228,35 +219,35 @@
             </div>
             <div class="form-group"> 
               <label for="lat">latitude</label>
-              <input type="text" value="<?php echo $data[0]['lat']; ?>" name="lat" class="form-control" id="lat" required>
+              <input type="text" value="<?php echo $data[0]['lat']; ?>" name="lat" class="form-control" id="lat" >
               <div class="invalid-feedback">
                 Please fill this field.
               </div>
             </div>
             <div class="form-group"> 
               <label for="lon">Longitude</label>
-              <input type="text" value="<?php echo $data[0]['lon']; ?>" name="lon" class="form-control" id="lon" required>
+              <input type="text" value="<?php echo $data[0]['lon']; ?>" name="lon" class="form-control" id="lon" >
               <div class="invalid-feedback">
                 Please fill this field.
               </div>
             </div>
             <div class="form-group"> 
               <label for="security">Security</label>
-              <input type="text" value="<?php echo $data[0]['security']; ?>" name="security" class="form-control" id="security" required>
+              <input type="text" value="<?php echo $data[0]['security']; ?>" name="security" class="form-control" id="security" >
               <div class="invalid-feedback">
                 Please fill this field.
               </div>
             </div>
             <div class="form-group"> 
               <label for="channel">Channel</label>
-              <input type="text" value="<?php echo $data[0]['channel']; ?>" name="channel" class="form-control" id="channel" required>
+              <input type="text" value="<?php echo $data[0]['channel']; ?>" name="channel" class="form-control" id="channel" >
               <div class="invalid-feedback">
                 Please fill this field.
               </div>
             </div>
             <div class="form-group"> 
               <label for="position">Position</label>
-              <input type="text" value="<?php echo $data[0]['position']; ?>" name="position" class="form-control" id="position" required>
+              <input type="text" value="<?php echo $data[0]['position']; ?>" name="position" class="form-control" id="position" >
               <div class="invalid-feedback">
                 Please fill this field.
               </div>

@@ -1,6 +1,6 @@
 		<footer class="container">
 
-			<p class="float-right">My Home Port</p>
+			<p class="float-right">© My Home Port</p>
 
 		</footer>
 

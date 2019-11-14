@@ -114,8 +114,8 @@
         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
           <tr>
             <td align="center" valign="top" style="padding: 36px 24px;">
-              <a href="https://admin.myhomeport.info" target="_blank" style="display: inline-block;">
-                <img src="https://admin.myhomeport.info/uploads/logo-011.png" alt="Logo" border="0" width="208" style="display: block; width: 208px; max-width: 208px; min-width: 105px;">
+              <a href="<?php echo base_url('uploads/logo-011.png'); ?>" target="_blank" style="display: inline-block;">
+                <img src="<?php echo base_url('uploads/logo-011.png'); ?>/uploads/logo-011.png" alt="Logo" border="0" width="208" style="display: block; width: 208px; max-width: 208px; min-width: 105px;">
               </a>
             </td>
           </tr>
@@ -180,7 +180,7 @@
                     <table border="0" cellpadding="0" cellspacing="0">
                       <tr>
                         <td align="center" bgcolor="#1a82e2" style="border-radius: 6px;">
-                          <a href="https://admin.myhomeport.info/userlogin" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, 'raleway'; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">Login </a>
+                          <a href="<?php echo base_url('uploads/logo-011.png'); ?>/userlogin" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, 'raleway'; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">Login </a>
                         </td>
                       </tr>
                     </table>
@@ -203,7 +203,7 @@
           <tr>
             <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, 'raleway'; font-size: 16px; line-height: 24px;">
               <p style="margin: 0;">If that doesn't work, copy and paste the following link in your browser:</p>
-              <p style="margin: 0;"><a href="https://admin.myhomeport.info/userlogin" target="_blank">https://admin.myhomeport.info/userlogin</a></p>
+              <p style="margin: 0;"><a href="<?php echo base_url('uploads/logo-011.png'); ?>/userlogin" target="_blank"><?php echo base_url('uploads/logo-011.png'); ?>/userlogin</a></p>
             </td>
           </tr>
           <!-- end copy -->

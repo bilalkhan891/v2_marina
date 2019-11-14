@@ -3,9 +3,10 @@
 $method = $this->router->fetch_method();?>
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="<?php echo base_url('usermain'); ?>" class="<?php if ($class == 'usermain' && $method == 'index') {echo 'active';}?>">User Dashboard</a>
-  <a href="<?php echo base_url('usermain/userlist'); ?>" class="<?php if ($class == 'usermain' && $method == 'userlist') {echo 'active';}?>">Marina Users</a>
-  <a href="<?php echo base_url('usermain/contactdetails'); ?>" class="<?php if ($class == 'usermain' && $method == 'contactdetails') {echo 'active';}?>">Marina Contact Details</a>
-  <a href="<?php echo base_url('usermain/mrates'); ?>" class="<?php if ($class == 'usermain' && $method == 'mrates') {echo 'active';}?>">Marina Rates</a>
+  <a href="<?php echo base_url('usermain/userlist'); ?>" class="<?php if ($class == 'usermain' && $method == 'userlist') {echo 'active';}?>">Users</a>
+  <a href="<?php echo base_url('usermain/contactdetails'); ?>" class="<?php if ($class == 'usermain' && $method == 'contactdetails') {echo 'active';}?>">Contact Details</a>
+  <a href="<?php echo base_url('usermain/mrates'); ?>" class="<?php if ($class == 'usermain' && $method == 'mrates') {echo 'active';}?>">Berthing Rates</a>
+  <a href="<?php echo base_url('rates/updatebristolrates'); ?>" class="<?php if ($class == 'rates' && $method == 'updatebristolrates') {echo 'active';}?>" >Update Berthing Rates</a>  
   <a href="<?php echo base_url('usermain/lockclosures'); ?>" class="<?php if ($class == 'usermain' && $method == 'lockclosures') {echo 'active';}?>">Lock Closures</a>
   <a href="<?php echo base_url('usermain/tides'); ?>" class="<?php if ($class == 'usermain' && $method == 'tides') {echo 'active';}?>">Tide Times</a>
   <a href="<?php echo base_url('usermain/notifications'); ?>" class="<?php if ($class == 'usermain' && $method == 'notifications') {echo 'active';}?>">Push Notifications</a>

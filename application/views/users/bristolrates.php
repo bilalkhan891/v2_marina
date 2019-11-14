@@ -1,7 +1,8 @@
 <!-- Button trigger modal -->
 <div class="float-right"> 
-  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#boatlenghtModal">Calculate</button>
-  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalLong">Update Values</button> 
+ <?php if (isset($res)) { ?>
+  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#boatlenghtModal">Calculate Berthing Rates</button> 
+ <?php } ?>
 </div>
 <!-- Button trigger modal -->
  <?php echo $msg;  ?><br>
@@ -100,7 +101,7 @@
 </div>
 
 <div id="result">
-  <h5>Rates</h5>
+  <h5>Calculate Berthing Rates</h5>
   <table class="table table-condensed table-striped table-hover">   
     <thead>
       <?php if (isset($res)) {?>
@@ -113,7 +114,7 @@
           } ?></th>
         </tr>
       <?php } else {
-        echo "<br><br><br><br><h3 class='center green-text'>Click calculate button to fill the form.</h3><br><br><br><br>";
+        echo '<br><br><br><br><button type="button" class="btn btn-info" data-toggle="modal" data-target="#boatlenghtModal" style=" margin: auto; display: block; ">Calculate Berthing Rates</button><br><br><br><br>';
       } ?>
     </thead>
     <tbody>  
@@ -139,49 +140,7 @@
   </table> 
 </div>
  
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Update Values</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body"> 
-
-         <?php 
-          $attributes = array('class' => 'needs-validation', 'novalidate' => '');
-          echo form_open('usermain/updatebristolrates', $attributes);
-         ?>  
  
-          <div class="form-row">
-            <?php foreach ($dbValues as $key => $value) { ?>
-              <div class="col-md-12">
-                <label for="<?php echo $key ?>"><?php echo str_replace('_', ' ', $key) ?></label>
-                <input type="text" name="<?php echo $key ?>" value="<?php echo $value ?>" class="form-control form-control-sm" id="<?php echo $key ?>" required>
-                <div class="invalid-feedback">
-                  Fill this field.
-                </div>
-              </div> 
-            <?php } ?>
-          </div>    
-          
-          <div class="modal-footer">
-            <button class="btn btn-primary" type="submit">Submit form</button>
-          </div>
-        <?php echo form_close(); ?>
-
-       
-      </div>  
-    </div>
-  </div>
-</div>
-
-
-
-
 
 <script>
 $(document).ready(function(){  
