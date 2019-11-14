@@ -140,7 +140,7 @@ class Usermain extends CI_Controller {
 	}
 
 	public function addUser() {
-
+        $marinaId = $this->session->userdata('marinaid');
 		$name = ($this->input->post('name')) ? $this->input->post('name') : '';
 		$username = ($this->input->post('username')) ? $this->input->post('username') : '';
 		$email = ($this->input->post('email')) ? $this->input->post('email') : '';
@@ -173,7 +173,11 @@ class Usermain extends CI_Controller {
 		 $data = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name,  'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $this->session->userdata('marinaid'), 'ContactDetails' => $ContactDetails, 'BerthingRates' => $BerthingRates, 'UpdateBerthingRates' => $UpdateBerthingRates, 'LockClosures' => $LockClosures, 'TideTimes' => $TideTimes, 'TidesLocksGenerator' => $TidesLocksGenerator, 'PushNotifications' => $PushNotifications);
  
 
+<<<<<<< HEAD
 		/*$data = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name, 'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $marinaId);*/
+=======
+		$data = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name, 'role' => $role, 'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $marinaId);
+>>>>>>> b9815f022669b365c2a0714d1fd9f9f3214884b6
 
 			if ($this->mm->insertRow('userlogin', $data)) {
 
