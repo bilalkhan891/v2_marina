@@ -1,16 +1,37 @@
  <div id="mySidenav" class="sidenav" style="width:250px">
  	<?php $class = $this->router->fetch_class();
-$method = $this->router->fetch_method();?>
+$method = $this->router->fetch_method();
+/*
+echo $this->session->userdata('ContactDetails');
+print_r($this->session);*/
+?>
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="<?php echo base_url('usermain'); ?>" class="<?php if ($class == 'usermain' && $method == 'index') {echo 'active';}?>">User Dashboard</a>
   <a href="<?php echo base_url('usermain/userlist'); ?>" class="<?php if ($class == 'usermain' && $method == 'userlist') {echo 'active';}?>">Users</a>
+  
+<?php if ($this->session->userdata('ContactDetails') == 'yes'): ?>
   <a href="<?php echo base_url('usermain/contactdetails'); ?>" class="<?php if ($class == 'usermain' && $method == 'contactdetails') {echo 'active';}?>">Contact Details</a>
+<?php endif; ?>
+ 
+<?php if ($this->session->userdata('BerthingRates') == 'yes'): ?>
   <a href="<?php echo base_url('usermain/mrates'); ?>" class="<?php if ($class == 'usermain' && $method == 'mrates') {echo 'active';}?>">Berthing Rates</a>
+<?php endif; ?>
+
+<?php if ($this->session->userdata('UpdateBerthingRates') == 'yes'): ?>
   <a href="<?php echo base_url('rates/updatebristolrates'); ?>" class="<?php if ($class == 'rates' && $method == 'updatebristolrates') {echo 'active';}?>" >Update Berthing Rates</a>  
+<?php endif; ?>
+<?php if ($this->session->userdata('LockClosures') == 'yes'): ?>
   <a href="<?php echo base_url('usermain/lockclosures'); ?>" class="<?php if ($class == 'usermain' && $method == 'lockclosures') {echo 'active';}?>">Lock Closures</a>
+<?php endif; ?>
+<?php if ($this->session->userdata('TideTimes') == 'yes'): ?>
   <a href="<?php echo base_url('usermain/tides'); ?>" class="<?php if ($class == 'usermain' && $method == 'tides') {echo 'active';}?>">Tide Times</a>
+<?php endif; ?>
+<?php if ($this->session->userdata('PushNotifications') == 'yes'): ?>
   <a href="<?php echo base_url('usermain/notifications'); ?>" class="<?php if ($class == 'usermain' && $method == 'notifications') {echo 'active';}?>">Push Notifications</a>
+<?php endif; ?>
+<?php if ($this->session->userdata('TidesLocksGenerator') == 'yes'): ?>
   <a href="<?php echo base_url('usermain/downloadcsv'); ?>" class="<?php if ($class == 'usermain' && $method == 'downloadcsv') {echo 'active';}?>">Tides & Locks Generator</a>
+<?php endif; ?>
 </div>
 
 

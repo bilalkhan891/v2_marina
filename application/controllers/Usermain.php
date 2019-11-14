@@ -145,7 +145,17 @@ class Usermain extends CI_Controller {
 		$username = ($this->input->post('username')) ? $this->input->post('username') : '';
 		$email = ($this->input->post('email')) ? $this->input->post('email') : '';
 		$phone = ($this->input->post('phone')) ? $this->input->post('phone') : '';
-		$role = ($this->input->post('role')) ? $this->input->post('role') : '';
+		//$marinaid = $this->session->userdata('marinaid');
+
+		$ContactDetails = ($this->input->post('ContactDetails')) ? $this->input->post('ContactDetails') : '';
+		$BerthingRates = ($this->input->post('BerthingRates')) ? $this->input->post('BerthingRates') : '';
+		$UpdateBerthingRates = ($this->input->post('UpdateBerthingRates')) ? $this->input->post('UpdateBerthingRates') : '';
+		$LockClosures = ($this->input->post('LockClosures')) ? $this->input->post('LockClosures') : '';
+		$TideTimes = ($this->input->post('TideTimes')) ? $this->input->post('TideTimes') : '';
+		$PushNotifications = ($this->input->post('PushNotifications')) ? $this->input->post('PushNotifications') : '';
+		$TidesLocksGenerator = ($this->input->post('TidesLocksGenerator')) ? $this->input->post('TidesLocksGenerator') : '';
+
+
 		$password = sha1(($this->input->post('password')) ? $this->input->post('password') : '');
 
 		$data['usernameexists'] = $this->mm->fetchArr('userlogin', '', ['username' => $username]);
@@ -160,10 +170,10 @@ class Usermain extends CI_Controller {
 			$this->session->set_flashdata('msg', '<span class="alert-danger alert float-left">Email already exists, try another one.</span>');
 		} else {
 
-		/*	$data = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name,  'role' => $role, 'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $this->session->userdata('marinaid'));
-*/
+		 $data = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name,  'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $this->session->userdata('marinaid'), 'ContactDetails' => $ContactDetails, 'BerthingRates' => $BerthingRates, 'UpdateBerthingRates' => $UpdateBerthingRates, 'LockClosures' => $LockClosures, 'TideTimes' => $TideTimes, 'TidesLocksGenerator' => $TidesLocksGenerator, 'PushNotifications' => $PushNotifications);
+ 
 
-		$data = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name, 'role' => $role, 'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $marinaId);T
+		/*$data = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name, 'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $marinaId);*/
 
 			if ($this->mm->insertRow('userlogin', $data)) {
 
@@ -185,14 +195,25 @@ class Usermain extends CI_Controller {
 	public function updateUser() {
 		$id = ($this->input->post('id')) ? $this->input->post('id') : '';
 		$username = ($this->input->post('username')) ? $this->input->post('username') : '';
-		$name = ($this->input->post('name')) ? $this->input->post('name') : '';
-		$role = ($this->input->post('role')) ? $this->input->post('role') : '';
+		$name = ($this->input->post('name')) ? $this->input->post('name') : ''; 
+
+		$ContactDetails = ($this->input->post('ContactDetails')) ? $this->input->post('ContactDetails') : '';
+
+		$BerthingRates = ($this->input->post('BerthingRates')) ? $this->input->post('BerthingRates') : '';
+		$UpdateBerthingRates = ($this->input->post('UpdateBerthingRates')) ? $this->input->post('UpdateBerthingRates') : '';
+		$LockClosures = ($this->input->post('LockClosures')) ? $this->input->post('LockClosures') : '';
+		$TideTimes = ($this->input->post('TideTimes')) ? $this->input->post('TideTimes') : '';
+		$PushNotifications = ($this->input->post('PushNotifications')) ? $this->input->post('PushNotifications') : '';
+		$TidesLocksGenerator = ($this->input->post('TidesLocksGenerator')) ? $this->input->post('TidesLocksGenerator') : '';
+
+
+
 		$email = ($this->input->post('email')) ? $this->input->post('email') : '';
 		$phone = ($this->input->post('phone')) ? $this->input->post('phone') : '';
 		$status = ($this->input->post('status')) ? $this->input->post('status') : '';
 
 		$where = array('id' => $id, 'id !=' => '1');
-		$data = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name,  'role' => $role, 'phone' => $phone, 'status' => $status);
+		$data = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name,  'phone' => $phone, 'status' => $status, 'ContactDetails' => $ContactDetails, 'BerthingRates' => $BerthingRates, 'UpdateBerthingRates' => $UpdateBerthingRates, 'LockClosures' => $LockClosures, 'TideTimes' => $TideTimes, 'TidesLocksGenerator' => $TidesLocksGenerator, 'PushNotifications' => $PushNotifications);
 
 		if ($this->mm->updateRow('userlogin', $data, $where)) {
 			redirect('usermain/userlist');
