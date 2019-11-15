@@ -7,7 +7,10 @@ print_r($this->session);*/
 ?>
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="<?php echo base_url('usermain'); ?>" class="<?php if ($class == 'usermain' && $method == 'index') {echo 'active';}?>">User Dashboard</a>
-  <a href="<?php echo base_url('usermain/userlist'); ?>" class="<?php if ($class == 'usermain' && $method == 'userlist') {echo 'active';}?>">Users</a>
+  
+  <?php if ($this->session->userdata('ContactDetails') == 'yes'): ?>
+  <a href="<?php echo base_url('usermain/userlist'); ?>" class="<?php if ($class == 'usermain' && $method == 'userlist') {echo 'active';}?>">Manage Users</a>
+  <?php endif; ?>
   
 <?php if ($this->session->userdata('ContactDetails') == 'yes'): ?>
   <a href="<?php echo base_url('usermain/contactdetails'); ?>" class="<?php if ($class == 'usermain' && $method == 'contactdetails') {echo 'active';}?>">Contact Details</a>

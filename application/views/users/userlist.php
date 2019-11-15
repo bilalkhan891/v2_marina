@@ -30,7 +30,7 @@
         <td class="<?php if($row['status'] == 'Approved') {echo 'approved';} else {echo 'unapproved';} ?>"><?php echo $row['status']; ?></td>
         <td class="row">
         	<?php if($i != 1) { ?>
-	        	<a class="col-md-5 bg-info" href="#!" onclick="editRecord( '<?php echo $row['id']?>', '<?php echo $row['username']?>', '<?php echo $row['email']?>', '<?php echo $row['phone']?>', '<?php echo $row['status']; ?>', '<?php echo $row['name']; ?>',  '<?php echo $row['ContactDetails']?>' ,  '<?php echo $row['BerthingRates']?>' ,  '<?php echo $row['UpdateBerthingRates']?>' ,  '<?php echo $row['LockClosures']?>' ,  '<?php echo $row['TideTimes']?>' ,  '<?php echo $row['PushNotifications']?>' ,  '<?php echo $row['TidesLocksGenerator']?>' )" title="Edit" data-toggle="modal" data-target=".update"><i class="fas fa-edit center text-white" type="javascript:;"></i></a>
+	        	<a class="col-md-5 bg-info" href="#!" onclick="editRecord( '<?php echo $row['id']?>', '<?php echo $row['username']?>', '<?php echo $row['email']?>', '<?php echo $row['phone']?>', '<?php echo $row['status']; ?>', '<?php echo $row['name']; ?>',  '<?php echo $row['ContactDetails']?>' ,  '<?php echo $row['BerthingRates']?>' ,  '<?php echo $row['UpdateBerthingRates']?>' ,  '<?php echo $row['LockClosures']?>' ,  '<?php echo $row['TideTimes']?>' ,  '<?php echo $row['PushNotifications']?>' ,  '<?php echo $row['TidesLocksGenerator']?>' ,  '<?php echo $row['ManageUser']?>' )" title="Edit" data-toggle="modal" data-target=".update"><i class="fas fa-edit center text-white" type="javascript:;"></i></a>
 	        	<a class="col-md-5 bg-danger" href="<?php echo base_url('usermain/deleteuser/'.$row['id']); ?>" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash center text-white"></i></a>
 	        <?php } ?>
         </td>
@@ -45,7 +45,7 @@
     return data.toLowerCase();
   }
 
-  function editRecord(id, username, email, phone, status, name, ContactDetails, BerthingRates, UpdateBerthingRates, LockClosures, TideTimes, PushNotifications, TidesLocksGenerator){
+  function editRecord(id, username, email, phone, status, name, ContactDetails, BerthingRates, UpdateBerthingRates, LockClosures, TideTimes, PushNotifications, TidesLocksGenerator, ManageUser){
     $('.update #id').val(id); 
     $('.update #name').val(name); 
     $('.update #username').val(username); 
@@ -71,6 +71,9 @@ if(PushNotifications == 'yes'){
   $('input[name="PushNotifications"]').attr('checked', 'checked');
 }
 if(TidesLocksGenerator == 'yes'){
+  $('input[name="TidesLocksGenerator"]').attr('checked', 'checked');
+}
+if(ManageUser == 'yes'){
   $('input[name="TidesLocksGenerator"]').attr('checked', 'checked');
 }
  
@@ -139,10 +142,15 @@ if(TidesLocksGenerator == 'yes'){
               </div>
             </div>
 
-
+<br>
               <h5>Assign below roles for marina user.</h5>
 
-
+<br>
+             <div class="form-check">
+                <label class="form-check-label">
+                <input type="checkbox" name="ManageUser" class="form-check-input" value="yes">
+                Manage Users</label>
+              </div>
               <div class="form-check">
                 <label class="form-check-label">
                 <input type="checkbox" name="ContactDetails" class="form-check-input" value="yes">
@@ -257,10 +265,14 @@ if(TidesLocksGenerator == 'yes'){
             </div>
 
 
-
+<br>
              <h5>Assign below roles for marina user.</h5>
-
-
+<br>
+            <div class="form-check">
+                <label class="form-check-label">
+                <input type="checkbox" name="ManageUser" class="form-check-input" value="yes">
+                Manage Users</label>
+              </div>
               <div class="form-check">
                 <label class="form-check-label">
                 <input type="checkbox" name="ContactDetails" class="form-check-input" value="yes">

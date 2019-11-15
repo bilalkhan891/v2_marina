@@ -46,7 +46,7 @@ class Userlogin extends CI_Controller {
 					'annualid' => $userdata['idsdata'][0]['annualid'],
 					'contactid' => $userdata['idsdata'][0]['contactid'],
 					'creditcardsurchargeid' => $userdata['idsdata'][0]['creditcardsurchargeid'],
-					'electircityid' => $userdata['idsdata'][0]['electircityid'],
+//					'electircityid' => $userdata['idsdata'][0]['electircityid'],
 					'harbourid' => $userdata['idsdata'][0]['harbourid'],
 					'hoistid' => $userdata['idsdata'][0]['hoistid'],
 					'premiumsanddiscountsid' => $userdata['idsdata'][0]['premiumsanddiscountsid'],
