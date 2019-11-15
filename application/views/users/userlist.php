@@ -25,13 +25,12 @@
         <td><?php echo $row['username']; ?></td>
         <td><?php echo $row['name']; ?></td>
         <td><?php echo $row['email']; ?></td>
-        <td><?php echo $row['phone']; ?></td>
-        <td><?php echo $row['role']; ?></td>
+        <td><?php echo $row['phone']; ?></td> 
         <td><?php echo $row['date']; ?></td>
         <td class="<?php if($row['status'] == 'Approved') {echo 'approved';} else {echo 'unapproved';} ?>"><?php echo $row['status']; ?></td>
         <td class="row">
         	<?php if($i != 1) { ?>
-	        	<a class="col-md-5 bg-info" href="#!" onclick="editRecord( '<?php echo $row['id']?>', '<?php echo $row['username']?>', '<?php echo $row['email']?>', '<?php echo $row['phone']?>', '<?php echo $row['status']; ?>', '<?php echo $row['name']; ?>',  '<?php echo $row['role']?>' )" title="Edit" data-toggle="modal" data-target=".update"><i class="fas fa-edit center text-white" type="javascript:;"></i></a>
+	        	<a class="col-md-5 bg-info" href="#!" onclick="editRecord( '<?php echo $row['id']?>', '<?php echo $row['username']?>', '<?php echo $row['email']?>', '<?php echo $row['phone']?>', '<?php echo $row['status']; ?>', '<?php echo $row['name']; ?>',  '<?php echo $row['ContactDetails']?>' ,  '<?php echo $row['BerthingRates']?>' ,  '<?php echo $row['UpdateBerthingRates']?>' ,  '<?php echo $row['LockClosures']?>' ,  '<?php echo $row['TideTimes']?>' ,  '<?php echo $row['PushNotifications']?>' ,  '<?php echo $row['TidesLocksGenerator']?>' )" title="Edit" data-toggle="modal" data-target=".update"><i class="fas fa-edit center text-white" type="javascript:;"></i></a>
 	        	<a class="col-md-5 bg-danger" href="<?php echo base_url('usermain/deleteuser/'.$row['id']); ?>" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash center text-white"></i></a>
 	        <?php } ?>
         </td>
@@ -46,23 +45,35 @@
     return data.toLowerCase();
   }
 
-  function editRecord(id, username, email, phone, status, name, role){
+  function editRecord(id, username, email, phone, status, name, ContactDetails, BerthingRates, UpdateBerthingRates, LockClosures, TideTimes, PushNotifications, TidesLocksGenerator){
     $('.update #id').val(id); 
     $('.update #name').val(name); 
     $('.update #username').val(username); 
     $('.update #email').val(email); 
     $('.update #phone').val(phone); 
 
-
-$('input.role').each(function () {
-
-        var v = $(this).val();
- //alert()
-        if (v == role) {
-            $(this).attr('checked', 'checked');
-        }
-
-    });
+if(ContactDetails == 'yes'){
+  $('input[name="ContactDetails"]').attr('checked', 'checked');
+}
+if(BerthingRates == 'yes'){
+  $('input[name="BerthingRates"]').attr('checked', 'checked');
+}
+if(UpdateBerthingRates == 'yes'){
+  $('input[name="UpdateBerthingRates"]').attr('checked', 'checked');
+}
+if(LockClosures == 'yes'){
+  $('input[name="LockClosures"]').attr('checked', 'checked');
+}
+if(TideTimes == 'yes'){
+  $('input[name="TideTimes"]').attr('checked', 'checked');
+}
+if(PushNotifications == 'yes'){
+  $('input[name="PushNotifications"]').attr('checked', 'checked');
+}
+if(TidesLocksGenerator == 'yes'){
+  $('input[name="TidesLocksGenerator"]').attr('checked', 'checked');
+}
+ 
 
 
     //$('.update #phone').val(phone);  
@@ -129,31 +140,54 @@ $('input.role').each(function () {
             </div>
 
 
+              <h5>Assign below roles for marina user.</h5>
 
 
-            <div class="radio">
-              <h5>Assing one of the following roles for marina user.</h5>
-              <label>
-                <input type="radio" name="role" class="role" value="read" checked>
-                Read Role
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="role" class="role"  value="lock">
-                Lock role
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="role" class="role" value="other">
-                Other
-              </label>
-            </div> 
+              <div class="form-check">
+                <label class="form-check-label">
+                <input type="checkbox" name="ContactDetails" class="form-check-input" value="yes">
+                Contact Details</label>
+              </div>
 
+               <div class="form-check">
+                <label class="form-check-label">
+                <input type="checkbox" name="BerthingRates" class="form-check-input" value="yes">
+                Berthing Rates</label>
+              </div>
+              
 
+               <div class="form-check">
+                <label class="form-check-label">
+                <input type="checkbox" name="UpdateBerthingRates" class="form-check-input" value="yes">
+                 Update Berthing Rates</label>
+              </div>
+              
 
+               <div class="form-check">
+                <label class="form-check-label">
+                <input type="checkbox" name="LockClosures" class="form-check-input" value="yes">
+                Lock Closures</label>
+              </div>
+              
 
+               <div class="form-check">
+                <label class="form-check-label">
+                <input type="checkbox" name="TideTimes" class="form-check-input" value="yes">
+                Tide Times</label>
+              </div>
+              
+
+               <div class="form-check">
+                <label class="form-check-label">
+                <input type="checkbox" name="PushNotifications" class="form-check-input" value="yes">
+                Push Notifications</label>
+              </div>
+
+               <div class="form-check">
+                <label class="form-check-label">
+                <input type="checkbox" name="TidesLocksGenerator" class="form-check-input" value="yes">
+                Tides & Locks Generator</label>
+              </div>
 
 
           </div>
@@ -224,25 +258,54 @@ $('input.role').each(function () {
 
 
 
-            <div class="radio">
-              <h5>Assing one of the following roles for marina user.</h5>
-              <label>
-                <input type="radio" name="role" id="optionsRadios1" value="read" checked>
-                Read Role
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="role" id="optionsRadios2" value="lock">
-                Lock role
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="role" id="optionsRadios2" value="other">
-                Other
-              </label>
-            </div> 
+             <h5>Assign below roles for marina user.</h5>
+
+
+              <div class="form-check">
+                <label class="form-check-label">
+                <input type="checkbox" name="ContactDetails" class="form-check-input" value="yes">
+                Contact Details</label>
+              </div>
+
+               <div class="form-check">
+                <label class="form-check-label">
+                <input type="checkbox" name="BerthingRates" class="form-check-input" value="yes">
+                Berthing Rates</label>
+              </div>
+              
+
+               <div class="form-check">
+                <label class="form-check-label">
+                <input type="checkbox" name="UpdateBerthingRates" class="form-check-input" value="yes">
+                 Update Berthing Rates</label>
+              </div>
+              
+
+               <div class="form-check">
+                <label class="form-check-label">
+                <input type="checkbox" name="LockClosures" class="form-check-input" value="yes">
+                Lock Closures</label>
+              </div>
+              
+
+               <div class="form-check">
+                <label class="form-check-label">
+                <input type="checkbox" name="TideTimes" class="form-check-input" value="yes">
+                Tide Times</label>
+              </div>
+              
+
+               <div class="form-check">
+                <label class="form-check-label">
+                <input type="checkbox" name="PushNotifications" class="form-check-input" value="yes">
+                Push Notifications</label>
+              </div>
+
+               <div class="form-check">
+                <label class="form-check-label">
+                <input type="checkbox" name="TidesLocksGenerator" class="form-check-input" value="yes">
+                Tides & Locks Generator</label>
+              </div>
 
 
 

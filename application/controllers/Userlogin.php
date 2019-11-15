@@ -56,7 +56,13 @@ class Userlogin extends CI_Controller {
 					'visitorid' => $userdata['idsdata'][0]['visitorid'],
 					'winterid' => $userdata['idsdata'][0]['winterid'],
 					'marinaid' => $marinausername['id'],
-					'role' => (string) $userdata[0]['role'],
+					'ContactDetails' => (string) $userdata[0]['ContactDetails'],
+					'BerthingRates' => (string) $userdata[0]['BerthingRates'],
+					'UpdateBerthingRates' => (string) $userdata[0]['UpdateBerthingRates'],
+					'LockClosures' => (string) $userdata[0]['LockClosures'],
+					'TideTimes' => (string) $userdata[0]['TideTimes'],
+					'PushNotifications' => (string) $userdata[0]['PushNotifications'],
+					'TidesLocksGenerator' => (string) $userdata[0]['TidesLocksGenerator'],
 				);
 
 				$this->session->set_userdata($sessions);

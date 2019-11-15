@@ -215,6 +215,13 @@ class Marinas extends CI_Controller {
       'status'     => 'Approved',
       'ids_id'     => '',
       'marinaid'   => $ids['marinas'],
+      'ContactDetails'   => 'yes',
+      'BerthingRates'   => 'yes',
+      'UpdateBerthingRates'   => 'yes',
+      'LockClosures'   => 'yes',
+      'TideTimes'   => 'yes',
+      'PushNotifications'   => 'yes',
+      'TidesLocksGenerator'   => 'yes',
       'created_by' => $this->session->userdata('username')
     );
 
