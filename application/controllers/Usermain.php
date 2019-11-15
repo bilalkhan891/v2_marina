@@ -235,6 +235,10 @@ class Usermain extends CI_Controller {
 			// .dynamic values
 			
 			$data['length'] = round($data['length'] * 2) / 2;
+            if ($data['length'] < $dbValues['Minimum_Boat_Length_Charges']) {
+                $data['length'] = $dbValues['Minimum_Boat_Length_Charges'];
+            }
+            echo $data['length'] ."  Minimum Boat Length: ". $dbValues['Minimum_Boat_Length_Charges']; die;
 			if ($data['btype'] == 'Visiting') {
 			    $ek     = 1.95; 
 			    $do     = 1.65; 
