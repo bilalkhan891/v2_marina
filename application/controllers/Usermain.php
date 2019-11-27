@@ -27,7 +27,7 @@ class Usermain extends CI_Controller {
 	}
 
 	public function downloadCSV($d = ''){
-         error_reporting(0);
+        error_reporting(0);
 		if ($d == 'download' ) {
 			$this->load->helper('download'); 
 
@@ -140,24 +140,39 @@ class Usermain extends CI_Controller {
 	}
 
 	public function addUser() {
+
         $marinaId = $this->session->userdata('marinaid');
-		$name = ($this->input->post('name')) ? $this->input->post('name') : '';
+		$fname = ($this->input->post('fname')) ? $this->input->post('fname') : '';
+		$lname = ($this->input->post('lname')) ? $this->input->post('lname') : '';
+		$name =  $fname." ".$lname;
 		$username = ($this->input->post('username')) ? $this->input->post('username') : '';
 		$email = ($this->input->post('email')) ? $this->input->post('email') : '';
 		$phone = ($this->input->post('phone')) ? $this->input->post('phone') : '';
 		//$marinaid = $this->session->userdata('marinaid');
 
-		$ContactDetails = ($this->input->post('ContactDetails')) ? $this->input->post('ContactDetails') : '';
-		$BerthingRates = ($this->input->post('BerthingRates')) ? $this->input->post('BerthingRates') : '';
-		$UpdateBerthingRates = ($this->input->post('UpdateBerthingRates')) ? $this->input->post('UpdateBerthingRates') : '';
-		$LockClosures = ($this->input->post('LockClosures')) ? $this->input->post('LockClosures') : '';
-		$TideTimes = ($this->input->post('TideTimes')) ? $this->input->post('TideTimes') : '';
-		$PushNotifications = ($this->input->post('PushNotifications')) ? $this->input->post('PushNotifications') : '';
-		$TidesLocksGenerator = ($this->input->post('TidesLocksGenerator')) ? $this->input->post('TidesLocksGenerator') : '';
-		$ManageUser = ($this->input->post('ManageUser')) ? $this->input->post('ManageUser') : '';
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('password', 'Password', 'required|min_length[8]|alpha_numeric');
 
+		if ($this->form_validation->run() == FALSE) {
+ 
+            $this->session->set_flashdata('msg', '<span class="alert-success alert float-left">'.validation_errors().'</span>');
+             
+            redirect('usermain/userlist');
+        }
+ 
 
-		$password = sha1(($this->input->post('password')) ? $this->input->post('password') : '');
+		$ContactDetails = ($this->input->post('ContactDetails')) ? $this->input->post('ContactDetails') : 'no';
+		$BerthingRates = ($this->input->post('BerthingRates')) ? $this->input->post('BerthingRates') : 'no';
+		$UpdateBerthingRates = ($this->input->post('UpdateBerthingRates')) ? $this->input->post('UpdateBerthingRates') : 'no';
+		$LockClosures = ($this->input->post('LockClosures')) ? $this->input->post('LockClosures') : 'no';
+		$TideTimes = ($this->input->post('TideTimes')) ? $this->input->post('TideTimes') : 'no';
+		$PushNotifications = ($this->input->post('PushNotifications')) ? $this->input->post('PushNotifications') : 'no';
+		$TidesLocksGenerator = ($this->input->post('TidesLocksGenerator')) ? $this->input->post('TidesLocksGenerator') : 'no';
+		$ManageUser = ($this->input->post('ManageUser')) ? $this->input->post('ManageUser') : 'no';
+
+		$password = ($this->input->post('password') ? $this->input->post('password') : '');
+
+		// echo $ContactDetails . " " . $BerthingRates . " " . $UpdateBerthingRates . " " . $LockClosures . " " . $TideTimes . " " . $PushNotifications . " " . $TidesLocksGenerator . " " . $ManageUser; die;
 
 		$data['usernameexists'] = $this->mm->fetchArr('userlogin', '', ['username' => $username]);
 		$data['emailnameexists'] = $this->mm->fetchArr('userlogin', '', ['email' => $email]);
@@ -165,22 +180,21 @@ class Usermain extends CI_Controller {
 		$data['data']['name'] = $name;
 		$data['data']['username'] = $username;
 		$data['data']['password'] = $password;
+
 		if (!empty($data['usernameexists'])) {
 			$this->session->set_flashdata('msg', '<span class="alert-danger alert float-left">Username already exists, try another one.</span>');
 		} elseif (!empty($data['emailnameexists'])){
 			$this->session->set_flashdata('msg', '<span class="alert-danger alert float-left">Email already exists, try another one.</span>');
 		} else {
 
-		 $data = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name,  'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $this->session->userdata('marinaid'), 'ContactDetails' => $ContactDetails, 'BerthingRates' => $BerthingRates, 'UpdateBerthingRates' => $UpdateBerthingRates, 'LockClosures' => $LockClosures, 'TideTimes' => $TideTimes, 'TidesLocksGenerator' => $TidesLocksGenerator, 'PushNotifications' => $PushNotifications, 'ManageUser' => $ManageUser);
+		 $dbdata = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name,  'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => sha1($password), 'marinaid' => $this->session->userdata('marinaid'), 'ContactDetails' => $ContactDetails, 'BerthingRates' => $BerthingRates, 'UpdateBerthingRates' => $UpdateBerthingRates, 'LockClosures' => $LockClosures, 'TideTimes' => $TideTimes, 'TidesLocksGenerator' => $TidesLocksGenerator, 'PushNotifications' => $PushNotifications, 'ManageUser' => $ManageUser);
+ 
+		/*$dbdata = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name, 'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $marinaId);*/
+ 
+		// $dbdata = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name, 'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $marinaId);
  
 
- 
-		/*$data = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name, 'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $marinaId);*/
- 
-		$data = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name, 'role' => $role, 'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $marinaId);
- 
-
-			if ($this->mm->insertRow('userlogin', $data)) {
+			if ($this->mm->insertRow('userlogin', $dbdata)) {
 
 				 $this->mailgun($name, $email, $this->load->view('email/createuser', $data, TRUE), 'account created.');
 
@@ -261,10 +275,9 @@ class Usermain extends CI_Controller {
 			// .dynamic values
 			
 			$data['length'] = round($data['length'] * 2) / 2;
-            if ($data['length'] < $dbValues['Minimum_Boat_Length_Charges']) {
-                $data['length'] = $dbValues['Minimum_Boat_Length_Charges'];
-            }
-            echo $data['length'] ."  Minimum Boat Length: ". $dbValues['Minimum_Boat_Length_Charges']; die;
+            if ($data['length'] < $dbValues['Minimum_Boat_Length']) {
+                $data['length'] = $dbValues['Minimum_Boat_Length'];
+            } 
 			if ($data['btype'] == 'Visiting') {
 			    $ek     = 1.95; 
 			    $do     = 1.65; 

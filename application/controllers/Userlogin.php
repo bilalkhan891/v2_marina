@@ -63,6 +63,7 @@ class Userlogin extends CI_Controller {
 					'TideTimes' => (string) $userdata[0]['TideTimes'],
 					'PushNotifications' => (string) $userdata[0]['PushNotifications'],
 					'TidesLocksGenerator' => (string) $userdata[0]['TidesLocksGenerator'],
+                    'ManageUser' => (string) $userdata[0]['ManageUser'],
 				);
 
 				$this->session->set_userdata($sessions);
@@ -215,7 +216,7 @@ class Userlogin extends CI_Controller {
 
 	public function mailgun($name = '', $to = '', $view = '', $subject = ''){
 		#guzzle library add to use guzzle
-		  $this->load->library('guzzle');
+		  $this->load->library('Guzzle');
 
 		  # guzzle client define
 		  $client     = new GuzzleHttp\Client(['auth' => ['api', 'key-34c2df2afbdc92e783b7c8535f8eb307']]);

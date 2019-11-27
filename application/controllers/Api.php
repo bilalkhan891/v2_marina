@@ -230,14 +230,30 @@ class Api extends REST_Controller {
   
         $order['by'] = 'date';
         $order['order'] = 'ASC';
-        $data = $this->mm->fetchArr('tides', ['date', 'time', 'height', 'state'], ['date >=' => $start, 'date <=' => Date('Y-m-d', strtotime($start." +".$days." days")), 'marinaid' => $marinaId], NULL, $order);
+        $filter_date = "'".Date('Y-m-d', strtotime($start+$days+' days'))."'";
+        // $data = $this->mm->fetchArr('tides', ['date', 'time', 'height', 'state'], ['date >=' => $start, 'date <=' => Date('Y-m-d', strtotime($start." +".$days." days")), 'marinaid' => $marinaId], NULL, $order);
+        $sql = "SELECT date, time, height, state,
+                       CONCAT_WS(' ', date, time) concat_result
+                  FROM tides WHERE date <= '".Date('Y-m-d', strtotime($start." +".$days." days"))."' AND date >= '".$start."'  AND marinaid = $marinaId
+                 ORDER BY concat_result ASC";
+                // echo $sql;  die;
+                
+        //$data =    $this->db->query($sql);
+
+
+$data = $this->db->query($sql);
+
+// foreach ($query->result_array() as $row)
+
+                // 
+                 //$data = json_decode(json_encode($data), true);
  
         $count = 0;
         $count1 = -1;
         $c1 = 0;
         $d1[$count1]['date'] = '';
 
-        foreach ($data as $row) {
+        foreach ($data->result_array() as $row) {
              // print_r($d1[$count1]['date'] . " = " . date("d-m-Y", strtotime($row['date'])) . "- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"); 
             if ($d1[$count1]['date'] != date("Y-m-d", strtotime($row['date']))) {
 
@@ -251,7 +267,7 @@ class Api extends REST_Controller {
             $d1[$count1]['tides'][$c1] = array('status' => $row['state'], 'time' => $row['time'], 'height' => $row['height']);
             $c1++;
 
-        }
+        }   
         unset($d1[-1]);
         $this->response($d1, REST_Controller::HTTP_OK);
     }
@@ -572,9 +588,14 @@ class Api extends REST_Controller {
         $Temple_Quay_With_Services      = $dbValues['Temple_Quay_With_Services'];
         $Pontoon_Temple_Back  = $dbValues['Pontoon_Temple_Back'];
         $Winter_Berth     = $dbValues['Winter_Berth'];
-        $Pontoon_Hanover_Quay     = $dbValues['Pontoon_Hanover_Quay'];
+        $Pontoon_Hanover_Quay     = $dbValues['Pontoon_Hanover_Quay']; 
         // .dynamic values
-        
+        $ek     = 1.95; 
+        $do     = 1.65; 
+        $teen   = 1.26;
+        $char   = 0.93;
+
+
         if ($data == null || !isset($data['length']) || !isset($data['multiHull']) || !isset($data['berthingType']) || !isset($data['days'])) {
             $this->response([
                 'status' => false,
@@ -591,14 +612,13 @@ class Api extends REST_Controller {
             $data['length'] = $data['length'] * 0.3048;
         } 
         $data['length'] = round($data['length'] * 2) / 2;
-        $data['length'] = ($data['length'] < 4) ? $data['length'] = 4 : $data['length'] = $data['length'];
+        if ($data['length'] < $dbValues['Minimum_Boat_Length']) {
+            $data['length'] = $dbValues['Minimum_Boat_Length'];
+        }
         $response['boatLength'] = number_format($data['length'], 2, '.', '') . "m";
          
         if ($data['berthingType'] == 'Visiting') {
-            $ek     = 1.95; 
-            $do     = 1.65; 
-            $teen   = 1.26;
-            $char   = 0.93; 
+            
             if ($data['days'] == 1 &&  $data['multiHull']=="No")   { 
                 $res['Visiting Cost For '.$data['days'].' Days:'] = number_format($data['length']*$ek, 2, '.', '');
             } elseif ($data['days'] == 1 &&  $data['multiHull']=="Yes")  { 
@@ -661,6 +681,35 @@ class Api extends REST_Controller {
             $i++;
         }
         
+        if ($data['berthingType'] == 'Visiting') {
+
+            $response['insurance'] = array(
+                'description' => 'Public Liability Insurance is available and can be purchased when paying your visiting fee',
+                'rates' => array(
+                    array(
+                        'index' => '0',
+                        'name' => '24 hrs',
+                        'value' => $dbValues['24_Hours_Insurance']
+                    ),
+                    array(
+                        'index' => '1',
+                        'name' => '48 hrs',
+                        'value' => $dbValues['48_Hours_Insurance']
+                    ),
+                    array(
+                        'index' => '2',
+                        'name' => '7 days',
+                        'value' => $dbValues['7_Days_Insurance']
+                    ),
+                    array(
+                        'index' => '3',
+                        'name' => '14 days',
+                        'value' => $dbValues['14_Days_Insurance']
+                    ), 
+                ),
+                
+            );   
+        }
 
         $this->response($response, REST_Controller::HTTP_OK); 
     }
@@ -783,4 +832,40 @@ class Api extends REST_Controller {
             }
         }  
     }
+    
+    public function ratesdetail_get($marina = null) {
+        if ($marina === null) {
+            // Set the response and exit
+            $this->response([
+                'status' => false,
+                'message' => 'Something went wrong with parameters'
+            ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
+        }
+        if ($this->mm->fetchArr('marinas', ['username'], ['username' => $marina])[0]['username']) {
+            $marinaId = $this->mm->fetchArr('marinas', ['id'], ['username' => $marina])[0]['id'];
+        } else { 
+            $this->response([
+                'status' => false,
+                'message' => 'Wrong Marina username!'
+            ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
+        }
+        $dbValues = $this->mm->fetchArr('bristolRates', '')[0];
+        $response = array(
+            'Paddle Board and Canoe Licence £'.$dbValues['Paddle_Board_and_Canoe_Licence'],  
+             'Minimum Boat Length Charge '.$dbValues['Minimum_Boat_Length'].' Metre'
+        );
+        $this->response($response, REST_Controller::HTTP_OK);
+    }
+    
 } 
+ 
+
+ 
+
+
+
+
+
+
+
+

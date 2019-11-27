@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/userlist.css'); ?>">
 <div>
   <h1 class=" "><?php echo $title ?></h1>
   <a href="#!" class="btn btn-info float-right"  data-toggle="modal" data-target=".bd-example-modal-lg">Add User</a>
@@ -40,6 +41,8 @@
 </table>
 
 <script type="text/javascript">
+
+
   function removeSpaces(string) {
     var data = string.split(' ').join('');
     return data.toLowerCase();
@@ -51,7 +54,7 @@
     $('.update #username').val(username); 
     $('.update #email').val(email); 
     $('.update #phone').val(phone); 
-
+//alert(ManageUser); da kho tik dy kna
 if(ContactDetails == 'yes'){
   $('input[name="ContactDetails"]').attr('checked', 'checked');
 }
@@ -74,7 +77,7 @@ if(TidesLocksGenerator == 'yes'){
   $('input[name="TidesLocksGenerator"]').attr('checked', 'checked');
 }
 if(ManageUser == 'yes'){
-  $('input[name="TidesLocksGenerator"]').attr('checked', 'checked');
+  $('input[name="ManageUser"]').attr('checked', 'checked');
 }
  
 
@@ -107,7 +110,7 @@ if(ManageUser == 'yes'){
               </div>
             </div>
             <div class="form-row">
-              <label for="name">Name</label>
+              <label for="name">Full Name</label>
               <input type="text" name="name" class="form-control" id="name" placeholder="" value="" required>
               <div class="valid-feedback">
                 Looks good!
@@ -220,48 +223,76 @@ if(ManageUser == 'yes'){
       </div>
       <div class="modal-body">
         <?php 
-          $attributes = array('class' => 'needs-validation', 'novalidate' => '');
+          $attributes = array('class' => 'needs-validation validate-password', 'novalidate' => '');
           echo form_open('usermain/adduser', $attributes);
-        ?> 
+        ?>  
           <div class="">
+            
             <div class="form-row">
-              <label for="username">User Name</label>
-              <input type="text" name="username" onblur="this.value=removeSpaces(this.value);" class="form-control" id="username" placeholder="" value="" required>
-              <div class="valid-feedback">
-                Looks good!
-              </div>
+              <label for="name">First Name</label>
+              <input type="text" name="fname" class="form-control" id="fname" placeholder="" value="" required>
+               
             </div>
             <div class="form-row">
-              <label for="name">Name</label>
-              <input type="text" name="name" class="form-control" id="name" placeholder="" value="" required>
-              <div class="valid-feedback">
-                Looks good!
-              </div>
+              <label for="name">Last Name</label>
+              <input type="text" name="lname" class="form-control" id="lname" placeholder="" value="" required>
+              
             </div>
             <div class="form-row">
               <label for="email">Email</label>
               <input type="email" name="email" class="form-control" id="email" placeholder="" value="" required>
-              <div class="valid-feedback">
-                Looks good!
-              </div>
+               
             </div>
             <div class="form-row">
               <label for="phone">Phone Number</label>
               <div class="input-group"> 
                 <input type="text" class="form-control" name="phone" id="phone" placeholder="" aria-describedby="inputGroupPrepend" required>
-                <div class="invalid-feedback">
-                  Please choose a username.
-                </div>
+                 
               </div>
             </div>
             <div class="form-row">
+              <label for="username">Create Username</label>
+              <input type="text" name="username" onblur="this.value=removeSpaces(this.value);" class="form-control" id="username" placeholder="" value="" required>
+               
+            </div> 
+               
+            <div class="form-row"> 
               <label for="password">Create Password</label>
               <div class="input-group"> 
-                <input type="text" class="form-control" name="password" id="password" placeholder="" aria-describedby="inputGroupPrepend" required>
+                <input type="text" class="form-control" name="password" id="password" placeholder="" aria-describedby="inputGroupPrepend" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
                 <div class="invalid-feedback">
-                  Please choose a username.
+                  Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters
                 </div>
               </div>
+            </div>
+            <p>All checkmarks must turn green in order to proceed</p>
+            <div id="password-info">
+              <ul>
+                <li id="length" class="invalid clearfix">
+                  <span class="icon-container">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                  </span>
+                  At least 8 characters
+                </li>
+                <li id="capital" class="invalid clearfix">
+                  <span class="icon-container">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                  </span>
+                  At least 1 uppercase letter
+                </li>
+                <li id="lowercase" class="invalid clearfix">
+                  <span class="icon-container">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                  </span>
+                  At least 1 lowercase letter
+                </li>
+                <li id="number-special" class="invalid clearfix">
+                  <span class="icon-container">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                  </span>
+                  At least 1 number or <span title="&#96; &#126; &#33; &#64; &#35; &#36; &#37; &#94; &#38; &#42; &#40; &#41; &#43; &#61; &#124; &#59; &#58; &#39; &#34; &#44; &#46; &#60; &#62; &#47; &#63; &#92; &#45;" class="special-characters tip">special character</span>
+                </li>
+              </ul>
             </div>
 
 
@@ -333,8 +364,118 @@ if(ManageUser == 'yes'){
 </div>
 
 
-
+<script type="text/javascript" src="<?php echo base_url('assets/js/validation.js'); ?>"></script>
 <script>
+
+
+  // pass roles
+  // Tooltips
+  // -----------------------------------------
+
+  // Only initialise tooltips if devices is non touch
+  // if (!('ontouchstart' in window)) {
+  //   $('.tip').tooltip();
+  // }
+
+  // Password Validation
+  // -----------------------------------------
+
+  $(function passwordValidation() {
+
+    var pwdInput = $('#password');
+    var pwdInputText = $('#password'); // This is the input type="text" version for showing password
+    var pwdValid = false;
+
+    function validatePwdStrength() {
+
+      var pwdValue = $(this).val(); // This works because when it's called it's called from the pwdInput, see end
+
+      // Validate the length
+      if (pwdValue.length > 7) {
+        $('#length').removeClass('invalid').addClass('valid');
+        pwdValid = true;
+      } else {
+        $('#length').removeClass('valid').addClass('invalid');
+      }
+
+      // Validate capital letter
+      if (pwdValue.match(/[A-Z]/)) {
+        $('#capital').removeClass('invalid').addClass('valid');
+        pwdValid = pwdValid && true;
+      } else {
+        $('#capital').removeClass('valid').addClass('invalid');
+        pwdValid = false;
+      }
+
+      // Validate lowercase letter
+      if (pwdValue.match(/[a-z]/)) {
+        $('#lowercase').removeClass('invalid').addClass('valid');
+        pwdValid = pwdValid && true;
+      } else {
+        $('#lowercase').removeClass('valid').addClass('invalid');
+        pwdValid = false;
+      }
+
+      // Validate number or special character
+      if (pwdValue.match(/[\d`~!@#$%\^&*()+=|;:'",.<>\/?\\\-]/)) {
+        $('#number-special').removeClass('invalid').addClass('valid');
+        pwdValid = pwdValid && true;
+      } else {
+        $('#number-special').removeClass('valid').addClass('invalid');
+        pwdValid = false;
+      }
+    }
+
+    function validatePwdValid(form, event) {
+      if (pwdValid === true) {
+        form.submit();
+      } else {
+        $('#alert-invalid-password').removeClass('hide');
+        event.preventDefault();
+      }
+    }
+
+    pwdInput.bind('change keyup input', validatePwdStrength); // Keyup is a bit unpredictable
+    pwdInputText.bind('change keyup input', validatePwdStrength); // This is the input type="text" version for showing password
+
+    // jQuery Validation
+    $(".validate-password").validate({
+      // Add error class to parent to use Bootstrap's error styles
+      highlight: function(element) {
+        $(element).parent('.form-group').addClass('error');
+      },
+      unhighlight: function(element) {
+        $(element).parent('.form-group').removeClass('error');
+      },
+
+      rules: {
+        // Ensure passwords match
+        "passwordCheckMasked": {
+          equalTo: "#password"
+        }
+      },
+
+      errorPlacement: function(error, element) {
+        if (element.attr("name") == "password" || element.attr("name") == "passwordMasked") {
+          error.insertAfter("#password");
+        } else {
+          error.insertAfter(element);
+        }
+        if (element.attr("name") == "passwordCheck" || element.attr("name") == "passwordCheckMasked") {
+          error.insertAfter("#input-password-check");
+        } else {
+          error.insertAfter(element);
+        }
+      },
+      submitHandler: function(form, event) {
+        //this runs when the form validated successfully
+        validatePwdValid(form, event);
+      }
+    });
+
+  }); // END passwordValidation()
+  // .pass roles
+
   // Example starter JavaScript for disabling form submissions if there are invalid fields
   (function() {
     'use strict';
