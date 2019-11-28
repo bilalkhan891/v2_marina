@@ -40,51 +40,6 @@
   </tbody>
 </table>
 
-<script type="text/javascript">
-
-
-  function removeSpaces(string) {
-    var data = string.split(' ').join('');
-    return data.toLowerCase();
-  }
-
-  function editRecord(id, username, email, phone, status, name, ContactDetails, BerthingRates, UpdateBerthingRates, LockClosures, TideTimes, PushNotifications, TidesLocksGenerator, ManageUser){
-    $('.update #id').val(id); 
-    $('.update #name').val(name); 
-    $('.update #username').val(username); 
-    $('.update #email').val(email); 
-    $('.update #phone').val(phone); 
-//alert(ManageUser); da kho tik dy kna
-if(ContactDetails == 'yes'){
-  $('input[name="ContactDetails"]').attr('checked', 'checked');
-}
-if(BerthingRates == 'yes'){
-  $('input[name="BerthingRates"]').attr('checked', 'checked');
-}
-if(UpdateBerthingRates == 'yes'){
-  $('input[name="UpdateBerthingRates"]').attr('checked', 'checked');
-}
-if(LockClosures == 'yes'){
-  $('input[name="LockClosures"]').attr('checked', 'checked');
-}
-if(TideTimes == 'yes'){
-  $('input[name="TideTimes"]').attr('checked', 'checked');
-}
-if(PushNotifications == 'yes'){
-  $('input[name="PushNotifications"]').attr('checked', 'checked');
-}
-if(TidesLocksGenerator == 'yes'){
-  $('input[name="TidesLocksGenerator"]').attr('checked', 'checked');
-}
-if(ManageUser == 'yes'){
-  $('input[name="ManageUser"]').attr('checked', 'checked');
-}
- 
-
-
-    //$('.update #phone').val(phone);  
-  }
-</script>
 
 <div class="modal fade update" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -104,14 +59,14 @@ if(ManageUser == 'yes'){
             <div class="form-row">
               <label for="username">User Name</label>
               <input type="hidden" name="id" class="form-control" id="id" placeholder="" value="" required>
-              <input type="text" name="username" class="form-control" id="username" placeholder="" value=""  onblur="this.value=removeSpaces(this.value);"  pattern=".{4,12}" required title="4 to 12 characters">
+              <input type="text" name="username" class="form-control jquerypropercase" id="username" placeholder="" value=""  onblur="this.value=removeSpaces(this.value);"  pattern=".{4,12}" required title="4 to 12 characters">
               <div class="valid-feedback">
                 Looks good!
               </div>
             </div>
             <div class="form-row">
               <label for="name">Full Name</label>
-              <input type="text" name="name" class="form-control" id="name" placeholder="" value="" required>
+              <input type="text" name="name" class="form-control jquerypropercase" id="name" placeholder="" value="" required>
               <div class="valid-feedback">
                 Looks good!
               </div>
@@ -145,10 +100,10 @@ if(ManageUser == 'yes'){
               </div>
             </div>
 
-<br>
+              <br>
               <h5>Assign below roles for marina user.</h5>
 
-<br>
+              <br>
              <div class="form-check">
                 <label class="form-check-label">
                 <input type="checkbox" name="ManageUser" class="form-check-input" value="yes">
@@ -230,12 +185,12 @@ if(ManageUser == 'yes'){
             
             <div class="form-row">
               <label for="name">First Name</label>
-              <input type="text" name="fname" class="form-control" id="fname" placeholder="" value="" required>
+              <input type="text" name="fname" class="form-control jquerypropercase" id="fname" onkeyup="setUsername(this)" placeholder="" value="" required>
                
             </div>
             <div class="form-row">
               <label for="name">Last Name</label>
-              <input type="text" name="lname" class="form-control" id="lname" placeholder="" value="" required>
+              <input type="text" name="lname" class="form-control jquerypropercase" id="lname" onkeyup="setUsername(this)" placeholder="" value="" required>
               
             </div>
             <div class="form-row">
@@ -251,8 +206,8 @@ if(ManageUser == 'yes'){
               </div>
             </div>
             <div class="form-row">
-              <label for="username">Create Username</label>
-              <input type="text" name="username" onblur="this.value=removeSpaces(this.value);" class="form-control" id="username" placeholder="" value="" required>
+              <label for="autoUsername">Create Username</label>
+              <input type="text" name="username" onblur="this.value=removeSpaces(this.value);" onfocus="setUsername(this)" class="form-control autoUsername" id="autoUsername" placeholder="" value="" required>
                
             </div> 
                
@@ -363,9 +318,20 @@ if(ManageUser == 'yes'){
   </div>
 </div>
 
-
+<?php //print_r($this->session->userdata()); ?>
 <script type="text/javascript" src="<?php echo base_url('assets/js/validation.js'); ?>"></script>
 <script>
+
+function setUsername(e){
+  var firstName = document.getElementById('fname').value;
+  var lastName = document.getElementById('lname').value;
+  var marinaName =  '<?php echo $this->session->userdata('marinausername'); ?>';
+  var username = document.getElementById('autoUsername');
+
+  username.value = firstName + marinaName + lastName;
+  console.log(username.value);
+  // e.value = firstName + marinaName + lastName;
+}
 
 
   // pass roles
@@ -494,4 +460,50 @@ if(ManageUser == 'yes'){
       });
     }, false);
   })();
+</script>
+
+<script type="text/javascript">
+
+
+  function removeSpaces(string) {
+    var data = string.split(' ').join('');
+    return data.toLowerCase();
+  }
+
+  function editRecord(id, username, email, phone, status, name, ContactDetails, BerthingRates, UpdateBerthingRates, LockClosures, TideTimes, PushNotifications, TidesLocksGenerator, ManageUser){
+    $('.update #id').val(id); 
+    $('.update #name').val(name); 
+    $('.update #username').val(username); 
+    $('.update #email').val(email); 
+    $('.update #phone').val(phone); 
+  //alert(ManageUser); da kho tik dy kna
+  if(ContactDetails == 'yes'){
+    $('input[name="ContactDetails"]').attr('checked', 'checked');
+  }
+  if(BerthingRates == 'yes'){
+    $('input[name="BerthingRates"]').attr('checked', 'checked');
+  }
+  if(UpdateBerthingRates == 'yes'){
+    $('input[name="UpdateBerthingRates"]').attr('checked', 'checked');
+  }
+  if(LockClosures == 'yes'){
+    $('input[name="LockClosures"]').attr('checked', 'checked');
+  }
+  if(TideTimes == 'yes'){
+    $('input[name="TideTimes"]').attr('checked', 'checked');
+  }
+  if(PushNotifications == 'yes'){
+    $('input[name="PushNotifications"]').attr('checked', 'checked');
+  }
+  if(TidesLocksGenerator == 'yes'){
+    $('input[name="TidesLocksGenerator"]').attr('checked', 'checked');
+  }
+  if(ManageUser == 'yes'){
+    $('input[name="ManageUser"]').attr('checked', 'checked');
+  }
+ 
+
+
+    //$('.update #phone').val(phone);  
+  }
 </script>

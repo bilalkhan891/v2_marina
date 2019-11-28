@@ -1,3 +1,17 @@
+// Propercase 
+ 
+
+
+$('.jquerypropercase').keyup(function(event) { 
+    var textBox = event.target;
+    var start = textBox.selectionStart;
+    var end = textBox.selectionEnd;
+    textBox.value = textBox.value.charAt(0).toUpperCase() + textBox.value.slice(1);
+    textBox.setSelectionRange(start, end); 
+});
+ // .Propercase
+
+
 /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
 $(document).ready(function(){
 	$('.navbar-brand').hide();

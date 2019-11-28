@@ -35,14 +35,15 @@ class Userlogin extends CI_Controller {
 
 				$userdata['idsdata'] = $this->mm->fetchArr('ids', '', ['id' => $userdata[0]['ids_id']]);
 				// print_r($userdata[0]['id']);die;
-				$marinausername = $this->mm->fetchArr('marinas', '', ['id' => $userdata['idsdata'][0]['marinaid']])[0];
+				$marinaData = $this->mm->fetchArr('marinas', '', ['id' => $userdata['idsdata'][0]['marinaid']])[0];
 
 				$sessions = array(
 					'username' => $data['user'],
+					'marinaname' => $marinaData['marinaname'],
 					'is_user_logged_in' => TRUE, 
 					'userid' => (string) $userdata[0]['id'],
 					'ids_id' => $userdata[0]['ids_id'],
-					'marinausername' => $marinausername['username'],
+					'marinausername' => $marinaData['username'],
 					'annualid' => $userdata['idsdata'][0]['annualid'],
 					'contactid' => $userdata['idsdata'][0]['contactid'],
 					'creditcardsurchargeid' => $userdata['idsdata'][0]['creditcardsurchargeid'],
@@ -55,7 +56,7 @@ class Userlogin extends CI_Controller {
 					'vatratesid' => $userdata['idsdata'][0]['vatratesid'],
 					'visitorid' => $userdata['idsdata'][0]['visitorid'],
 					'winterid' => $userdata['idsdata'][0]['winterid'],
-					'marinaid' => $marinausername['id'],
+					'marinaid' => $marinaData['id'],
 					'ContactDetails' => (string) $userdata[0]['ContactDetails'],
 					'BerthingRates' => (string) $userdata[0]['BerthingRates'],
 					'UpdateBerthingRates' => (string) $userdata[0]['UpdateBerthingRates'],

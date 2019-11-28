@@ -166,32 +166,33 @@
           <!-- start copy -->
           <tr>
             <td align="left"  bgcolor="#e9ecef" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, 'raleway'; font-size: 16px; line-height: 24px;">
-              <p style="margin: 0; line-height: 1.9em;">Your account for marina admin protal has been created.</p>
+              <p style="margin: 0; line-height: 1.9em;">Your account for <?php echo $this->session->userdata('marinaname'); ?> admin protal has been created.</p>
               <p style="margin: 0; line-height: 1.9em;">Please use the below login credentials.</p>
-              <p style="margin: 0; line-height: 1.9em;"><a href="">Click here</a> or on below button to login in your account.</p>
+              <p style="margin: 0; line-height: 1.9em;"><a href="<?php echo base_url('userlogin'); ?>">Click here</a> or the button below to login in your account.</p>
             </td>
           </tr>
           <!-- end copy -->
 
           <!-- start button -->
-          <tr>
-            <td align="left"  bgcolor="#e9ecef">
-              <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                  <td align="center"  bgcolor="#e9ecef" style="padding: 12px;">
-                    <table border="0" cellpadding="0" cellspacing="0">
-                      <tr>
-                        <td align="center" bgcolor="#1a82e2" style="border-radius: 6px;">
-                          <a href="<?php echo base_url('userlogin'); ?>" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, 'raleway'; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">Login</a>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
+           
           <!-- end button -->
+
+          <!-- Button Test -->
+          
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td  style="padding-top: 15px;">
+                <table border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td align="" style="border-radius: 3px;" bgcolor="#1a82e2">
+                      <a href="<?php echo base_url('userlogin'); ?>" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; text-decoration: none;border-radius: 3px; margin-left: 10px; padding:  12px 25px;; border: 1px solid #1a82e2; display: inline-block;">Login &rarr;</a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <!-- .Button Test -->
 
           <!-- start copy -->
           <tr>

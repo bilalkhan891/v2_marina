@@ -170,7 +170,7 @@
             <td align="left"  bgcolor="#e9ecef" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, 'raleway'; font-size: 16px; line-height: 24px;">
               <p style="margin: 0; line-height: 1.9em;">Don't worry, it happens to the best of us!</p>
               <p style="margin: 0; line-height: 1.9em;">Let's get you a new one...</p>
-              <p style="margin: 0; line-height: 1.9em;"><a href="<?php echo base_url(); ?>/userlogin/resetforgotpwd/<?php echo $code; ?>">Click here</a> or on below button to reset your password</p>
+              <p style="margin: 0; line-height: 1.9em;"><a href="<?php echo base_url(); ?>/userlogin/resetforgotpwd/<?php echo $code; ?>">Click here</a> or on button below to reset your password</p>
               <p style="margin: 0; line-height: 1.9em;">If you didn't request a password reset, just ignore this email.</p>
             </td>
           </tr>
