@@ -495,3 +495,21 @@ if(ManageUser == 'yes'){
     }, false);
   })();
 </script>
+
+<script>
+  $(document).ready(function(){
+    $('#lname').change(function(){
+      
+      var fname=$('#fname').val();
+      var fnme=fname.charAt(0).toUpperCase()+fname.slice(1);
+      
+     var lname=$(this).val();
+     var lnme= lname.charAt(0).toUpperCase()+lname.slice(1);
+      
+
+     var fl=fnme + lnme;
+  
+   $('#username').val(fl);
+   });
+});
+</script>
