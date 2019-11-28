@@ -65,6 +65,8 @@ class Userlogin extends CI_Controller {
 					'PushNotifications' => (string) $userdata[0]['PushNotifications'],
 					'TidesLocksGenerator' => (string) $userdata[0]['TidesLocksGenerator'],
                     'ManageUser' => (string) $userdata[0]['ManageUser'],
+                    'ViewTideTimes' => (string) $userdata[0]['ViewTideTimes'],
+                    'ViewLockClosures' => (string) $userdata[0]['ViewLockClosures'],
 				);
 
 				$this->session->set_userdata($sessions);

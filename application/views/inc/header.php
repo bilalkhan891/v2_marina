@@ -21,26 +21,7 @@
  
 </head>
 
-<script>
-	  var t;
-    window.onload = resetTimer();
-    // DOM Events
-    document.onmousemove = resetTimer();
-    document.onkeypress = resetTimer();
-    document.onclick = resetTimer();
-    document.onscroll = resetTimer();
-function logout() {
-    location.href = "<?=base_url();?>Login/logout";
-       // alert("You are now logged out.");
-        //location.href = 'logout.php'
-    }
-    function resetTimer() {
-    
-        clearTimeout(t);
-        t = setTimeout(logout, 900000);
-        
-    }
-</script>
+
 
 <body class="">
  

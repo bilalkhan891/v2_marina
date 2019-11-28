@@ -178,7 +178,7 @@
           <!-- end button -->
 
           <!-- Button Test -->
-          
+          <br>
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td  style="padding-top: 15px;">
@@ -197,7 +197,8 @@
           <!-- start copy -->
           <tr>
             <td align="left"  bgcolor="#e9ecef" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, 'raleway'; font-size: 16px; line-height: 24px;">
-              <p>Your new credentials:</p> 
+              <p>Your new credentials:</p>
+
               <p><strong>User Name: </strong> <?php echo $data['username']; ?></p>
               <p><strong>Password: </strong> <?php echo $data['password']; ?></p>
 

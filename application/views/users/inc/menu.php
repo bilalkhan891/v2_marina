@@ -1,3 +1,5 @@
+
+
  <div id="mySidenav" class="sidenav" style="width:250px">
  	<?php $class = $this->router->fetch_class();
 $method = $this->router->fetch_method();
@@ -9,7 +11,7 @@ print_r($this->session);*/
   <a href="<?php echo base_url('usermain'); ?>" class="<?php if ($class == 'usermain' && $method == 'index') {echo 'active';}?>">User Dashboard</a>
   
 <?php if ($this->session->userdata('ContactDetails') == 'yes'): ?>
-  <a href="<?php echo base_url('usermain/userlist'); ?>" class="<?php if ($class == 'usermain' && $method == 'userlist') {echo 'active';}?>">Manage Users</a>
+  <a href="<?php echo base_url('usermain/userlist'); ?>" class="<?php if ($class == 'usermain' && $method == 'userlist') {echo 'active';}?>">Manage Admin Users</a>
 <?php endif; ?>
   
 <?php if ($this->session->userdata('ContactDetails') == 'yes'): ?>
@@ -23,18 +25,31 @@ print_r($this->session);*/
 <?php if ($this->session->userdata('UpdateBerthingRates') == 'yes'): ?>
   <a href="<?php echo base_url('rates/updatebristolrates'); ?>" class="<?php if ($class == 'rates' && $method == 'updatebristolrates') {echo 'active';}?>" >Update Berthing Rates</a>  
 <?php endif; ?>
+
 <?php if ($this->session->userdata('LockClosures') == 'yes'): ?>
-  <a href="<?php echo base_url('usermain/lockclosures'); ?>" class="<?php if ($class == 'usermain' && $method == 'lockclosures') {echo 'active';}?>">Lock Closures</a>
+  <a href="<?php echo base_url('usermain/lockclosures'); ?>" class="<?php if ($class == 'usermain' && $method == 'lockclosures') {echo 'active';}?>">Update Lock Closures</a>
 <?php endif; ?>
+
+<?php if ($this->session->userdata('ViewLockClosures') == 'yes'): ?>
+  <a href="<?php echo base_url('lockclosures/viewlockclosures'); ?>" class="<?php if ($class == 'lockclosures' && $method == 'viewlockclosures') {echo 'active';}?>">View Lock Closures</a>
+<?php endif; ?>
+
 <?php if ($this->session->userdata('TideTimes') == 'yes'): ?>
-  <a href="<?php echo base_url('usermain/tides'); ?>" class="<?php if ($class == 'usermain' && $method == 'tides') {echo 'active';}?>">Tide Times</a>
+  <a href="<?php echo base_url('usermain/tides'); ?>" class="<?php if ($class == 'usermain' && $method == 'tides') {echo 'active';}?>">Update Tide Times</a>
 <?php endif; ?>
+
+<?php if ($this->session->userdata('ViewTideTimes') == 'yes'): ?>
+  <a href="<?php echo base_url('tidetimes/viewtidetimes'); ?>" class="<?php if ($class == 'tidetimes' && $method == 'viewtidetimes') {echo 'active';}?>">View Tide Times</a>
+<?php endif; ?>
+
 <?php if ($this->session->userdata('PushNotifications') == 'yes'): ?>
   <a href="<?php echo base_url('usermain/notifications'); ?>" class="<?php if ($class == 'usermain' && $method == 'notifications') {echo 'active';}?>">Push Notifications</a>
 <?php endif; ?>
+
 <?php if ($this->session->userdata('TidesLocksGenerator') == 'yes'): ?>
   <a href="<?php echo base_url('usermain/downloadcsv'); ?>" class="<?php if ($class == 'usermain' && $method == 'downloadcsv') {echo 'active';}?>">Tides & Locks Generator</a>
 <?php endif; ?>
+
 </div>
 
 
@@ -85,7 +100,7 @@ print_r($this->session);*/
 	        <form id="resetPassword">
 	          <div class="form-group">
 	            <label for="password1">Password</label>
-	            <input type="password" class="form-control" id="password1" name="password1" aria-describedby="emailHelp" placeholder="Password" pattern=".{4,12}" required title="8 to 12 characters">
+	            <input type="password" class="form-control" id="password1" name="password1" aria-describedby="emailHelp" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
 	             
 	          </div>
 	          <div class="form-group">
@@ -136,4 +151,23 @@ print_r($this->session);*/
 			        });
 		    });
 		});
+
+			  var t;
+		    window.onload = resetTimer();
+		    // DOM Events
+		    document.onmousemove = resetTimer();
+		    document.onkeypress = resetTimer();
+		    document.onclick = resetTimer();
+		    document.onscroll = resetTimer();
+		function logout() {
+		    location.href = "<?=base_url();?>userlogin/logout";
+		       // alert("You are now logged out.");
+		        //location.href = 'logout.php'
+		    }
+		    function resetTimer() {
+		    
+		        clearTimeout(t);
+		        t = setTimeout(logout, 900000);
+		        
+		    } 
 	</script>

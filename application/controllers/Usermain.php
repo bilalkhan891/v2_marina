@@ -165,7 +165,9 @@ class Usermain extends CI_Controller {
 		$BerthingRates = ($this->input->post('BerthingRates')) ? $this->input->post('BerthingRates') : 'no';
 		$UpdateBerthingRates = ($this->input->post('UpdateBerthingRates')) ? $this->input->post('UpdateBerthingRates') : 'no';
 		$LockClosures = ($this->input->post('LockClosures')) ? $this->input->post('LockClosures') : 'no';
+		$ViewLockClosures = ($this->input->post('ViewLockClosures')) ? $this->input->post('ViewLockClosures') : 'no';
 		$TideTimes = ($this->input->post('TideTimes')) ? $this->input->post('TideTimes') : 'no';
+		$ViewTideTimes = ($this->input->post('ViewTideTimes')) ? $this->input->post('ViewTideTimes') : 'no';
 		$PushNotifications = ($this->input->post('PushNotifications')) ? $this->input->post('PushNotifications') : 'no';
 		$TidesLocksGenerator = ($this->input->post('TidesLocksGenerator')) ? $this->input->post('TidesLocksGenerator') : 'no';
 		$ManageUser = ($this->input->post('ManageUser')) ? $this->input->post('ManageUser') : 'no';
@@ -187,14 +189,14 @@ class Usermain extends CI_Controller {
 			$this->session->set_flashdata('msg', '<span class="alert-danger alert float-left">Email already exists, try another one.</span>');
 		} else {
 
-		 $dbdata = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name,  'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => sha1($password), 'marinaid' => $this->session->userdata('marinaid'), 'ContactDetails' => $ContactDetails, 'BerthingRates' => $BerthingRates, 'UpdateBerthingRates' => $UpdateBerthingRates, 'LockClosures' => $LockClosures, 'TideTimes' => $TideTimes, 'TidesLocksGenerator' => $TidesLocksGenerator, 'PushNotifications' => $PushNotifications, 'ManageUser' => $ManageUser);
+		 $valueArr = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name,  'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => sha1($password), 'marinaid' => $this->session->userdata('marinaid'), 'ContactDetails' => $ContactDetails, 'BerthingRates' => $BerthingRates, 'UpdateBerthingRates' => $UpdateBerthingRates, 'LockClosures' => $LockClosures, 'TideTimes' => $TideTimes, 'ViewLockClosures' => $ViewLockClosures, 'ViewTideTimes' => $ViewTideTimes, 'TidesLocksGenerator' => $TidesLocksGenerator, 'PushNotifications' => $PushNotifications, 'ManageUser' => $ManageUser);
  
-		/*$dbdata = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name, 'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $marinaId);*/
+		/*$valueArr = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name, 'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $marinaId);*/
  
-		// $dbdata = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name, 'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $marinaId);
+		// $valueArr = array('username' => $username, 'date' => date('Y-m-d'), 'email' => $email, 'name' => $name, 'phone' => $phone, 'status' => 'Approved', 'ids_id' => $this->session->userdata('ids_id'), 'password' => $password, 'marinaid' => $marinaId);
  
 
-			if ($this->mm->insertRow('userlogin', $dbdata)) {
+			if ($this->mm->insertRow('userlogin', $valueArr)) {
 
 				 $this->mailgun($name, $email, $this->load->view('email/createuser', $data, TRUE), 'account created.');
 

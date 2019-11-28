@@ -31,7 +31,7 @@
         <td class="<?php if($row['status'] == 'Approved') {echo 'approved';} else {echo 'unapproved';} ?>"><?php echo $row['status']; ?></td>
         <td class="row">
         	<?php if($i != 1) { ?>
-	        	<a class="col-md-5 bg-info" href="#!" onclick="editRecord( '<?php echo $row['id']?>', '<?php echo $row['username']?>', '<?php echo $row['email']?>', '<?php echo $row['phone']?>', '<?php echo $row['status']; ?>', '<?php echo $row['name']; ?>',  '<?php echo $row['ContactDetails']?>' ,  '<?php echo $row['BerthingRates']?>' ,  '<?php echo $row['UpdateBerthingRates']?>' ,  '<?php echo $row['LockClosures']?>' ,  '<?php echo $row['TideTimes']?>' ,  '<?php echo $row['PushNotifications']?>' ,  '<?php echo $row['TidesLocksGenerator']?>' ,  '<?php echo $row['ManageUser']?>' )" title="Edit" data-toggle="modal" data-target=".update"><i class="fas fa-edit center text-white" type="javascript:;"></i></a>
+	        	<a class="col-md-5 bg-info" href="#!" onclick="editRecord( '<?php echo $row['id']?>', '<?php echo $row['username']?>', '<?php echo $row['email']?>', '<?php echo $row['phone']?>', '<?php echo $row['status']; ?>', '<?php echo $row['name']; ?>',  '<?php echo $row['ContactDetails']?>' ,  '<?php echo $row['BerthingRates']?>' ,  '<?php echo $row['UpdateBerthingRates']?>' ,  '<?php echo $row['LockClosures']?>' ,  '<?php echo $row['TideTimes']?>' ,  '<?php echo $row['ViewLockClosures']?>' ,  '<?php echo $row['ViewTideTimes']?>' ,  '<?php echo $row['PushNotifications']?>' ,  '<?php echo $row['TidesLocksGenerator']?>' ,  '<?php echo $row['ManageUser']?>' )" title="Edit" data-toggle="modal" data-target=".update"><i class="fas fa-edit center text-white" type="javascript:;"></i></a>
 	        	<a class="col-md-5 bg-danger" href="<?php echo base_url('usermain/deleteuser/'.$row['id']); ?>" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash center text-white"></i></a>
 	        <?php } ?>
         </td>
@@ -59,7 +59,7 @@
             <div class="form-row">
               <label for="username">User Name</label>
               <input type="hidden" name="id" class="form-control" id="id" placeholder="" value="" required>
-              <input type="text" name="username" class="form-control jquerypropercase" id="username" placeholder="" value=""  onblur="this.value=removeSpaces(this.value);"  pattern=".{4,12}" required title="4 to 12 characters">
+              <input type="text" name="username" class="form-control jquerypropercase" id="username" placeholder="" value=""  onblur="this.value=removeSpaces(this.value);" required title="4 to 12 characters">
               <div class="valid-feedback">
                 Looks good!
               </div>
@@ -122,34 +122,44 @@
               </div>
               
 
-               <div class="form-check">
+              <div class="form-check">
                 <label class="form-check-label">
                 <input type="checkbox" name="UpdateBerthingRates" class="form-check-input" value="yes">
                  Update Berthing Rates</label>
               </div>
               
 
-               <div class="form-check">
+              <div class="form-check">
                 <label class="form-check-label">
                 <input type="checkbox" name="LockClosures" class="form-check-input" value="yes">
-                Lock Closures</label>
+                Update Lock Closures</label>
               </div>
               
-
                <div class="form-check">
                 <label class="form-check-label">
+                <input type="checkbox" name="ViewLockClosures" class="form-check-input" value="yes">
+                View Lock Closures</label>
+              </div> 
+ 
+              <div class="form-check">
+                <label class="form-check-label">
                 <input type="checkbox" name="TideTimes" class="form-check-input" value="yes">
-                Tide Times</label>
+                Update Tide Times</label>
               </div>
               
-
                <div class="form-check">
+                <label class="form-check-label">
+                <input type="checkbox" name="ViewTideTimes" class="form-check-input" value="yes">
+                View Tide Times</label>
+              </div>
+
+              <div class="form-check">
                 <label class="form-check-label">
                 <input type="checkbox" name="PushNotifications" class="form-check-input" value="yes">
                 Push Notifications</label>
               </div>
 
-               <div class="form-check">
+              <div class="form-check">
                 <label class="form-check-label">
                 <input type="checkbox" name="TidesLocksGenerator" class="form-check-input" value="yes">
                 Tides & Locks Generator</label>
@@ -220,6 +230,7 @@
                 </div>
               </div>
             </div>
+            <br>
             <p>All checkmarks must turn green in order to proceed</p>
             <div id="password-info">
               <ul>
@@ -251,9 +262,9 @@
             </div>
 
 
-<br>
+            <br>
              <h5>Assign below roles for marina user.</h5>
-<br>
+            <br>
             <div class="form-check">
                 <label class="form-check-label">
                 <input type="checkbox" name="ManageUser" class="form-check-input" value="yes">
@@ -282,14 +293,26 @@
                <div class="form-check">
                 <label class="form-check-label">
                 <input type="checkbox" name="LockClosures" class="form-check-input" value="yes">
-                Lock Closures</label>
+                Update Lock Closures</label>
+              </div>
+
+               <div class="form-check">
+                <label class="form-check-label">
+                <input type="checkbox" name="ViewLockClosures" class="form-check-input" value="yes">
+                View Lock Closures</label>
               </div>
               
 
                <div class="form-check">
                 <label class="form-check-label">
                 <input type="checkbox" name="TideTimes" class="form-check-input" value="yes">
-                Tide Times</label>
+                Update Tide Times</label>
+              </div>
+
+               <div class="form-check">
+                <label class="form-check-label">
+                <input type="checkbox" name="ViewTideTimes" class="form-check-input" value="yes">
+                View Tide Times</label>
               </div>
               
 
@@ -323,13 +346,13 @@
 <script>
 
 function setUsername(e){
-  var firstName = document.getElementById('fname').value;
-  var lastName = document.getElementById('lname').value;
+  var firstName = document.getElementById('fname').value.toLowerCase();
+  var lastName = document.getElementById('lname').value.toLowerCase();
   var marinaName =  '<?php echo $this->session->userdata('marinausername'); ?>';
   var username = document.getElementById('autoUsername');
 
   username.value = firstName + marinaName + lastName;
-  console.log(username.value);
+   
   // e.value = firstName + marinaName + lastName;
 }
 
@@ -470,7 +493,7 @@ function setUsername(e){
     return data.toLowerCase();
   }
 
-  function editRecord(id, username, email, phone, status, name, ContactDetails, BerthingRates, UpdateBerthingRates, LockClosures, TideTimes, PushNotifications, TidesLocksGenerator, ManageUser){
+  function editRecord(id, username, email, phone, status, name, ContactDetails, BerthingRates, UpdateBerthingRates, LockClosures, TideTimes, ViewLockClosures, ViewTideTimes, PushNotifications, TidesLocksGenerator, ManageUser){
     $('.update #id').val(id); 
     $('.update #name').val(name); 
     $('.update #username').val(username); 
@@ -491,6 +514,12 @@ function setUsername(e){
   }
   if(TideTimes == 'yes'){
     $('input[name="TideTimes"]').attr('checked', 'checked');
+  }
+  if(ViewLockClosures == 'yes'){
+    $('input[name="ViewLockClosures"]').attr('checked', 'checked');
+  }
+  if(ViewTideTimes == 'yes'){
+    $('input[name="ViewTideTimes"]').attr('checked', 'checked');
   }
   if(PushNotifications == 'yes'){
     $('input[name="PushNotifications"]').attr('checked', 'checked');
