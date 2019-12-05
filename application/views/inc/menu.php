@@ -3,8 +3,7 @@
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="<?php echo base_url('admin');?>" class="<?php if($class=='admin' && $method=='index'){echo 'active'; }?>">Dashboard</a>
   <a href="<?php echo base_url('admin/userlist');?>" class="<?php if($class=='admin' && $method=='userlist'){echo 'active'; }?>">Admin Users</a>
-  <a href="<?php echo base_url('marinas');?>" class="<?php if($class=='marinas' && $method=='index'){echo 'active'; }?>">Marina</a> 
-  <a href="<?php echo base_url('Role');?>" class="<?php if($class=='Role' && $method=='index'){echo 'active'; }?>">Role</a> 
+  <a href="<?php echo base_url('marinas');?>" class="<?php if($class=='marinas' && $method=='index'){echo 'active'; }?>">Marina</a>  
 </div>
 
 

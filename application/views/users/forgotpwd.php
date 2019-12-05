@@ -18,10 +18,10 @@
           <input type="email" id="login" class="fadeIn login-field second form-control" name="email" placeholder="Enter your email address" required> 
           <div class="invalid-feedback">Please enter proper email.</div>
         </div>
-        <input type="submit" class="fadeIn fourth" value="Reset Passowrd">
+        <input type="submit" class="fadeIn fourth" value="Reset Password">
       </form>
     
-    <!-- Remind Passowrd -->
+    <!-- Remind Password -->
     <div id="formFooter"> 
       <a class="" href="<?php echo base_url('userlogin'); ?>">Login</a>
     </div>

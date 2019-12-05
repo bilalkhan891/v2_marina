@@ -161,7 +161,7 @@ echo form_open('', $attributes);
 
 <div>
 
-	<table id="dataTable" class="table table-striped table-hover" >
+	<table class="table table-striped table-hover" >
 
 	  <thead class="thead-light">
 
@@ -364,41 +364,22 @@ echo form_open('usermain/addClosures', $attributes);
 			</div>
 
 	      	<div class="col-md-6">
-
-	      	     <label for="reopen">Reopen time</label>
-
-	      	    <div class="input-group input-group-sm">
-
-
-
-	      	      	<input type="text" name="reopen" value=""  class="form-control form-control-sm timeformat" id="reopen" required  aria-label="Small" >
-
-	      	      	<div class="invalid-feedback"> Fill this field. </div>
-
-
-
+ 
+	      	     <label for="reopen">Reopen time</label> 
+	      	    <div class="input-group input-group-sm"> 
+	      	      	<input type="text" name="reopen" value=""  class="form-control form-control-sm timeformat" id="reopen" required  aria-label="Small" > 
+	      	      	<div class="invalid-feedback"> Fill this field. </div> 
 	      	    </div>
 
 	      	</div>
 
-      	  </div>
+      	  </div> 
 
-
-
-      <div class="modal-footer">
-
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-        <button type="submit" class="btn btn-primary">Add</button>
-
-      </div>
-
-
-
-      	<?php echo form_close(); ?>
-
-
-
+      <div class="modal-footer"> 
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+        <button type="submit" class="btn btn-primary">Add</button> 
+      </div> 
+      	<?php echo form_close(); ?> 
       </div>
 
     </div>

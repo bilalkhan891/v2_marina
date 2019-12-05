@@ -23,7 +23,7 @@ print_r($this->session);*/
 <?php endif; ?>
 
 <?php if ($this->session->userdata('UpdateBerthingRates') == 'yes'): ?>
-  <a href="<?php echo base_url('rates/updatebristolrates'); ?>" class="<?php if ($class == 'rates' && $method == 'updatebristolrates') {echo 'active';}?>" >Update Berthing Rates</a>  
+  <a href="<?php echo base_url('rates/updaterates'); ?>" class="<?php if ($class == 'rates' && $method == 'updaterates') {echo 'active';}?>" >Update Berthing Rates</a>  
 <?php endif; ?>
 
 <?php if ($this->session->userdata('LockClosures') == 'yes'): ?>
@@ -31,7 +31,7 @@ print_r($this->session);*/
 <?php endif; ?>
 
 <?php if ($this->session->userdata('ViewLockClosures') == 'yes'): ?>
-  <a href="<?php echo base_url('lockclosures/viewlockclosures'); ?>" class="<?php if ($class == 'lockclosures' && $method == 'viewlockclosures') {echo 'active';}?>">View Lock Closures</a>
+  <a href="<?php echo base_url('LockClosures/viewLockClosures'); ?>" class="<?php if ($class == 'LockClosures' && $method == 'viewLockClosures') {echo 'active';}?>">View Lock Closures</a>
 <?php endif; ?>
 
 <?php if ($this->session->userdata('TideTimes') == 'yes'): ?>
@@ -39,7 +39,7 @@ print_r($this->session);*/
 <?php endif; ?>
 
 <?php if ($this->session->userdata('ViewTideTimes') == 'yes'): ?>
-  <a href="<?php echo base_url('tidetimes/viewtidetimes'); ?>" class="<?php if ($class == 'tidetimes' && $method == 'viewtidetimes') {echo 'active';}?>">View Tide Times</a>
+  <a href="<?php echo base_url('tideTimes/viewtidetimes'); ?>" class="<?php if ($class == 'tideTimes' && $method == 'viewtidetimes') {echo 'active';}?>">View Tide Times</a>
 <?php endif; ?>
 
 <?php if ($this->session->userdata('PushNotifications') == 'yes'): ?>

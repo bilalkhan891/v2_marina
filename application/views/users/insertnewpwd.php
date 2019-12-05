@@ -21,12 +21,12 @@
         <input type="password" id="password1" class="fadeIn login-field second" name="password1" placeholder="Password"  pattern=".{4,12}" required title="4 to 12 characters">
         <span class="text-danger"><?php form_error('username'); ?></span>
 
-        <input type="password" id="password2" class="fadeIn login-field third" name="password2" placeholder="Confirm Passowrd"  pattern=".{4,12}" required title="4 to 12 characters">
+        <input type="password" id="password2" class="fadeIn login-field third" name="password2" placeholder="Confirm Password"  pattern=".{4,12}" required title="4 to 12 characters">
         <span class="text-danger"><?php form_error('password'); ?></span>
         <input type="submit" class="fadeIn fourth" value="Log In">
       </form>
     
-    <!-- Remind Passowrd -->
+    <!-- Remind Password -->
      <div id="formFooter"> 
       <a class="" href="<?php echo base_url('userlogin'); ?>">Login</a>
     </div>

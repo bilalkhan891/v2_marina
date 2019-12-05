@@ -6,7 +6,7 @@ class TideTimes extends CI_Controller {
 
 	var $marinausername;
 
-	function __construct() {
+	function __construct() { 
 		parent::__construct();
 		$this->load->helper('form');
 		$this->marinausername = $this->session->userdata('marinausername');
