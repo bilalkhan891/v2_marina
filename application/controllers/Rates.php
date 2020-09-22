@@ -35,7 +35,7 @@ class Rates extends CI_Controller {
     }
 
 
-    public function updateSwanseaRates(){ 
+    private function updateSwanseaRates(){ 
     	if (empty($this->input->post())) {
     		$data['data']['annual'] = $this->mm->fetchArr('annual', '', ['marinaid' => $this->session->userdata('marinaid')]);
     		$data['data']['summer'] = $this->mm->fetchArr('summer', '', ['marinaid' => $this->session->userdata('marinaid')]);
@@ -253,7 +253,7 @@ class Rates extends CI_Controller {
     	
     }
 
-    public function updateBristolRates($update = ""){
+    private function updateBristolRates($update = ""){
         
         $data = array();
 		$dbValues = $this->mm->fetchArr('bristolRates', '')[0];

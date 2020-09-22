@@ -240,8 +240,8 @@
         	     <label for="icon">Icon</label>
         	     <select class="form-control form-control-sm" name="typeId" required>
         	       <option value="">Select Position</option>
-        	       <option value="1">Left</option>
-        	       <option value="2">Right</option>
+        	       <option value="1" <?php if ($data['typeId'] == 1) { echo 'selected="selected"'; } ?>>Left</option>
+        	       <option value="2" <?php if ($data['typeId'] == 2) { echo 'selected="selected"'; } ?>>Right</option>
         	     </select>
         	   </div>
         	   <div class="form-group">

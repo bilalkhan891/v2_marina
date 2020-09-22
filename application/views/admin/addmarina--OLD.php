@@ -214,3 +214,26 @@
   }, false);
 })();
 </script>
+
+
+<?php 
+
+
+
+add_filter( 'woocommerce_get_price_html', 'change_displayed_sale_price_html', 10, 2 );
+function change_displayed_sale_price_html( $price, $product ) {
+    // Only on sale products on frontend and excluding min/max price on variable products
+    if( $product->is_on_sale() && ! is_admin() && ! $product->is_type('variable')){
+        // Get product prices
+        $regular_price = (float) $product->get_regular_price(); // Regular price
+        $sale_price = (float) $product->get_price(); // Active price (the "Sale price" when on-sale)
+
+        // "Saving Percentage" calculation and formatting
+        $precision = 1; // Max number of decimals
+        $saving_percentage = round( 100 - ( $sale_price / $regular_price * 100 ), 1 ) . '%';
+
+        // Append to the formated html price
+        $price .= sprintf( __('<p class="saved-sale">%s OFF</p>', 'woocommerce' ), $saving_percentage );
+    }
+    return $price;
+}

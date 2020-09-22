@@ -121,6 +121,7 @@ class Admin extends CI_Controller {
         $this->load->view('admin/main', $data);
     }
     public function submitSponsor() { 
+
         $fileExt = pathinfo($_FILES["icon"]["name"], PATHINFO_EXTENSION);
         $action = ($this->input->post('action')) ? $this->input->post('action') : "" ;
         $sponsorId = ($this->input->post('id')) ? $this->input->post('id') : "" ;
@@ -129,24 +130,28 @@ class Admin extends CI_Controller {
         $sponsorType = $this->input->post('typeId');
         $filePath = './uploads/icons/'.$marinausername."/".$sponsorType;
 
-        if ($fileExt != 'png') {
+        if ($fileExt != 'png' && $fileExt != '') {
             $this->session->set_flashdata('msg','<span class="alert alert-danger">Only .png files are allowed.</span>');
             if ($action == 'update') {
                 redirect('admin/sponsor/'.$sponsorId);
             }
             redirect('admin/sponsors/'.$this->input->post('marinaid')."/".$marinausername);
         }
-        removeDirectory($filePath); 
-        if(!is_dir($filePath)){
-          mkdir($filePath);
-        } 
+
+        if (is_dir($filePath)) { removeDirectory($filePath);  }
+
+        if (!is_dir($filePath)) { mkdir($filePath); } 
+
         $config['upload_path'] = './uploads/icons/'.$marinausername."/".$sponsorType;
         $config['allowed_types'] = 'png';
         $config['file_name'] = 'sponsor_icon';
         $this->load->library('upload', $config);
          // Upload icon
         
-        if ($this->input->post('action') == 'update' && $_FILES['icon']['name'] != '') {
+        if ($this->input->post('action') != 'update' && $_FILES['icon']['name'] == '') {
+            $icon = $this->input->post('oldIcon');
+        } else { 
+            
             $this->mm->updateRow('sponsor', ['navIcon' => ''], ['id' => $this->input->post('id')]);
             $scaleArr = array(
               'scale' => array('@1x', '@2x', '@3x', '@hdpi', '@mdpi', '@unknown', '@xhdpi', '@xxhdpi', '@xxxhdpi'),
@@ -178,8 +183,6 @@ class Admin extends CI_Controller {
                $icon = '/uploads/icons/'.$marinausername."/".$this->input->post('typeId')."/".$fileData['file_name']; 
                $this->scaleIcon($fileData['full_path'], $fileData['file_path'], $fileData['file_name']);
             } 
-        } else { 
-            $icon = $this->input->post('oldIcon');
         }
          
         $data['formdata'] = Array
